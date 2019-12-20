@@ -1,0 +1,71 @@
+{
+    "name": "Wolfram|Alpha",
+    "description": "Compute answers using Wolfram's breakthrough technology & knowledgebase, relied on by millions of students & professionals. For math, science, nutrition, history, geography, engineering, mathematics, linguistics, sports, finance, music...",
+    "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/278-wolfram|alpha.jpg",
+    "tags": [
+        "artificial intelligence",
+        "business intelligence",
+        "have api",
+        "languages",
+        "linguistics",
+        "machine learning",
+        "math",
+        "search",
+        "semantic"
+    ],
+    "created": "2019-12-19",
+    "modified": "2019-12-19",
+    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/wolframalpha\/master\/apis.json",
+    "specificationVersion": "0.14",
+    "apis": [
+        {
+            "name": "Wolfram|Alpha",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/278-wolfram|alpha.jpg",
+            "humanURL": "http:\/\/wolframalpha.com",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/wolframalpha-openapi.json"
+                }
+            ]
+        }
+    ],
+    "include": [],
+    "x-common": [
+        {
+            "type": "Base",
+            "url": "https:\/\/wolframalpha.com"
+        },
+        {
+            "type": "Blog",
+            "url": "http:\/\/blog.wolframalpha.com\/"
+        },
+        {
+            "type": "Blog RSS",
+            "url": "http:\/\/blog.wolframalpha.com\/feed\/"
+        },
+        {
+            "type": "Crunchbase",
+            "url": "http:\/\/www.crunchbase.com\/company\/wolfram-alpha"
+        },
+        {
+            "type": "Crunchbase",
+            "url": "https:\/\/crunchbase.com\/organization\/wolfram-alpha"
+        },
+        {
+            "type": "Developers",
+            "url": "http:\/\/products.wolframalpha.com\/developers\/"
+        },
+        {
+            "type": "Twitter",
+            "url": "https:\/\/twitter.com\/Wolfram_Alpha"
+        },
+        {
+            "type": "Website",
+            "url": "http:\/\/wolframalpha.com"
+        }
+    ]
+}
