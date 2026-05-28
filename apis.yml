@@ -1,0 +1,32 @@
+aid: wolframalpha
+name: WolframAlpha
+description: "Provides specific answers to questions using data and algorithms"
+url: https://products.wolframalpha.com/api/
+specificationVersion: '0.20'
+created: '2026-05-28'
+modified: '2026-05-28'
+x-source: public-apis/public-apis
+x-category: "Machine Learning"
+x-tier: 3
+x-tier-reason: bulk-registered-from-public-apis
+tags:
+  - Machine Learning
+  - Public APIs
+apis:
+  - name: WolframAlpha
+    description: "Provides specific answers to questions using data and algorithms"
+    humanURL: https://products.wolframalpha.com/api/
+    baseURL: https://products.wolframalpha.com/api/
+    tags:
+      - Machine Learning
+    properties:
+      - type: Documentation
+        url: https://products.wolframalpha.com/api/
+common:
+  - type: Website
+    url: https://products.wolframalpha.com/api/
+  - type: PublicAPIsListing
+    url: https://github.com/public-apis/public-apis
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
