@@ -1,0 +1,27 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "wa": "https://wolframalpha.dev/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "WolframAlpha": "schema:Organization",
+    "name": "schema:name",
+    "description": "schema:description",
+    "url": "schema:url",
+    "logo": "schema:logo",
+    "sameAs": "schema:sameAs",
+    "API": "wa:API",
+    "Query": "wa:Query",
+    "Pod": "wa:Pod",
+    "Subpod": "wa:Subpod",
+    "AppID": "wa:AppID",
+    "Domain": "wa:Domain",
+    "ResultSignificanceScore": {
+      "@id": "wa:resultSignificanceScore",
+      "@type": "xsd:integer"
+    },
+    "ComputationalKnowledge": "wa:ComputationalKnowledge",
+    "NaturalLanguageQuery": "wa:NaturalLanguageQuery"
+  }
+}

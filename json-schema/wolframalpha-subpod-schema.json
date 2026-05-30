@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wolframalpha/refs/heads/main/json-schema/wolframalpha-subpod-schema.json",
+  "title": "Subpod",
+  "description": "A sub-result within a Wolfram|Alpha pod.",
+  "type": "object",
+  "properties": {
+    "plaintext": {
+      "type": "string",
+      "description": "Plain text representation of the result.",
+      "example": "1/3"
+    },
+    "img": {
+      "type": "object",
+      "description": "Image representation of the result.",
+      "properties": {
+        "src": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL of the result image."
+        },
+        "alt": {
+          "type": "string",
+          "description": "Alt text for the result image."
+        },
+        "width": {
+          "type": "integer"
+        },
+        "height": {
+          "type": "integer"
+        }
+      },
+      "example": {
+        "src": "https://example.com/path",
+        "alt": "string-value",
+        "width": 1,
+        "height": 1
+      }
+    }
+  }
+}

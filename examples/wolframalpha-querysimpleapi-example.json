@@ -1,0 +1,15 @@
+{
+  "operationId": "querySimpleApi",
+  "method": "GET",
+  "path": "/simple",
+  "summary": "Wolfram|Alpha Get Simple Image Result",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "image/gif",
+      "name": "querySimpleApi200Example",
+      "example": "string-value"
+    }
+  ]
+}

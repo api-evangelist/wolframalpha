@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wolframalpha/refs/heads/main/json-schema/wolframalpha-llm-api-response-schema.json",
+  "title": "LlmApiResponse",
+  "description": "Response from the Wolfram|Alpha LLM API containing computed results.",
+  "type": "object",
+  "properties": {
+    "query": {
+      "type": "string",
+      "description": "The original query that was submitted.",
+      "example": "What is the boiling point of water?"
+    },
+    "inputInterpretation": {
+      "type": "string",
+      "description": "Wolfram|Alpha's interpretation of the input query.",
+      "example": "boiling point | water"
+    },
+    "result": {
+      "type": "string",
+      "description": "The primary computed result for the query.",
+      "example": "100 degrees Celsius (at standard atmospheric pressure)"
+    },
+    "images": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "List of image URLs related to the query results.",
+      "example": [
+        "https://example.com/path"
+      ]
+    },
+    "link": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to the full Wolfram|Alpha results page for this query.",
+      "example": "https://www.wolframalpha.com/input?i=boiling+point+water"
+    }
+  }
+}

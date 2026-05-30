@@ -1,0 +1,208 @@
+openapi: 3.1.0
+info:
+  title: Wolfram|Alpha LLM API
+  description: >-
+    The Wolfram|Alpha LLM API delivers computational knowledge results optimized
+    for large language model consumption. Built on the same engine as the full
+    Wolfram|Alpha product, it returns structured text including query
+    interpretation, computed results, and relevant data formatted specifically
+    for AI and chat applications. Authentication uses an AppID query parameter
+    or Bearer token header.
+  version: '1.0'
+  contact:
+    name: Wolfram|Alpha Developer Support
+    url: https://developer.wolframalpha.com/
+  termsOfService: https://products.wolframalpha.com/api/documentation
+  x-generated-from: documentation
+servers:
+- url: https://www.wolframalpha.com/api/v1
+  description: Wolfram|Alpha LLM API Server
+security:
+- BearerAuth: []
+- AppID: []
+tags:
+- name: Queries
+  description: Submit natural language queries for computational results
+paths:
+  /llm-api:
+    get:
+      operationId: queryLlmApi
+      summary: Wolfram|Alpha Query the LLM API
+      description: >-
+        Submit a natural language query to the Wolfram|Alpha LLM API. Returns
+        structured text with query interpretation, computed results, relevant
+        data, and a link to the full Wolfram|Alpha results page. Optimized for
+        consumption by large language models and AI chat applications.
+      tags:
+      - Queries
+      parameters:
+      - name: appid
+        in: query
+        required: true
+        description: >-
+          The Wolfram|Alpha AppID used for authentication. Obtain from the
+          Wolfram|Alpha Developer Portal.
+        schema:
+          type: string
+          example: DEMO-APP-ID
+        example: DEMO-APP-ID
+      - name: input
+        in: query
+        required: true
+        description: URL-encoded natural language query string.
+        schema:
+          type: string
+          example: What is the boiling point of water?
+        example: What is the boiling point of water?
+      - name: maxchars
+        in: query
+        required: false
+        description: Maximum number of characters in the response. Default is 6800.
+        schema:
+          type: integer
+          example: 5000
+        example: 5000
+      - name: assumption
+        in: query
+        required: false
+        description: Assumption values to refine query interpretation.
+        schema:
+          type: array
+          items:
+            type: string
+        example:
+        - string-value
+      - name: ip
+        in: query
+        required: false
+        description: IP address of the query origin for location-aware results.
+        schema:
+          type: string
+          example: 192.0.2.1
+        example: 192.0.2.1
+      - name: latlong
+        in: query
+        required: false
+        description: Latitude and longitude for location-based queries (e.g., 40.71,-74.00).
+        schema:
+          type: string
+          example: 40.71,-74.00
+        example: 40.71,-74.00
+      - name: timezone
+        in: query
+        required: false
+        description: IANA timezone name for the query context.
+        schema:
+          type: string
+          example: America/New_York
+        example: America/New_York
+      - name: units
+        in: query
+        required: false
+        description: Measurement system preference. Values are metric or imperial.
+        schema:
+          type: string
+          enum: [metric, imperial]
+          example: metric
+        example: metric
+      - name: currency
+        in: query
+        required: false
+        description: ISO 4217 currency code for financial queries.
+        schema:
+          type: string
+          example: USD
+        example: USD
+      - name: languagecode
+        in: query
+        required: false
+        description: BCP 47 language code for query input and response.
+        schema:
+          type: string
+          example: en
+        example: en
+      - name: formattimeout
+        in: query
+        required: false
+        description: Maximum processing time in seconds before timeout.
+        schema:
+          type: integer
+          example: 5
+        example: 5
+      responses:
+        '200':
+          description: Successful response with computational results from Wolfram|Alpha.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LlmApiResponse'
+              examples:
+                QueryLlmApi200Example:
+                  summary: Default queryLlmApi 200 response
+                  x-microcks-default: true
+                  value:
+                    query: What is the boiling point of water?
+                    inputInterpretation: boiling point | water
+                    result: 100 degrees Celsius (at standard atmospheric pressure)
+                    images: []
+                    link: https://www.wolframalpha.com/input?i=boiling+point+water
+            text/plain:
+              schema:
+                type: string
+              examples:
+                queryLlmApi200Example:
+                  summary: Default queryLlmApi 200 response
+                  x-microcks-default: true
+                  value: string-value
+        '400':
+          description: Bad request - input parameter is missing or invalid.
+        '403':
+          description: Invalid or missing AppID.
+        '501':
+          description: Input cannot be interpreted by the Wolfram|Alpha engine.
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: AppID
+      description: Pass AppID as Bearer token in Authorization header.
+    AppID:
+      type: apiKey
+      in: query
+      name: appid
+      description: Pass AppID as query parameter.
+  schemas:
+    LlmApiResponse:
+      type: object
+      title: LlmApiResponse
+      description: Response from the Wolfram|Alpha LLM API containing computed results.
+      properties:
+        query:
+          type: string
+          description: The original query that was submitted.
+          example: What is the boiling point of water?
+        inputInterpretation:
+          type: string
+          description: Wolfram|Alpha's interpretation of the input query.
+          example: boiling point | water
+        result:
+          type: string
+          description: The primary computed result for the query.
+          example: 100 degrees Celsius (at standard atmospheric pressure)
+        images:
+          type: array
+          items:
+            type: string
+            format: uri
+          description: List of image URLs related to the query results.
+          example:
+          - https://example.com/path
+        link:
+          type: string
+          format: uri
+          description: URL to the full Wolfram|Alpha results page for this query.
+          example: https://www.wolframalpha.com/input?i=boiling+point+water

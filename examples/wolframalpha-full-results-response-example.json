@@ -1,0 +1,12 @@
+{
+  "queryresult": {
+    "success": true,
+    "error": false,
+    "numpods": 2,
+    "datatypes": "Math",
+    "timing": 0.812,
+    "pods": [
+      "string-value"
+    ]
+  }
+}

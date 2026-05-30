@@ -1,0 +1,59 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "wa": "https://wolfram-alpha.dev/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "Pod": "wa:Pod",
+    "title": {
+      "@id": "wa:title",
+      "@type": "xsd:string"
+    },
+    "scanner": {
+      "@id": "wa:scanner",
+      "@type": "xsd:string"
+    },
+    "id": {
+      "@id": "wa:id",
+      "@type": "xsd:string"
+    },
+    "position": {
+      "@id": "wa:position",
+      "@type": "xsd:integer"
+    },
+    "primary": {
+      "@id": "wa:primary",
+      "@type": "xsd:boolean"
+    },
+    "subpods": {
+      "@id": "wa:subpods",
+      "@container": "@set"
+    },
+    "Subpod": "wa:Subpod",
+    "plaintext": {
+      "@id": "wa:plaintext",
+      "@type": "xsd:string"
+    },
+    "img": {
+      "@id": "wa:img",
+      "@type": "@id"
+    },
+    "src": {
+      "@id": "wa:src",
+      "@type": "@id"
+    },
+    "alt": {
+      "@id": "wa:alt",
+      "@type": "xsd:string"
+    },
+    "width": {
+      "@id": "wa:width",
+      "@type": "xsd:integer"
+    },
+    "height": {
+      "@id": "wa:height",
+      "@type": "xsd:integer"
+    }
+  }
+}

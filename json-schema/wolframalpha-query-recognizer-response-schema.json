@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wolframalpha/refs/heads/main/json-schema/wolframalpha-query-recognizer-response-schema.json",
+  "title": "QueryRecognizerResponse",
+  "description": "Result of Wolfram|Alpha Fast Query Recognizer classification.",
+  "type": "object",
+  "properties": {
+    "query": {
+      "type": "object",
+      "description": "Classification result for the submitted query.",
+      "properties": {
+        "accepted": {
+          "type": "boolean",
+          "description": "Whether the query is appropriate for Wolfram|Alpha.",
+          "example": true
+        },
+        "timing": {
+          "type": "number",
+          "description": "Processing time in milliseconds.",
+          "example": 7.3
+        },
+        "domain": {
+          "type": "string",
+          "description": "Detected content domain for the query.",
+          "example": "Geography"
+        },
+        "resultsignificancescore": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Confidence estimate (0-100) for result relevance.",
+          "example": 92
+        },
+        "summarybox": {
+          "type": "object",
+          "description": "Precomputed summary box reference, when available.",
+          "properties": {
+            "path": {
+              "type": "string",
+              "description": "Relative path to retrieve a summary box.",
+              "example": "/summarybox?input=France"
+            }
+          }
+        }
+      }
+    }
+  }
+}

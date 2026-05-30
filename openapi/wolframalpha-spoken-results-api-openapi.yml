@@ -1,0 +1,98 @@
+openapi: 3.1.0
+info:
+  title: Wolfram|Alpha Spoken Results API
+  description: >-
+    The Wolfram|Alpha Spoken Results API returns answers optimized for audio
+    delivery. Results are plain text formatted to be read aloud naturally,
+    suitable for voice assistants, automotive systems, smart speakers, and
+    accessibility features.
+  version: '1.0'
+  contact:
+    name: Wolfram|Alpha Developer Support
+    url: https://developer.wolframalpha.com/
+  termsOfService: https://products.wolframalpha.com/api/documentation
+  x-generated-from: documentation
+servers:
+- url: https://api.wolframalpha.com/v1
+  description: Wolfram|Alpha v1 API Server
+security:
+- AppID: []
+tags:
+- name: Queries
+  description: Submit queries to receive spoken-word formatted text answers
+paths:
+  /spoken:
+    get:
+      operationId: querySpokenResults
+      summary: Wolfram|Alpha Get Spoken Result
+      description: >-
+        Submit a natural language query and receive a plain-text answer
+        formatted for audio delivery. Results are phrased naturally for
+        text-to-speech conversion, suitable for voice assistants, automotive
+        applications, and accessibility features.
+      tags:
+      - Queries
+      parameters:
+      - name: appid
+        in: query
+        required: true
+        description: Wolfram|Alpha AppID for authentication.
+        schema:
+          type: string
+          example: DEMO-APP-ID
+        example: DEMO-APP-ID
+      - name: i
+        in: query
+        required: true
+        description: URL-encoded input query string.
+        schema:
+          type: string
+          example: How tall is Mount Everest?
+        example: How tall is Mount Everest?
+      - name: units
+        in: query
+        required: false
+        description: Measurement system preference. Values are metric or imperial.
+        schema:
+          type: string
+          enum: [metric, imperial]
+          example: imperial
+        example: imperial
+      - name: timeout
+        in: query
+        required: false
+        description: Maximum processing time in seconds. Default is 5.
+        schema:
+          type: integer
+          example: 5
+        example: 5
+      responses:
+        '200':
+          description: Spoken-text formatted answer from Wolfram|Alpha.
+          content:
+            text/plain:
+              schema:
+                type: string
+                description: Plain-text answer formatted for audio delivery.
+                example: Mount Everest is approximately 29,032 feet or about 8,849 meters tall.
+              examples:
+                QuerySpokenResults200Example:
+                  summary: Default querySpokenResults 200 response
+                  x-microcks-default: true
+                  value: Mount Everest is approximately 29,032 feet or about 8,849 meters tall.
+        '400':
+          description: Bad request - input parameter missing or invalid.
+        '403':
+          description: Invalid or missing AppID.
+        '501':
+          description: Input cannot be interpreted or no spoken result available.
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  securitySchemes:
+    AppID:
+      type: apiKey
+      in: query
+      name: appid
+      description: Wolfram|Alpha AppID passed as query parameter.

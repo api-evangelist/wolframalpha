@@ -1,0 +1,87 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Wolfram|Alpha
+providerId: wolframalpha
+created: '2026-05-04'
+modified: '2026-05-05'
+reconciled: true
+tags:
+  - AI
+  - Computational Knowledge
+  - Natural Language Processing
+  - Search
+description: Wolfram|Alpha exposes a family of APIs (Full Results, LLM, Simple, Short Answers, Spoken Results, Fast Query Recognizer, Summary Box, Instant Calculators) through the Wolfram|Alpha Developer Portal. The provider publishes a free non-commercial allowance of up to 2,000 API calls per month; paid Standard API pricing and custom commercial agreements are not published and require contacting Wolfram sales.
+sources:
+  - https://products.wolframalpha.com/api
+plans:
+  - id: wolframalpha-non-commercial-free
+    name: Non-Commercial Free Access
+    type: freemium
+    description: Immediate free access for up to 2,000 non-commercial API calls per month across the Wolfram|Alpha API family, granted via the Wolfram|Alpha Developer Portal.
+    entries:
+      - label: Non-Commercial API Calls
+        name: api_calls
+        type: quota
+        metric: request
+        limit: 2000
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: Full Results API
+      - name: LLM API
+      - name: Simple API
+      - name: Short Answers API
+      - name: Spoken Results API
+      - name: Fast Query Recognizer API
+      - name: Summary Boxes API
+      - name: Instant Calculators API
+      - name: Developer Portal Access
+  - id: wolframalpha-standard-api
+    name: Standard API Pricing
+    type: usage-based
+    description: Paid Standard API pricing for commercial use of the Wolfram|Alpha APIs. Wolfram does not publish per-call rates publicly; pricing is provided through the purchase request form.
+    entries:
+      - label: Standard API Calls
+        name: standard_api_calls
+        type: metered
+        metric: request
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: see https://products.wolframalpha.com/contact-us/purchase
+        userMultiplied: false
+    elements:
+      - name: Full Results API
+      - name: LLM API
+      - name: Simple API
+      - name: Short Answers API
+      - name: Spoken Results API
+      - name: Commercial Use Rights
+  - id: wolframalpha-custom-solutions
+    name: Custom Solutions
+    type: enterprise
+    description: Custom commercial agreements for high-volume, embedded, or specialized Wolfram|Alpha API usage. Pricing and terms are negotiated directly with Wolfram.
+    entries:
+      - label: Custom Volume
+        name: custom_volume
+        type: flat
+        metric: varies
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: contact sales
+        userMultiplied: false
+    elements:
+      - name: All Wolfram|Alpha APIs
+      - name: Negotiated Volume
+      - name: Custom Use Cases
+      - name: Direct Wolfram Engagement
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

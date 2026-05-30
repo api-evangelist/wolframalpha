@@ -1,0 +1,101 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Wolfram|Alpha Spoken Results API — Queries
+  description: 'Wolfram|Alpha Spoken Results API — Queries. 1 operations. Lead operation: Wolfram|Alpha Get Spoken Result.
+    Self-contained Naftiko capability covering one Wolfram Alpha business surface.'
+  tags:
+  - Wolfram Alpha
+  - Queries
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WOLFRAM_ALPHA_API_KEY: WOLFRAM_ALPHA_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: spoken-results-queries
+    baseUri: https://api.wolframalpha.com/v1
+    description: Wolfram|Alpha Spoken Results API — Queries business capability. Self-contained, no shared references.
+    resources:
+    - name: spoken
+      path: /spoken
+      operations:
+      - name: queryspokenresults
+        method: GET
+        description: Wolfram|Alpha Get Spoken Result
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: appid
+          in: query
+          type: string
+          description: Wolfram|Alpha AppID for authentication.
+          required: true
+        - name: i
+          in: query
+          type: string
+          description: URL-encoded input query string.
+          required: true
+        - name: units
+          in: query
+          type: string
+          description: Measurement system preference. Values are metric or imperial.
+        - name: timeout
+          in: query
+          type: integer
+          description: Maximum processing time in seconds. Default is 5.
+    authentication:
+      type: apikey
+      key: appid
+      value: '{{env.WOLFRAM_ALPHA_API_KEY}}'
+      placement: query
+  exposes:
+  - type: rest
+    namespace: spoken-results-queries-rest
+    port: 8080
+    description: REST adapter for Wolfram|Alpha Spoken Results API — Queries. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/spoken
+      name: spoken
+      description: REST surface for spoken.
+      operations:
+      - method: GET
+        name: queryspokenresults
+        description: Wolfram|Alpha Get Spoken Result
+        call: spoken-results-queries.queryspokenresults
+        with:
+          appid: rest.appid
+          i: rest.i
+          units: rest.units
+          timeout: rest.timeout
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: spoken-results-queries-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Wolfram|Alpha Spoken Results API — Queries. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: wolfram-alpha-get-spoken-result
+      description: Wolfram|Alpha Get Spoken Result
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: spoken-results-queries.queryspokenresults
+      with:
+        appid: tools.appid
+        i: tools.i
+        units: tools.units
+        timeout: tools.timeout
+      outputParameters:
+      - type: object
+        mapping: $.

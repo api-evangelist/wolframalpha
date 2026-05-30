@@ -1,0 +1,54 @@
+{
+  "operationId": "queryFullResults",
+  "method": "GET",
+  "path": "/query",
+  "summary": "Wolfram|Alpha Submit a Full Results Query",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "QueryFullResults200Example",
+      "example": {
+        "queryresult": {
+          "success": true,
+          "error": false,
+          "numpods": 2,
+          "datatypes": "Math",
+          "timing": 0.812,
+          "pods": [
+            {
+              "title": "Input",
+              "scanner": "Identity",
+              "id": "Input",
+              "position": 100,
+              "subpods": [
+                {
+                  "plaintext": "integrate x^2 from 0 to 1"
+                }
+              ]
+            },
+            {
+              "title": "Result",
+              "scanner": "Integral",
+              "id": "Result",
+              "position": 200,
+              "primary": true,
+              "subpods": [
+                {
+                  "plaintext": "1/3"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "status": "200",
+      "contentType": "application/xml",
+      "name": "queryFullResults200Example",
+      "example": "string-value"
+    }
+  ]
+}

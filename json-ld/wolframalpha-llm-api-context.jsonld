@@ -1,0 +1,30 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "wa": "https://wolfram-alpha.dev/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "LlmApiResponse": "wa:LlmApiResponse",
+    "query": {
+      "@id": "wa:query",
+      "@type": "xsd:string"
+    },
+    "inputInterpretation": {
+      "@id": "wa:inputInterpretation",
+      "@type": "xsd:string"
+    },
+    "result": {
+      "@id": "wa:result",
+      "@type": "xsd:string"
+    },
+    "images": {
+      "@id": "wa:images",
+      "@container": "@set"
+    },
+    "link": {
+      "@id": "wa:link",
+      "@type": "@id"
+    }
+  }
+}

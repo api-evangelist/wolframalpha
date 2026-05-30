@@ -1,0 +1,27 @@
+{
+  "operationId": "queryLlmApi",
+  "method": "GET",
+  "path": "/llm-api",
+  "summary": "Wolfram|Alpha Query the LLM API",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "QueryLlmApi200Example",
+      "example": {
+        "query": "What is the boiling point of water?",
+        "inputInterpretation": "boiling point | water",
+        "result": "100 degrees Celsius (at standard atmospheric pressure)",
+        "images": [],
+        "link": "https://www.wolframalpha.com/input?i=boiling+point+water"
+      }
+    },
+    {
+      "status": "200",
+      "contentType": "text/plain",
+      "name": "queryLlmApi200Example",
+      "example": "string-value"
+    }
+  ]
+}

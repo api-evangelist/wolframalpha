@@ -1,0 +1,15 @@
+{
+  "operationId": "queryShortAnswer",
+  "method": "GET",
+  "path": "/result",
+  "summary": "Wolfram|Alpha Get Short Answer",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "text/plain",
+      "name": "QueryShortAnswer200Example",
+      "example": "384,400 kilometers"
+    }
+  ]
+}

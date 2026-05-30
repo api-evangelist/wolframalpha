@@ -1,0 +1,20 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://www.wolframalpha.com/queryrecognizer/query.jsp?appid=DEMO-APP-ID&mode=Default&i=What%20is%20the%20capital%20of%20France%3F&output=json"
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "query": {
+        "accepted": true,
+        "timing": 7.3,
+        "domain": "Geography",
+        "resultsignificancescore": 92,
+        "summarybox": {
+          "path": "/summarybox?input=France"
+        }
+      }
+    }
+  }
+}

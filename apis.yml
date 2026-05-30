@@ -1,32 +1,339 @@
 aid: wolframalpha
-name: WolframAlpha
-description: "Provides specific answers to questions using data and algorithms"
+name: Wolfram|Alpha
+description: >-
+  Wolfram|Alpha is a computational knowledge engine that provides answers to natural language queries
+  using a vast curated knowledge base and computational algorithms. The Wolfram|Alpha API suite gives
+  developers programmatic access to computational intelligence for web, mobile, voice, and AI agent
+  applications. APIs range from the full-featured Full Results API to specialized LLM, Short Answers,
+  Simple, Spoken Results, Conversational, Fast Query Recognizer, Summary Boxes, and Instant Calculators
+  APIs.
+type: Index
 url: https://products.wolframalpha.com/api/
-specificationVersion: '0.20'
+tags:
+  - AI
+  - Artificial Intelligence
+  - Computational Knowledge
+  - Machine Learning
+  - Natural Language Processing
+  - Public APIs
+  - Search
 created: '2026-05-28'
-modified: '2026-05-28'
+modified: '2026-05-30'
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+specificationVersion: '0.20'
+position: Consumer
+access: 3rd-Party
 x-source: public-apis/public-apis
-x-category: "Machine Learning"
+x-category: Machine Learning
 x-tier: 3
 x-tier-reason: bulk-registered-from-public-apis
-tags:
-  - Machine Learning
-  - Public APIs
 apis:
-  - name: WolframAlpha
-    description: "Provides specific answers to questions using data and algorithms"
-    humanURL: https://products.wolframalpha.com/api/
-    baseURL: https://products.wolframalpha.com/api/
+  - aid: wolframalpha:llm-api
+    name: Wolfram|Alpha LLM API
+    description: >-
+      The LLM API delivers computational knowledge results optimized for consumption by large language
+      models and AI chat applications. Built on the same engine as the full API, it returns structured
+      text with query interpretation, computed results, and relevant data formatted for LLM processing.
+      Authentication uses an AppID query parameter or Bearer token.
+    humanURL: https://products.wolframalpha.com/llm-api/documentation
+    baseURL: https://www.wolframalpha.com/api/v1/
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     tags:
-      - Machine Learning
+      - AI
+      - Computational Knowledge
+      - LLM
     properties:
       - type: Documentation
-        url: https://products.wolframalpha.com/api/
+        url: https://products.wolframalpha.com/llm-api/documentation
+      - type: OpenAPI
+        url: openapi/wolframalpha-llm-api-openapi.yml
+      - type: JSONSchema
+        url: json-schema/wolframalpha-llm-api-response-schema.json
+        title: LLM API Response Schema
+      - type: JSONStructure
+        url: json-structure/wolframalpha-llm-api-response-structure.json
+        title: LLM API Response Structure
+      - type: JSONLD
+        url: json-ld/wolframalpha-llm-api-context.jsonld
+      - type: Example
+        url: examples/wolframalpha-queryllmapi-example.json
+        title: Query LLM API Example
+      - type: Example
+        url: examples/wolframalpha-llm-api-response-example.json
+        title: LLM API Response Example
+      - type: NaftikoCapability
+        url: capabilities/llm-queries.yaml
+  - aid: wolframalpha:full-results-api
+    name: Wolfram|Alpha Full Results API
+    description: >-
+      The Full Results API provides full programmatic access to all Wolfram|Alpha capabilities,
+      including disambiguation, drilldown, asynchronous delivery, and results in multiple formats
+      (XML, JSON). It supports customizable pod selection, location-aware queries, and display
+      formatting.
+    humanURL: https://products.wolframalpha.com/api/documentation
+    baseURL: https://api.wolframalpha.com/v2/
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    tags:
+      - Computation
+      - Full Results
+      - Natural Language Processing
+    properties:
+      - type: Documentation
+        url: https://products.wolframalpha.com/api/documentation
+      - type: OpenAPI
+        url: openapi/wolframalpha-full-results-api-openapi.yml
+      - type: JSONSchema
+        url: json-schema/wolframalpha-full-results-response-schema.json
+        title: Full Results Response Schema
+      - type: JSONSchema
+        url: json-schema/wolframalpha-pod-schema.json
+        title: Pod Schema
+      - type: JSONSchema
+        url: json-schema/wolframalpha-subpod-schema.json
+        title: Subpod Schema
+      - type: JSONStructure
+        url: json-structure/wolframalpha-full-results-response-structure.json
+        title: Full Results Response Structure
+      - type: JSONStructure
+        url: json-structure/wolframalpha-pod-structure.json
+        title: Pod Structure
+      - type: JSONStructure
+        url: json-structure/wolframalpha-subpod-structure.json
+        title: Subpod Structure
+      - type: JSONLD
+        url: json-ld/wolframalpha-full-results-api-context.jsonld
+      - type: JSONLD
+        url: json-ld/wolframalpha-full-results-context.jsonld
+        title: Full Results Pod Context
+      - type: Example
+        url: examples/wolframalpha-queryfullresults-example.json
+        title: Query Full Results Example
+      - type: Example
+        url: examples/wolframalpha-full-results-response-example.json
+        title: Full Results Response Example
+      - type: Example
+        url: examples/wolframalpha-pod-example.json
+        title: Pod Example
+      - type: Example
+        url: examples/wolframalpha-subpod-example.json
+        title: Subpod Example
+      - type: NaftikoCapability
+        url: capabilities/full-results-queries.yaml
+  - aid: wolframalpha:short-answers-api
+    name: Wolfram|Alpha Short Answers API
+    description: >-
+      The Short Answers API returns a single concise plain-text result from Wolfram|Alpha, ideal for
+      chatbots, mobile apps, and constrained displays. Returns HTTP 501 when no brief answer is
+      available.
+    humanURL: https://products.wolframalpha.com/short-answers-api/documentation
+    baseURL: https://api.wolframalpha.com/v1/
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    tags:
+      - Natural Language Processing
+      - Short Answers
+      - Text
+    properties:
+      - type: Documentation
+        url: https://products.wolframalpha.com/short-answers-api/documentation
+      - type: OpenAPI
+        url: openapi/wolframalpha-short-answers-api-openapi.yml
+      - type: Example
+        url: examples/wolframalpha-queryshortanswer-example.json
+        title: Query Short Answer Example
+      - type: NaftikoCapability
+        url: capabilities/short-answers-queries.yaml
+  - aid: wolframalpha:simple-api
+    name: Wolfram|Alpha Simple API
+    description: >-
+      The Simple API returns complete Wolfram|Alpha results as a rendered image, requiring minimal
+      coding. Suitable for embedding computational results visually in web applications without
+      handling complex XML/JSON responses.
+    humanURL: https://products.wolframalpha.com/simple-api/documentation
+    baseURL: https://api.wolframalpha.com/v1/
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    tags:
+      - Images
+      - Natural Language Processing
+      - Visual Results
+    properties:
+      - type: Documentation
+        url: https://products.wolframalpha.com/simple-api/documentation
+      - type: OpenAPI
+        url: openapi/wolframalpha-simple-api-openapi.yml
+      - type: Example
+        url: examples/wolframalpha-querysimpleapi-example.json
+        title: Query Simple API Example
+      - type: NaftikoCapability
+        url: capabilities/simple-queries.yaml
+  - aid: wolframalpha:spoken-results-api
+    name: Wolfram|Alpha Spoken Results API
+    description: >-
+      The Spoken Results API returns answers optimized for audio delivery, suitable for voice
+      assistants, automotive systems, and accessibility features. Results are plain text formatted
+      to be read aloud naturally.
+    humanURL: https://products.wolframalpha.com/spoken-results-api/documentation
+    baseURL: https://api.wolframalpha.com/v1/
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    tags:
+      - Audio
+      - Natural Language Processing
+      - Voice
+    properties:
+      - type: Documentation
+        url: https://products.wolframalpha.com/spoken-results-api/documentation
+      - type: OpenAPI
+        url: openapi/wolframalpha-spoken-results-api-openapi.yml
+      - type: Example
+        url: examples/wolframalpha-queryspokenresults-example.json
+        title: Query Spoken Results Example
+      - type: NaftikoCapability
+        url: capabilities/spoken-results-queries.yaml
+  - aid: wolframalpha:fast-query-recognizer-api
+    name: Wolfram|Alpha Fast Query Recognizer API
+    description: >-
+      The Fast Query Recognizer API classifies queries in under 10 milliseconds to determine whether
+      Wolfram|Alpha is likely to provide a useful response. Useful for routing queries efficiently
+      before invoking the full computational engine.
+    humanURL: https://products.wolframalpha.com/query-recognizer/documentation
+    baseURL: https://www.wolframalpha.com/queryrecognizer/
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    tags:
+      - Classification
+      - Natural Language Processing
+      - Routing
+    properties:
+      - type: Documentation
+        url: https://products.wolframalpha.com/query-recognizer/documentation
+      - type: OpenAPI
+        url: openapi/wolframalpha-fast-query-recognizer-api-openapi.yml
+      - type: JSONSchema
+        url: json-schema/wolframalpha-query-recognizer-response-schema.json
+        title: Query Recognizer Response Schema
+      - type: JSONStructure
+        url: json-structure/wolframalpha-query-recognizer-response-structure.json
+        title: Query Recognizer Response Structure
+      - type: Example
+        url: examples/wolframalpha-recognizequery-example.json
+      - type: NaftikoCapability
+        url: capabilities/fast-query-recognizer.yaml
 common:
   - type: Website
+    url: https://www.wolframalpha.com
+  - type: DeveloperPortal
+    url: https://developer.wolframalpha.com/
+  - type: Portal
     url: https://products.wolframalpha.com/api/
+  - type: SignUp
+    url: https://developer.wolframalpha.com/
+  - type: Authentication
+    url: https://products.wolframalpha.com/api/documentation
+  - type: Pricing
+    url: https://products.wolframalpha.com/api/
+  - type: Plans
+    url: plans/wolframalpha-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/wolframalpha-rate-limits.yml
+  - type: FinOps
+    url: finops/wolframalpha-finops.yml
+  - type: TermsOfService
+    url: https://products.wolframalpha.com/api/documentation
+  - type: GitHubOrganization
+    url: https://github.com/WolframResearch
   - type: PublicAPIsListing
     url: https://github.com/public-apis/public-apis
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/wolfram-alpha-llc
+  - type: SDK
+    title: Python Client for Wolfram Language
+    url: https://github.com/WolframResearch/WolframClientForPython
+  - type: SDK
+    title: Wolfram Client (Python on PyPI)
+    url: https://pypi.org/project/wolframclient/
+  - type: SDK
+    title: Wolfram Web Engine for Python
+    url: https://github.com/WolframResearch/WolframWebEngineForPython
+  - type: SDK
+    title: Rust Bindings (wolfram-library-link)
+    url: https://github.com/WolframResearch/wolfram-library-link-rs
+  - type: SDK
+    title: Rust WSTP Bindings (wstp-rs)
+    url: https://github.com/WolframResearch/wstp-rs
+  - type: SDK
+    title: Wolfram Expression (Rust)
+    url: https://github.com/WolframResearch/wolfram-expr-rs
+  - type: IDESupport
+    title: VS Code Extension for Wolfram Language
+    url: https://github.com/WolframResearch/vscode-wolfram
+  - type: IDESupport
+    title: Sublime Text Package for Wolfram Language
+    url: https://github.com/WolframResearch/Sublime-WolframLanguage
+  - type: Tools
+    title: MCP Server (Wolfram AgentTools)
+    url: https://github.com/WolframResearch/AgentTools
+  - type: Tools
+    title: MCP Server Docker Image
+    url: https://github.com/WolframResearch/AgentTools/blob/main/docs/docker.md
+  - type: Tools
+    title: Agent Skills (Wolfram Language)
+    url: https://github.com/WolframResearch/skills
+  - type: Tools
+    title: Chatbook (Wolfram Notebooks + LLMs)
+    url: https://github.com/WolframResearch/Chatbook
+  - type: Tools
+    title: AWS Lambda Wolfram Language Runtime
+    url: https://github.com/WolframResearch/AWSLambda-WolframLanguage
+  - type: Tools
+    title: Wolfram Language for Jupyter
+    url: https://github.com/WolframResearch/WolframLanguageForJupyter
+  - type: Tools
+    title: Language Server Protocol (LSPServer)
+    url: https://github.com/WolframResearch/LSPServer
+  - type: SpectralRules
+    url: rules/wolframalpha-rules.yml
+  - type: Vocabulary
+    url: vocabulary/wolframalpha-vocabulary.yml
+  - type: JSONLD
+    url: json-ld/wolframalpha-context.jsonld
+  - type: Features
+    data:
+      - name: Computational Intelligence
+        description: Access Wolfram's curated knowledge base and computation engine for math, science, geography, finance, and more.
+      - name: Multiple Output Formats
+        description: Choose from XML, JSON, plain text, image, or audio output depending on your application needs.
+      - name: LLM-Optimized Responses
+        description: Specialized API endpoint returns structured text formatted for large language model consumption.
+      - name: Sub-10ms Query Classification
+        description: Fast Query Recognizer classifies queries before sending to the full engine, reducing latency and cost.
+      - name: Location-Aware Queries
+        description: Pass IP, coordinates, or location names for geographically relevant results.
+      - name: Conversational Multi-Turn Context
+        description: Conversational API maintains context across queries via conversation tokens.
+      - name: Pod-Based Decomposition
+        description: Full Results API returns answer pods and subpods enabling fine-grained drilldown into computational results.
+  - type: UseCases
+    data:
+      - name: AI Agent Integration
+        description: Provide LLMs and AI agents with computational knowledge results via the LLM API.
+      - name: Chatbot Answers
+        description: Return concise answers to natural language questions in chatbot interfaces using the Short Answers API.
+      - name: Voice Applications
+        description: Deliver audio-ready answer strings for voice assistants using the Spoken Results API.
+      - name: Educational Platforms
+        description: Embed Wolfram computational results visually in learning platforms using the Simple API.
+      - name: Search Augmentation
+        description: Pre-classify user queries with the Fast Query Recognizer to route to Wolfram only when appropriate.
+      - name: Scientific Computing
+        description: Use the Full Results API to integrate symbolic computation, equation solving, and data analysis into scientific applications.
+  - type: Integrations
+    data:
+      - name: Wolfram Language / Mathematica
+        description: Wolfram Language and Mathematica integration for computational workflows.
+      - name: OpenAI / ChatGPT Plugin
+        description: Official ChatGPT plugin uses Wolfram|Alpha for computational knowledge.
+      - name: Siri / Voice Assistants
+        description: Spoken Results API is used by voice assistant integrations including Apple Siri.
+      - name: Alexa Skills
+        description: Conversational and Spoken Results APIs power Amazon Alexa computational skills.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

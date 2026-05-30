@@ -1,0 +1,101 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Wolfram|Alpha Short Answers API — Queries
+  description: 'Wolfram|Alpha Short Answers API — Queries. 1 operations. Lead operation: Wolfram|Alpha Get Short Answer. Self-contained
+    Naftiko capability covering one Wolfram Alpha business surface.'
+  tags:
+  - Wolfram Alpha
+  - Queries
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WOLFRAM_ALPHA_API_KEY: WOLFRAM_ALPHA_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: short-answers-queries
+    baseUri: https://api.wolframalpha.com/v1
+    description: Wolfram|Alpha Short Answers API — Queries business capability. Self-contained, no shared references.
+    resources:
+    - name: result
+      path: /result
+      operations:
+      - name: queryshortanswer
+        method: GET
+        description: Wolfram|Alpha Get Short Answer
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: appid
+          in: query
+          type: string
+          description: Wolfram|Alpha AppID for authentication.
+          required: true
+        - name: i
+          in: query
+          type: string
+          description: URL-encoded input query string.
+          required: true
+        - name: units
+          in: query
+          type: string
+          description: Measurement system preference. Values are metric or imperial.
+        - name: timeout
+          in: query
+          type: integer
+          description: Maximum processing time in seconds. Default is 5.
+    authentication:
+      type: apikey
+      key: appid
+      value: '{{env.WOLFRAM_ALPHA_API_KEY}}'
+      placement: query
+  exposes:
+  - type: rest
+    namespace: short-answers-queries-rest
+    port: 8080
+    description: REST adapter for Wolfram|Alpha Short Answers API — Queries. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/result
+      name: result
+      description: REST surface for result.
+      operations:
+      - method: GET
+        name: queryshortanswer
+        description: Wolfram|Alpha Get Short Answer
+        call: short-answers-queries.queryshortanswer
+        with:
+          appid: rest.appid
+          i: rest.i
+          units: rest.units
+          timeout: rest.timeout
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: short-answers-queries-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Wolfram|Alpha Short Answers API — Queries. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: wolfram-alpha-get-short-answer
+      description: Wolfram|Alpha Get Short Answer
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: short-answers-queries.queryshortanswer
+      with:
+        appid: tools.appid
+        i: tools.i
+        units: tools.units
+        timeout: tools.timeout
+      outputParameters:
+      - type: object
+        mapping: $.

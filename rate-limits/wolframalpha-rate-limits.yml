@@ -1,0 +1,37 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Wolfram|Alpha
+providerId: wolframalpha
+created: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
+tags:
+  - AI
+  - Computational Knowledge
+  - Rate Limiting
+description: Wolfram|Alpha publishes a non-commercial allowance of 2,000 API calls per account per month across the API family but does not publish per-second or per-minute throttling rates, response codes, or rate-limit headers in the public API reference. Query-shaping is exposed through per-request timeout parameters (scantimeout, podtimeout, formattimeout, parsetimeout, totaltimeout) rather than request-rate limits. Quantitative throttling values must be requested from Wolfram Research; the entries here capture only what is publicly documented.
+sources:
+  - https://products.wolframalpha.com/api
+  - https://products.wolframalpha.com/api/documentation
+responseCodes: {}
+limits:
+  - name: Non-Commercial Monthly Allowance
+    scope: account
+    metric: requests_per_month
+    limit: 2000
+    timeFrame: month
+    notes: Immediate free access threshold across the Wolfram|Alpha API family for non-commercial use; documented on the Wolfram|Alpha API portal.
+  - name: Standard / Custom API Throttling
+    scope: account
+    metric: varies
+    limit: not publicly documented; contact Wolfram sales for paid-tier throttling specifics
+    notes: Wolfram does not publish per-second/per-minute throttling values for paid Standard or Custom API tiers.
+policies:
+  - name: Per-Request Timeouts
+    description: Each API call accepts scantimeout (default 3.0s), podtimeout (default 4.0s), formattimeout (default 8.0s), parsetimeout (default 5.0s), and totaltimeout (default 20.0s) parameters; these shape per-call processing time rather than request rate.
+  - name: Terms of Use
+    description: Use of the Full Results API and the broader Wolfram|Alpha API family is subject to the Wolfram|Alpha API Terms of Use; sustained or abusive usage patterns are governed contractually rather than by published numeric rate limits.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

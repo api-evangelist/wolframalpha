@@ -1,0 +1,44 @@
+name: Wolfram|Alpha Domain Vocabulary
+provider: Wolfram|Alpha
+providerId: wolframalpha
+description: Controlled vocabulary covering the Wolfram|Alpha API surface; sourced from openapi/ tags and provider domain terminology.
+created: '2026-05-30'
+modified: '2026-05-30'
+terms:
+- term: Queries
+  description: Submission of natural language queries for full computational results across all Wolfram|Alpha APIs.
+- term: Classification
+  description: Fast classification and routing of queries via the Fast Query Recognizer API.
+- term: AppID
+  description: Authentication identifier issued by the Wolfram|Alpha Developer Portal; passed as a query parameter or Bearer token.
+- term: Pod
+  description: A single result section returned by the Full Results API.
+- term: Subpod
+  description: A sub-result within a pod, including plaintext, image, MathML, or audio renderings.
+- term: Domain
+  description: The detected content category for a recognized query (e.g., Geography, Math, Finance).
+- term: ResultSignificanceScore
+  description: Confidence estimate (0-100) for the relevance of an expected Wolfram|Alpha result for a recognized query.
+- term: AppID Authentication
+  description: API key authentication scheme using the AppID query parameter or Bearer token.
+- term: Computational Knowledge
+  description: Wolfram's curated knowledge base and computational engine that powers all APIs.
+- term: Natural Language Processing
+  description: Input layer that parses free-form English (and other languages) into computational queries.
+- term: Mode
+  description: Recognizer mode flag (Default or Voice) for the Fast Query Recognizer API.
+- term: Async Delivery
+  description: Optional asynchronous result delivery mechanism for long-running Full Results API computations.
+- term: Pod Selection
+  description: Filtering mechanism (includepodid, excludepodid, podtitle, podindex, scanner) for narrowing Full Results API output.
+- term: LLM API
+  description: Endpoint variant of the Wolfram|Alpha API optimized for consumption by large language models and AI agents.
+- term: Spoken Results
+  description: Plain-text responses formatted to be read aloud naturally for voice assistants.
+- term: Short Answers
+  description: Concise single-line plain-text responses suitable for chatbots and constrained displays.
+- term: Simple Results
+  description: Single-image rendering of the full Wolfram|Alpha result page.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

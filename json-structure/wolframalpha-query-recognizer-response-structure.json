@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-structure.org/draft/2025-04/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wolframalpha/refs/heads/main/json-structure/wolframalpha-query-recognizer-response-structure.json",
+  "name": "QueryRecognizerResponse",
+  "type": "object",
+  "description": "Structure for a Wolfram|Alpha Fast Query Recognizer response.",
+  "properties": {
+    "query": {
+      "type": "object",
+      "properties": {
+        "accepted": {
+          "type": "boolean"
+        },
+        "timing": {
+          "type": "number"
+        },
+        "domain": {
+          "type": "string"
+        },
+        "resultsignificancescore": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "summarybox": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}

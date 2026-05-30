@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wolframalpha/refs/heads/main/json-schema/wolframalpha-full-results-response-schema.json",
+  "title": "FullResultsResponse",
+  "description": "JSON wrapper for Wolfram|Alpha Full Results API response.",
+  "type": "object",
+  "properties": {
+    "queryresult": {
+      "type": "object",
+      "description": "Top-level query result container.",
+      "properties": {
+        "success": {
+          "type": "boolean",
+          "description": "Whether the query was successfully interpreted.",
+          "example": true
+        },
+        "error": {
+          "type": "boolean",
+          "description": "Whether an error occurred during processing.",
+          "example": false
+        },
+        "numpods": {
+          "type": "integer",
+          "description": "Number of result pods returned.",
+          "example": 2
+        },
+        "datatypes": {
+          "type": "string",
+          "description": "Categories of data types included in the results.",
+          "example": "Math"
+        },
+        "timing": {
+          "type": "number",
+          "description": "Processing time in seconds.",
+          "example": 0.812
+        },
+        "pods": {
+          "type": "array",
+          "description": "Array of result pods containing computed data.",
+          "items": {
+            "$ref": "#/components/schemas/Pod"
+          }
+        }
+      },
+      "example": {
+        "success": true,
+        "error": false,
+        "numpods": 2,
+        "datatypes": "Math",
+        "timing": 0.812,
+        "pods": [
+          "string-value"
+        ]
+      }
+    }
+  }
+}

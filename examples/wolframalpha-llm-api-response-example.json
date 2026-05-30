@@ -1,0 +1,9 @@
+{
+  "query": "What is the boiling point of water?",
+  "inputInterpretation": "boiling point | water",
+  "result": "100 degrees Celsius (at standard atmospheric pressure)",
+  "images": [
+    "https://example.com/path"
+  ],
+  "link": "https://www.wolframalpha.com/input?i=boiling+point+water"
+}

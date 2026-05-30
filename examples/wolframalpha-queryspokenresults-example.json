@@ -1,0 +1,15 @@
+{
+  "operationId": "querySpokenResults",
+  "method": "GET",
+  "path": "/spoken",
+  "summary": "Wolfram|Alpha Get Spoken Result",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "text/plain",
+      "name": "QuerySpokenResults200Example",
+      "example": "Mount Everest is approximately 29,032 feet or about 8,849 meters tall."
+    }
+  ]
+}

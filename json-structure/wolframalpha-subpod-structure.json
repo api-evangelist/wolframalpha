@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/wolframalpha/refs/heads/main/json-structure/wolframalpha-subpod-structure.json",
+  "name": "Subpod",
+  "description": "A sub-result within a Wolfram|Alpha pod.",
+  "type": "object",
+  "properties": {
+    "plaintext": {
+      "type": "string",
+      "description": "Plain text representation of the result.",
+      "example": "1/3"
+    },
+    "img": {
+      "type": "object",
+      "description": "Image representation of the result.",
+      "properties": {
+        "src": {
+          "type": "uri",
+          "description": "URL of the result image."
+        },
+        "alt": {
+          "type": "string",
+          "description": "Alt text for the result image."
+        },
+        "width": {
+          "type": "int32"
+        },
+        "height": {
+          "type": "int32"
+        }
+      },
+      "example": {
+        "src": "https://example.com/path",
+        "alt": "string-value",
+        "width": 1,
+        "height": 1
+      }
+    }
+  }
+}

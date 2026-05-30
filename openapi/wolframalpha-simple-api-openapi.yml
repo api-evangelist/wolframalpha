@@ -1,0 +1,140 @@
+openapi: 3.1.0
+info:
+  title: Wolfram|Alpha Simple API
+  description: >-
+    The Wolfram|Alpha Simple API generates complete Wolfram|Alpha results as
+    a rendered static image, requiring minimal coding effort. It is suitable
+    for quickly embedding computational results visually in web applications
+    without handling complex structured data. The image background, foreground,
+    font size, and width are all customizable.
+  version: '1.0'
+  contact:
+    name: Wolfram|Alpha Developer Support
+    url: https://developer.wolframalpha.com/
+  termsOfService: https://products.wolframalpha.com/api/documentation
+  x-generated-from: documentation
+servers:
+- url: https://api.wolframalpha.com/v1
+  description: Wolfram|Alpha v1 API Server
+security:
+- AppID: []
+tags:
+- name: Queries
+  description: Submit queries to receive a rendered image of Wolfram|Alpha results
+paths:
+  /simple:
+    get:
+      operationId: querySimpleApi
+      summary: Wolfram|Alpha Get Simple Image Result
+      description: >-
+        Submit a natural language query and receive the complete Wolfram|Alpha
+        result rendered as a static image. Customizable background, foreground,
+        font size, and width. Does not support disambiguation, drilldown, or
+        asynchronous delivery.
+      tags:
+      - Queries
+      parameters:
+      - name: appid
+        in: query
+        required: true
+        description: Wolfram|Alpha AppID for authentication.
+        schema:
+          type: string
+          example: DEMO-APP-ID
+        example: DEMO-APP-ID
+      - name: i
+        in: query
+        required: true
+        description: URL-encoded input query string.
+        schema:
+          type: string
+          example: mass of the sun
+        example: mass of the sun
+      - name: layout
+        in: query
+        required: false
+        description: Content presentation style. Values are divider (default) or labelbar.
+        schema:
+          type: string
+          enum: [divider, labelbar]
+          example: divider
+        example: divider
+      - name: background
+        in: query
+        required: false
+        description: Image background color as HTML color name, hex value, or RGB value.
+        schema:
+          type: string
+          example: white
+        example: white
+      - name: foreground
+        in: query
+        required: false
+        description: Text color. Values are black (default) or white.
+        schema:
+          type: string
+          enum: [black, white]
+          example: black
+        example: black
+      - name: fontsize
+        in: query
+        required: false
+        description: Font size in points for rendered text. Default is 14.
+        schema:
+          type: integer
+          example: 14
+        example: 14
+      - name: width
+        in: query
+        required: false
+        description: Image width in pixels. Default is 500.
+        schema:
+          type: integer
+          example: 500
+        example: 500
+      - name: units
+        in: query
+        required: false
+        description: Measurement system preference. Values are metric or imperial.
+        schema:
+          type: string
+          enum: [metric, imperial]
+        example: metric
+      - name: timeout
+        in: query
+        required: false
+        description: Maximum processing time in seconds. Default is 5.
+        schema:
+          type: integer
+          example: 5
+        example: 5
+      responses:
+        '200':
+          description: Rendered image of Wolfram|Alpha results.
+          content:
+            image/gif:
+              schema:
+                type: string
+                format: binary
+                description: GIF image of the rendered Wolfram|Alpha result.
+              examples:
+                querySimpleApi200Example:
+                  summary: Default querySimpleApi 200 response
+                  x-microcks-default: true
+                  value: string-value
+        '400':
+          description: Bad request - input parameter missing or invalid.
+        '403':
+          description: Invalid or missing AppID.
+        '501':
+          description: Input cannot be interpreted by Wolfram|Alpha.
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  securitySchemes:
+    AppID:
+      type: apiKey
+      in: query
+      name: appid
+      description: Wolfram|Alpha AppID passed as query parameter.

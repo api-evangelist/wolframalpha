@@ -1,0 +1,99 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Wolfram|Alpha Fast Query Recognizer API — Classification
+  description: 'Wolfram|Alpha Fast Query Recognizer API — Classification. 1 operations. Lead operation: Wolfram|Alpha Recognize and Classify Query. Self-contained Naftiko capability for routing-layer query classification.'
+  tags:
+  - Wolfram Alpha
+  - Classification
+  created: '2026-05-30'
+  modified: '2026-05-30'
+binds:
+- namespace: env
+  keys:
+    WOLFRAM_ALPHA_API_KEY: WOLFRAM_ALPHA_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: fast-query-recognizer
+    baseUri: https://www.wolframalpha.com/queryrecognizer
+    description: Wolfram|Alpha Fast Query Recognizer API — Classification business capability. Self-contained, no shared references.
+    resources:
+    - name: query
+      path: /query.jsp
+      operations:
+      - name: recognizequery
+        method: GET
+        description: Wolfram|Alpha Recognize and Classify Query
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: appid
+          in: query
+          type: string
+          description: Wolfram|Alpha AppID for authentication.
+          required: true
+        - name: mode
+          in: query
+          type: string
+          description: Recognition mode (Default or Voice).
+          required: true
+        - name: i
+          in: query
+          type: string
+          description: URL-encoded input query string to classify.
+          required: true
+        - name: output
+          in: query
+          type: string
+          description: Response format (xml or json).
+    authentication:
+      type: apikey
+      key: appid
+      value: '{{env.WOLFRAM_ALPHA_API_KEY}}'
+      placement: query
+  exposes:
+  - type: rest
+    namespace: fast-query-recognizer-rest
+    port: 8080
+    description: REST adapter for Wolfram|Alpha Fast Query Recognizer.
+    resources:
+    - path: /v1/query
+      name: query
+      description: REST surface for query.
+      operations:
+      - method: GET
+        name: recognizequery
+        description: Wolfram|Alpha Recognize and Classify Query
+        call: fast-query-recognizer.recognizequery
+        with:
+          appid: rest.appid
+          mode: rest.mode
+          i: rest.i
+          output: rest.output
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: fast-query-recognizer-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Wolfram|Alpha Fast Query Recognizer.
+    tools:
+    - name: wolfram-alpha-recognize-query
+      description: Wolfram|Alpha Recognize and Classify Query
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: fast-query-recognizer.recognizequery
+      with:
+        appid: tools.appid
+        mode: tools.mode
+        i: tools.i
+        output: tools.output
+      outputParameters:
+      - type: object
+        mapping: $.

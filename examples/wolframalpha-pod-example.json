@@ -1,0 +1,10 @@
+{
+  "title": "Result",
+  "scanner": "Integral",
+  "id": "Result",
+  "position": 200,
+  "primary": true,
+  "subpods": [
+    "string-value"
+  ]
+}

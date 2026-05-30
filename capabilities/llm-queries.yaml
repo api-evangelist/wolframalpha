@@ -1,0 +1,141 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Wolfram|Alpha LLM API — Queries
+  description: 'Wolfram|Alpha LLM API — Queries. 1 operations. Lead operation: Wolfram|Alpha Query the LLM API. Self-contained
+    Naftiko capability covering one Wolfram Alpha business surface.'
+  tags:
+  - Wolfram Alpha
+  - Queries
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WOLFRAM_ALPHA_API_KEY: WOLFRAM_ALPHA_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: llm-queries
+    baseUri: https://www.wolframalpha.com/api/v1
+    description: Wolfram|Alpha LLM API — Queries business capability. Self-contained, no shared references.
+    resources:
+    - name: llm-api
+      path: /llm-api
+      operations:
+      - name: queryllmapi
+        method: GET
+        description: Wolfram|Alpha Query the LLM API
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: appid
+          in: query
+          type: string
+          description: The Wolfram|Alpha AppID used for authentication. Obtain from the Wolfram|Alpha Developer Portal.
+          required: true
+        - name: input
+          in: query
+          type: string
+          description: URL-encoded natural language query string.
+          required: true
+        - name: maxchars
+          in: query
+          type: integer
+          description: Maximum number of characters in the response. Default is 6800.
+        - name: assumption
+          in: query
+          type: array
+          description: Assumption values to refine query interpretation.
+        - name: ip
+          in: query
+          type: string
+          description: IP address of the query origin for location-aware results.
+        - name: latlong
+          in: query
+          type: string
+          description: Latitude and longitude for location-based queries (e.g., 40.71,-74.00).
+        - name: timezone
+          in: query
+          type: string
+          description: IANA timezone name for the query context.
+        - name: units
+          in: query
+          type: string
+          description: Measurement system preference. Values are metric or imperial.
+        - name: currency
+          in: query
+          type: string
+          description: ISO 4217 currency code for financial queries.
+        - name: languagecode
+          in: query
+          type: string
+          description: BCP 47 language code for query input and response.
+        - name: formattimeout
+          in: query
+          type: integer
+          description: Maximum processing time in seconds before timeout.
+    authentication:
+      type: bearer
+      token: '{{env.WOLFRAM_ALPHA_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: llm-queries-rest
+    port: 8080
+    description: REST adapter for Wolfram|Alpha LLM API — Queries. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/llm-api
+      name: llm-api
+      description: REST surface for llm-api.
+      operations:
+      - method: GET
+        name: queryllmapi
+        description: Wolfram|Alpha Query the LLM API
+        call: llm-queries.queryllmapi
+        with:
+          appid: rest.appid
+          input: rest.input
+          maxchars: rest.maxchars
+          assumption: rest.assumption
+          ip: rest.ip
+          latlong: rest.latlong
+          timezone: rest.timezone
+          units: rest.units
+          currency: rest.currency
+          languagecode: rest.languagecode
+          formattimeout: rest.formattimeout
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: llm-queries-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Wolfram|Alpha LLM API — Queries. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: wolfram-alpha-query-llm-api
+      description: Wolfram|Alpha Query the LLM API
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: llm-queries.queryllmapi
+      with:
+        appid: tools.appid
+        input: tools.input
+        maxchars: tools.maxchars
+        assumption: tools.assumption
+        ip: tools.ip
+        latlong: tools.latlong
+        timezone: tools.timezone
+        units: tools.units
+        currency: tools.currency
+        languagecode: tools.languagecode
+        formattimeout: tools.formattimeout
+      outputParameters:
+      - type: object
+        mapping: $.

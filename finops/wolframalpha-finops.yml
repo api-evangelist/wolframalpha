@@ -1,0 +1,66 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Wolfram|Alpha
+providerId: wolframalpha
+created: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
+tags:
+  - AI
+  - Computational Knowledge
+  - FinOps
+  - FOCUS
+description: FOCUS-aligned FinOps view of the Wolfram|Alpha API family. Wolfram publishes a non-commercial free allowance (2,000 calls/month) and offers paid Standard and Custom API agreements that are not publicly priced; per-call rates and invoice line items must be obtained from Wolfram sales.
+sources:
+  - https://products.wolframalpha.com/api
+  - https://products.wolframalpha.com/contact-us/purchase
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Wolfram Alpha LLC
+serviceCategory: AI / Computational Knowledge
+billingModel:
+  pricingCategory: Pay-As-You-Go
+  billingFrequency: Per-Invoice
+  billingCurrency: USD
+  chargeCategories:
+    - Usage
+    - Purchase
+focusColumns:
+  ServiceName: Wolfram|Alpha API
+  ServiceCategory: AI / Computational Knowledge
+  ProviderName: Wolfram|Alpha
+  PublisherName: Wolfram Alpha LLC
+  InvoiceIssuerName: Wolfram Alpha LLC
+  BillingCurrency: USD
+  ChargeCategory: Usage
+meters:
+  - name: api_calls
+    description: Count of Wolfram|Alpha API calls (Full Results, LLM, Simple, Short Answers, Spoken Results, Fast Query Recognizer, Summary Box, Instant Calculators) attributed to a developer account.
+    unit: request
+    aggregation: sum
+    dimensions:
+      - api
+      - account
+  - name: non_commercial_allowance_consumed
+    description: Portion of the 2,000-call non-commercial monthly allowance consumed by a given account.
+    unit: request
+    aggregation: sum
+    dimensions:
+      - account
+principles:
+  - name: Visibility
+    description: Track API consumption against the 2,000-call non-commercial monthly allowance via the Wolfram|Alpha Developer Portal; for paid Standard or Custom plans, request usage statements directly from Wolfram billing since usage telemetry is not exposed via a public API.
+  - name: Allocation
+    description: Use a distinct AppID per consuming application or environment so Wolfram-side call counts can be attributed to the right team or product when reconciling against invoices.
+  - name: Optimization
+    description: Choose the narrowest endpoint that returns the needed answer (Short Answers / Spoken Results / Simple over Full Results), tune scantimeout, podtimeout, and formattimeout to fail fast on expensive queries, and cache deterministic responses to stay inside the non-commercial allowance.
+  - name: Accountability
+    description: Assign a single owner per AppID; before crossing the 2,000-call non-commercial threshold or moving to commercial use, route procurement through Wolfram's purchase contact form so commitments and contractual terms are owned in finance rather than implicit in code.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

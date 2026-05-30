@@ -1,0 +1,39 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "wa": "https://wolfram-alpha.dev/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "FullResultsResponse": "wa:FullResultsResponse",
+    "queryresult": {
+      "@id": "wa:queryresult",
+      "@type": "@id"
+    },
+    "success": {
+      "@id": "wa:success",
+      "@type": "xsd:boolean"
+    },
+    "error": {
+      "@id": "wa:error",
+      "@type": "xsd:boolean"
+    },
+    "numpods": {
+      "@id": "wa:numpods",
+      "@type": "xsd:integer"
+    },
+    "datatypes": {
+      "@id": "wa:datatypes",
+      "@type": "xsd:string"
+    },
+    "timing": {
+      "@id": "wa:timing",
+      "@type": "xsd:decimal"
+    },
+    "pods": {
+      "@id": "wa:pods",
+      "@container": "@set",
+      "@type": "xsd:string"
+    }
+  }
+}

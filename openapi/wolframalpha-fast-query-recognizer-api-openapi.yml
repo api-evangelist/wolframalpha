@@ -1,0 +1,148 @@
+openapi: 3.1.0
+info:
+  title: Wolfram|Alpha Fast Query Recognizer API
+  description: >-
+    The Wolfram|Alpha Fast Query Recognizer API rapidly classifies a natural
+    language query in under 10 milliseconds to determine whether Wolfram|Alpha
+    is likely to return a useful response. Useful for routing layers that need
+    to decide whether to invoke the heavier Full Results, Short Answers, or LLM
+    APIs. Supports two recognition modes: Default for typed queries and Voice
+    for spoken input.
+  version: '1.0'
+  contact:
+    name: Wolfram|Alpha Developer Support
+    url: https://developer.wolframalpha.com/
+  termsOfService: https://products.wolframalpha.com/api/documentation
+  x-generated-from: documentation
+servers:
+- url: https://www.wolframalpha.com/queryrecognizer
+  description: Wolfram|Alpha Fast Query Recognizer Server
+security:
+- AppID: []
+tags:
+- name: Classification
+  description: Classify and route natural language queries
+paths:
+  /query.jsp:
+    get:
+      operationId: recognizeQuery
+      summary: Wolfram|Alpha Recognize and Classify Query
+      description: >-
+        Submit a natural language query and receive a classification result
+        indicating whether the query is appropriate for Wolfram|Alpha, the
+        likely domain, and a result significance score. Completes in under
+        10 milliseconds.
+      tags:
+      - Classification
+      parameters:
+      - name: appid
+        in: query
+        required: true
+        description: Wolfram|Alpha AppID for authentication.
+        schema:
+          type: string
+          example: DEMO-APP-ID
+        example: DEMO-APP-ID
+      - name: mode
+        in: query
+        required: true
+        description: Recognition mode. Default is for typed queries; Voice optimizes for spoken input.
+        schema:
+          type: string
+          enum: [Default, Voice]
+          example: Default
+        example: Default
+      - name: i
+        in: query
+        required: true
+        description: URL-encoded input query string to classify.
+        schema:
+          type: string
+          example: What is the capital of France?
+        example: What is the capital of France?
+      - name: output
+        in: query
+        required: false
+        description: Response format. Default is XML.
+        schema:
+          type: string
+          enum: [xml, json]
+          example: json
+        example: json
+      responses:
+        '200':
+          description: Successful classification result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryRecognizerResponse'
+              examples:
+                RecognizeQuery200Example:
+                  summary: Default recognizeQuery 200 response
+                  x-microcks-default: true
+                  value:
+                    query:
+                      accepted: true
+                      timing: 7.3
+                      domain: Geography
+                      resultsignificancescore: 92
+                      summarybox:
+                        path: /summarybox?input=France
+            application/xml:
+              schema:
+                type: string
+              examples:
+                recognizeQuery200Example:
+                  summary: Default recognizeQuery 200 response
+                  x-microcks-default: true
+                  value: string-value
+        '400':
+          description: Bad request - missing or invalid input parameter.
+        '403':
+          description: Invalid or missing AppID.
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  securitySchemes:
+    AppID:
+      type: apiKey
+      in: query
+      name: appid
+      description: Wolfram|Alpha AppID passed as query parameter.
+  schemas:
+    QueryRecognizerResponse:
+      type: object
+      title: QueryRecognizerResponse
+      description: Result of fast query recognition and classification.
+      properties:
+        query:
+          type: object
+          description: Classification result for the submitted query.
+          properties:
+            accepted:
+              type: boolean
+              description: Whether the query is appropriate for Wolfram|Alpha.
+              example: true
+            timing:
+              type: number
+              description: Processing time in milliseconds.
+              example: 7.3
+            domain:
+              type: string
+              description: Detected content domain for the query.
+              example: Geography
+            resultsignificancescore:
+              type: integer
+              description: Confidence estimate (0-100) for result relevance.
+              minimum: 0
+              maximum: 100
+              example: 92
+            summarybox:
+              type: object
+              description: Path to precomputed summary box when available.
+              properties:
+                path:
+                  type: string
+                  description: Relative path to retrieve a summary box.
+                  example: /summarybox?input=France
