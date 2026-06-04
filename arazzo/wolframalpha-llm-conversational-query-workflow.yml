@@ -1,0 +1,117 @@
+arazzo: 1.0.1
+info:
+  title: Wolfram|Alpha LLM Conversational Query
+  summary: Gate a conversational turn through the recognizer, then answer it with the LLM API.
+  description: >-
+    Wolfram|Alpha does not expose a dedicated Conversational API in these
+    descriptions; the LLM API is the surface purpose-built for AI chat and large
+    language model consumption, returning query interpretation, a computed
+    result, and a link to the full results page. This workflow adapts the
+    requested conversational pattern to that surface: it first uses the Fast
+    Query Recognizer (in Voice-or-Default mode) to decide whether a chat turn is
+    something Wolfram|Alpha can usefully answer, and when accepted it calls the
+    LLM API to produce a structured, chat-ready answer for the assistant to
+    speak back. Every step spells out its request inline so the flow can be read
+    and executed without opening the underlying OpenAPI descriptions.
+  version: 1.0.0
+sourceDescriptions:
+- name: fastQueryRecognizerApi
+  url: ../openapi/wolframalpha-fast-query-recognizer-api-openapi.yml
+  type: openapi
+- name: llmApi
+  url: ../openapi/wolframalpha-llm-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: llm-conversational-query
+  summary: Recognize a chat turn, then answer accepted turns with the LLM API.
+  description: >-
+    Classifies the conversational query with the Fast Query Recognizer and, when
+    accepted, requests a structured chat-ready answer from the LLM API. When the
+    turn is not accepted the flow ends so the assistant can decline gracefully.
+  inputs:
+    type: object
+    required:
+    - appid
+    - input
+    properties:
+      appid:
+        type: string
+        description: Wolfram|Alpha AppID used to authenticate every request.
+      input:
+        type: string
+        description: The conversational query / chat turn to answer.
+      mode:
+        type: string
+        description: Recognizer mode, either Default for typed turns or Voice for spoken turns.
+      maxchars:
+        type: integer
+        description: Maximum number of characters in the LLM API response.
+      units:
+        type: string
+        description: Measurement system preference, either metric or imperial.
+  steps:
+  - stepId: recognizeTurn
+    description: >-
+      Classify the conversational turn with the Fast Query Recognizer to decide
+      whether Wolfram|Alpha can usefully answer it before calling the LLM API.
+    operationId: recognizeQuery
+    parameters:
+    - name: appid
+      in: query
+      value: $inputs.appid
+    - name: mode
+      in: query
+      value: $inputs.mode
+    - name: i
+      in: query
+      value: $inputs.input
+    - name: output
+      in: query
+      value: json
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      accepted: $response.body#/query/accepted
+      domain: $response.body#/query/domain
+    onSuccess:
+    - name: turnAccepted
+      type: goto
+      stepId: answerWithLlm
+      criteria:
+      - context: $response.body
+        condition: $.query.accepted == true
+        type: jsonpath
+    - name: turnRejected
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.query.accepted == false
+        type: jsonpath
+  - stepId: answerWithLlm
+    description: >-
+      Send the accepted turn to the LLM API to get a chat-ready structured
+      answer with interpretation, result, and a link to full results.
+    operationId: queryLlmApi
+    parameters:
+    - name: appid
+      in: query
+      value: $inputs.appid
+    - name: input
+      in: query
+      value: $inputs.input
+    - name: maxchars
+      in: query
+      value: $inputs.maxchars
+    - name: units
+      in: query
+      value: $inputs.units
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      inputInterpretation: $response.body#/inputInterpretation
+      result: $response.body#/result
+      link: $response.body#/link
+  outputs:
+    accepted: $steps.recognizeTurn.outputs.accepted
+    result: $steps.answerWithLlm.outputs.result
+    link: $steps.answerWithLlm.outputs.link

@@ -1,0 +1,107 @@
+arazzo: 1.0.1
+info:
+  title: Wolfram|Alpha Short Answer with Detail Fallback
+  summary: Get a concise short answer, falling back to full pod results when no short answer exists.
+  description: >-
+    Many Wolfram|Alpha queries can be answered with a single concise line, but
+    some questions have no sufficiently short answer and return HTTP 501 from
+    the Short Answers API. This workflow first asks the Short Answers API for a
+    one-line result and, when that succeeds, returns it directly. When the Short
+    Answers API reports that no short answer is available, the workflow falls
+    back to the Full Results API to retrieve the complete set of computed pods
+    so the caller still gets a usable, detailed response. Every step spells out
+    its request inline so the flow can be read and executed without opening the
+    underlying OpenAPI descriptions.
+  version: 1.0.0
+sourceDescriptions:
+- name: shortAnswersApi
+  url: ../openapi/wolframalpha-short-answers-api-openapi.yml
+  type: openapi
+- name: fullResultsApi
+  url: ../openapi/wolframalpha-full-results-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: short-answer-with-detail-fallback
+  summary: Try the Short Answers API first, then fall back to Full Results when no short answer exists.
+  description: >-
+    Submits the query to the Short Answers API. On a 200 the concise answer is
+    returned and the flow ends. On a 501 (no short answer available) the flow
+    branches to the Full Results API for the complete pod data.
+  inputs:
+    type: object
+    required:
+    - appid
+    - input
+    properties:
+      appid:
+        type: string
+        description: Wolfram|Alpha AppID used to authenticate every request.
+      input:
+        type: string
+        description: The natural language query to answer (e.g. "How far is the Moon from Earth?").
+      units:
+        type: string
+        description: Measurement system preference, either metric or imperial.
+      timeout:
+        type: integer
+        description: Maximum processing time in seconds for each query.
+  steps:
+  - stepId: getShortAnswer
+    description: >-
+      Ask the Short Answers API for a single concise plain-text answer to the
+      query. A 200 means a short answer is available; a 501 means none exists.
+    operationId: queryShortAnswer
+    parameters:
+    - name: appid
+      in: query
+      value: $inputs.appid
+    - name: i
+      in: query
+      value: $inputs.input
+    - name: units
+      in: query
+      value: $inputs.units
+    - name: timeout
+      in: query
+      value: $inputs.timeout
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      shortAnswer: $response.body
+    onSuccess:
+    - name: shortAnswerFound
+      type: end
+  - stepId: getFullResultsFallback
+    description: >-
+      When the Short Answers API has no concise answer, request the complete
+      Full Results pods in JSON so the caller still receives a detailed result.
+    operationId: queryFullResults
+    parameters:
+    - name: appid
+      in: query
+      value: $inputs.appid
+    - name: input
+      in: query
+      value: $inputs.input
+    - name: output
+      in: query
+      value: json
+    - name: format
+      in: query
+      value: plaintext
+    - name: units
+      in: query
+      value: $inputs.units
+    - name: timeout
+      in: query
+      value: $inputs.timeout
+    successCriteria:
+    - condition: $statusCode == 200
+    - condition: $response.body#/queryresult/success == true
+    outputs:
+      success: $response.body#/queryresult/success
+      numpods: $response.body#/queryresult/numpods
+      pods: $response.body#/queryresult/pods
+  outputs:
+    shortAnswer: $steps.getShortAnswer.outputs.shortAnswer
+    fallbackPods: $steps.getFullResultsFallback.outputs.pods

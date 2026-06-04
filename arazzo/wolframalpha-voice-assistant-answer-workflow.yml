@@ -1,0 +1,97 @@
+arazzo: 1.0.1
+info:
+  title: Wolfram|Alpha Voice Assistant Answer
+  summary: Get a spoken-word answer, falling back to a short text answer when none is available.
+  description: >-
+    Voice assistants want a sentence phrased to be read aloud naturally, which
+    the Spoken Results API provides. When a query has no spoken-formatted answer
+    the Spoken Results API returns HTTP 501; in that case a terse Short Answers
+    result is still better than silence. This workflow asks the Spoken Results
+    API first and returns its naturally phrased answer when available, otherwise
+    it falls back to the Short Answers API so the assistant always has something
+    factual to say. Every step spells out its request inline so the flow can be
+    read and executed without opening the underlying OpenAPI descriptions.
+  version: 1.0.0
+sourceDescriptions:
+- name: spokenResultsApi
+  url: ../openapi/wolframalpha-spoken-results-api-openapi.yml
+  type: openapi
+- name: shortAnswersApi
+  url: ../openapi/wolframalpha-short-answers-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: voice-assistant-answer
+  summary: Prefer a spoken-word answer, falling back to a short text answer on a 501.
+  description: >-
+    Submits the query to the Spoken Results API. On a 200 the spoken answer is
+    returned and the flow ends. When no spoken result is available the flow
+    falls back to the Short Answers API for a concise text answer.
+  inputs:
+    type: object
+    required:
+    - appid
+    - input
+    properties:
+      appid:
+        type: string
+        description: Wolfram|Alpha AppID used to authenticate every request.
+      input:
+        type: string
+        description: The natural language query to voice (e.g. "How tall is Mount Everest?").
+      units:
+        type: string
+        description: Measurement system preference, either metric or imperial.
+      timeout:
+        type: integer
+        description: Maximum processing time in seconds for each query.
+  steps:
+  - stepId: getSpokenResult
+    description: >-
+      Ask the Spoken Results API for an answer phrased for text-to-speech. A 200
+      yields a spoken-ready sentence; a 501 means no spoken result is available.
+    operationId: querySpokenResults
+    parameters:
+    - name: appid
+      in: query
+      value: $inputs.appid
+    - name: i
+      in: query
+      value: $inputs.input
+    - name: units
+      in: query
+      value: $inputs.units
+    - name: timeout
+      in: query
+      value: $inputs.timeout
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      spokenAnswer: $response.body
+    onSuccess:
+    - name: spokenAnswerFound
+      type: end
+  - stepId: getShortAnswerFallback
+    description: >-
+      When no spoken result exists, fall back to the Short Answers API for a
+      concise plain-text answer the assistant can read.
+    operationId: queryShortAnswer
+    parameters:
+    - name: appid
+      in: query
+      value: $inputs.appid
+    - name: i
+      in: query
+      value: $inputs.input
+    - name: units
+      in: query
+      value: $inputs.units
+    - name: timeout
+      in: query
+      value: $inputs.timeout
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      shortAnswer: $response.body
+  outputs:
+    spokenAnswer: $steps.getSpokenResult.outputs.spokenAnswer
+    fallbackShortAnswer: $steps.getShortAnswerFallback.outputs.shortAnswer

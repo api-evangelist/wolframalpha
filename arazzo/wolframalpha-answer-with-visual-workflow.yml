@@ -1,0 +1,110 @@
+arazzo: 1.0.1
+info:
+  title: Wolfram|Alpha Answer with Visual
+  summary: Get a concise text answer and a rendered image of the full result for the same query.
+  description: >-
+    A common embedding pattern pairs a short factual line with a rich visual:
+    the Short Answers API supplies the one-line text answer, and the Simple API
+    renders the complete Wolfram|Alpha result as a static image suitable for
+    dropping straight into a web page. This workflow runs the query against the
+    Short Answers API for the headline answer, then requests the Simple API
+    image of the same query with the caller's chosen layout and styling so the
+    consumer gets both a machine-usable string and a ready-to-embed visual.
+    Every step spells out its request inline so the flow can be read and
+    executed without opening the underlying OpenAPI descriptions.
+  version: 1.0.0
+sourceDescriptions:
+- name: shortAnswersApi
+  url: ../openapi/wolframalpha-short-answers-api-openapi.yml
+  type: openapi
+- name: simpleApi
+  url: ../openapi/wolframalpha-simple-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: answer-with-visual
+  summary: Pair a Short Answers text result with a Simple API rendered image of the same query.
+  description: >-
+    Submits the query to the Short Answers API for a concise text answer, then
+    requests a rendered image of the full result from the Simple API for visual
+    embedding.
+  inputs:
+    type: object
+    required:
+    - appid
+    - input
+    properties:
+      appid:
+        type: string
+        description: Wolfram|Alpha AppID used to authenticate every request.
+      input:
+        type: string
+        description: The natural language query to answer and render.
+      layout:
+        type: string
+        description: Simple API content layout, either divider or labelbar.
+      background:
+        type: string
+        description: Image background color as an HTML color name, hex, or RGB value.
+      foreground:
+        type: string
+        description: Simple API text color, either black or white.
+      width:
+        type: integer
+        description: Rendered image width in pixels.
+      units:
+        type: string
+        description: Measurement system preference, either metric or imperial.
+  steps:
+  - stepId: getShortAnswer
+    description: >-
+      Ask the Short Answers API for a single concise plain-text answer to serve
+      as the headline result alongside the rendered image.
+    operationId: queryShortAnswer
+    parameters:
+    - name: appid
+      in: query
+      value: $inputs.appid
+    - name: i
+      in: query
+      value: $inputs.input
+    - name: units
+      in: query
+      value: $inputs.units
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      shortAnswer: $response.body
+  - stepId: getVisual
+    description: >-
+      Render the complete Wolfram|Alpha result for the same query as a static
+      image via the Simple API, using the caller's layout and styling options.
+    operationId: querySimpleApi
+    parameters:
+    - name: appid
+      in: query
+      value: $inputs.appid
+    - name: i
+      in: query
+      value: $inputs.input
+    - name: layout
+      in: query
+      value: $inputs.layout
+    - name: background
+      in: query
+      value: $inputs.background
+    - name: foreground
+      in: query
+      value: $inputs.foreground
+    - name: width
+      in: query
+      value: $inputs.width
+    - name: units
+      in: query
+      value: $inputs.units
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      image: $response.body
+  outputs:
+    shortAnswer: $steps.getShortAnswer.outputs.shortAnswer
+    resultImage: $steps.getVisual.outputs.image

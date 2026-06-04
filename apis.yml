@@ -217,6 +217,27 @@ apis:
       - type: NaftikoCapability
         url: capabilities/fast-query-recognizer.yaml
 common:
+  - type: ArazzoWorkflows
+    url: arazzo/
+    workflows:
+    - url: arazzo/wolframalpha-answer-with-visual-workflow.yml
+      name: Wolfram|Alpha Answer with Visual
+      summary: Get a concise text answer and a rendered image of the full result for the same query.
+    - url: arazzo/wolframalpha-full-results-to-specific-pod-workflow.yml
+      name: Wolfram|Alpha Full Results to Specific Pod
+      summary: Run a full query, then re-query to retrieve a single named pod in detail.
+    - url: arazzo/wolframalpha-llm-conversational-query-workflow.yml
+      name: Wolfram|Alpha LLM Conversational Query
+      summary: Gate a conversational turn through the recognizer, then answer it with the LLM API.
+    - url: arazzo/wolframalpha-query-recognizer-routing-workflow.yml
+      name: Wolfram|Alpha Query Recognizer Routing
+      summary: Classify a query with the Fast Query Recognizer, then route accepted queries to Full Results.
+    - url: arazzo/wolframalpha-short-answer-with-detail-fallback-workflow.yml
+      name: Wolfram|Alpha Short Answer with Detail Fallback
+      summary: Get a concise short answer, falling back to full pod results when no short answer exists.
+    - url: arazzo/wolframalpha-voice-assistant-answer-workflow.yml
+      name: Wolfram|Alpha Voice Assistant Answer
+      summary: Get a spoken-word answer, falling back to a short text answer when none is available.
   - type: Website
     url: https://www.wolframalpha.com
   - type: DeveloperPortal

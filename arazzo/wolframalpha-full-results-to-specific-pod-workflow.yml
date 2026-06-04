@@ -1,0 +1,107 @@
+arazzo: 1.0.1
+info:
+  title: Wolfram|Alpha Full Results to Specific Pod
+  summary: Run a full query, then re-query to retrieve a single named pod in detail.
+  description: >-
+    The Full Results API returns a query broken into pods, each identified by a
+    pod id. This workflow first runs the query to enumerate the available pods
+    and their ids, then issues a second, focused Full Results request that uses
+    includepodid to retrieve just the pod the caller is interested in, with full
+    image and plaintext formatting. This is the canonical drilldown pattern:
+    survey the result surface first, then pull the one section that matters in
+    detail. Every step spells out its request inline so the flow can be read and
+    executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: fullResultsApi
+  url: ../openapi/wolframalpha-full-results-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: full-results-to-specific-pod
+  summary: Enumerate pods from a full query, then fetch one specific pod by id.
+  description: >-
+    Submits the query to the Full Results API to list all pods, then issues a
+    focused follow-up request filtered to the requested pod id with full
+    formatting.
+  inputs:
+    type: object
+    required:
+    - appid
+    - input
+    - podId
+    properties:
+      appid:
+        type: string
+        description: Wolfram|Alpha AppID used to authenticate every request.
+      input:
+        type: string
+        description: The natural language query to compute.
+      podId:
+        type: string
+        description: The id of the pod to retrieve in detail (e.g. "Result").
+      units:
+        type: string
+        description: Measurement system preference, either metric or imperial.
+  steps:
+  - stepId: surveyPods
+    description: >-
+      Run the query against the Full Results API to enumerate all available pods
+      and their ids so the caller can confirm the pod of interest exists.
+    operationId: queryFullResults
+    parameters:
+    - name: appid
+      in: query
+      value: $inputs.appid
+    - name: input
+      in: query
+      value: $inputs.input
+    - name: output
+      in: query
+      value: json
+    - name: format
+      in: query
+      value: plaintext
+    - name: units
+      in: query
+      value: $inputs.units
+    successCriteria:
+    - condition: $statusCode == 200
+    - condition: $response.body#/queryresult/success == true
+    outputs:
+      numpods: $response.body#/queryresult/numpods
+      pods: $response.body#/queryresult/pods
+  - stepId: getSpecificPod
+    description: >-
+      Re-run the same query filtered to the requested pod id, returning that one
+      pod with full image and plaintext formatting for detailed display.
+    operationId: queryFullResults
+    parameters:
+    - name: appid
+      in: query
+      value: $inputs.appid
+    - name: input
+      in: query
+      value: $inputs.input
+    - name: output
+      in: query
+      value: json
+    - name: includepodid
+      in: query
+      value: $inputs.podId
+    - name: format
+      in: query
+      value: plaintext,image
+    - name: units
+      in: query
+      value: $inputs.units
+    successCriteria:
+    - condition: $statusCode == 200
+    - condition: $response.body#/queryresult/success == true
+    outputs:
+      podTitle: $response.body#/queryresult/pods/0/title
+      podPlaintext: $response.body#/queryresult/pods/0/subpods/0/plaintext
+      pod: $response.body#/queryresult/pods/0
+  outputs:
+    availablePods: $steps.surveyPods.outputs.pods
+    selectedPod: $steps.getSpecificPod.outputs.pod
+    selectedPodPlaintext: $steps.getSpecificPod.outputs.podPlaintext

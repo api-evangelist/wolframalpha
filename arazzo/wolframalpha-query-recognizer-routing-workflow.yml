@@ -1,0 +1,113 @@
+arazzo: 1.0.1
+info:
+  title: Wolfram|Alpha Query Recognizer Routing
+  summary: Classify a query with the Fast Query Recognizer, then route accepted queries to Full Results.
+  description: >-
+    The Fast Query Recognizer classifies a natural language query in under ten
+    milliseconds, reporting whether Wolfram|Alpha is likely to return a useful
+    response, the detected domain, and a result significance score. This
+    workflow uses that classification as a routing gate: it first recognizes the
+    query, and only when the query is accepted does it spend the heavier call to
+    the Full Results API for the complete computed pods. When the query is not
+    accepted, the flow ends without invoking the expensive backend. Every step
+    spells out its request inline so the flow can be read and executed without
+    opening the underlying OpenAPI descriptions.
+  version: 1.0.0
+sourceDescriptions:
+- name: fastQueryRecognizerApi
+  url: ../openapi/wolframalpha-fast-query-recognizer-api-openapi.yml
+  type: openapi
+- name: fullResultsApi
+  url: ../openapi/wolframalpha-full-results-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: query-recognizer-routing
+  summary: Recognize a query and route accepted queries to the Full Results API.
+  description: >-
+    Submits the query to the Fast Query Recognizer. When the classification is
+    accepted, the flow branches to the Full Results API for the complete pod
+    data; when it is not accepted, the flow ends after recognition.
+  inputs:
+    type: object
+    required:
+    - appid
+    - input
+    properties:
+      appid:
+        type: string
+        description: Wolfram|Alpha AppID used to authenticate every request.
+      input:
+        type: string
+        description: The natural language query to classify and, if accepted, compute.
+      mode:
+        type: string
+        description: Recognition mode, either Default for typed input or Voice for spoken input.
+  steps:
+  - stepId: recognize
+    description: >-
+      Classify the query with the Fast Query Recognizer to decide whether
+      Wolfram|Alpha is likely to return a useful response before spending a
+      heavier backend call.
+    operationId: recognizeQuery
+    parameters:
+    - name: appid
+      in: query
+      value: $inputs.appid
+    - name: mode
+      in: query
+      value: $inputs.mode
+    - name: i
+      in: query
+      value: $inputs.input
+    - name: output
+      in: query
+      value: json
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      accepted: $response.body#/query/accepted
+      domain: $response.body#/query/domain
+      resultSignificanceScore: $response.body#/query/resultsignificancescore
+    onSuccess:
+    - name: queryAccepted
+      type: goto
+      stepId: computeFullResults
+      criteria:
+      - context: $response.body
+        condition: $.query.accepted == true
+        type: jsonpath
+    - name: queryRejected
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.query.accepted == false
+        type: jsonpath
+  - stepId: computeFullResults
+    description: >-
+      Run the accepted query against the Full Results API and return the
+      complete computed pods in JSON.
+    operationId: queryFullResults
+    parameters:
+    - name: appid
+      in: query
+      value: $inputs.appid
+    - name: input
+      in: query
+      value: $inputs.input
+    - name: output
+      in: query
+      value: json
+    - name: format
+      in: query
+      value: plaintext,image
+    successCriteria:
+    - condition: $statusCode == 200
+    - condition: $response.body#/queryresult/success == true
+    outputs:
+      success: $response.body#/queryresult/success
+      numpods: $response.body#/queryresult/numpods
+      pods: $response.body#/queryresult/pods
+  outputs:
+    accepted: $steps.recognize.outputs.accepted
+    domain: $steps.recognize.outputs.domain
+    pods: $steps.computeFullResults.outputs.pods
