@@ -1,12 +1,11 @@
 aid: wolframalpha
 name: Wolfram|Alpha
 description: >-
-  Wolfram|Alpha is a computational knowledge engine that provides answers to natural language queries
-  using a vast curated knowledge base and computational algorithms. The Wolfram|Alpha API suite gives
-  developers programmatic access to computational intelligence for web, mobile, voice, and AI agent
-  applications. APIs range from the full-featured Full Results API to specialized LLM, Short Answers,
-  Simple, Spoken Results, Conversational, Fast Query Recognizer, Summary Boxes, and Instant Calculators
-  APIs.
+  Wolfram|Alpha is a computational knowledge engine that provides answers to natural language queries using a vast
+  curated knowledge base and computational algorithms. The Wolfram|Alpha API suite gives developers programmatic access
+  to computational intelligence for web, mobile, voice, and AI agent applications. APIs range from the full-featured
+  Full Results API to specialized LLM, Short Answers, Simple, Spoken Results, Conversational, Fast Query Recognizer,
+  Summary Boxes, and Instant Calculators APIs.
 type: Index
 url: https://products.wolframalpha.com/api/
 tags:
@@ -18,7 +17,7 @@ tags:
   - Public APIs
   - Search
 created: '2026-05-28'
-modified: '2026-05-30'
+modified: '2026-06-13'
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 specificationVersion: '0.20'
 position: Consumer
@@ -31,10 +30,10 @@ apis:
   - aid: wolframalpha:llm-api
     name: Wolfram|Alpha LLM API
     description: >-
-      The LLM API delivers computational knowledge results optimized for consumption by large language
-      models and AI chat applications. Built on the same engine as the full API, it returns structured
-      text with query interpretation, computed results, and relevant data formatted for LLM processing.
-      Authentication uses an AppID query parameter or Bearer token.
+      The LLM API delivers computational knowledge results optimized for consumption by large language models and AI
+      chat applications. Built on the same engine as the full API, it returns structured text with query interpretation,
+      computed results, and relevant data formatted for LLM processing. Authentication uses an AppID query parameter or
+      Bearer token.
     humanURL: https://products.wolframalpha.com/llm-api/documentation
     baseURL: https://www.wolframalpha.com/api/v1/
     image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
@@ -61,15 +60,12 @@ apis:
       - type: Example
         url: examples/wolframalpha-llm-api-response-example.json
         title: LLM API Response Example
-      - type: NaftikoCapability
-        url: capabilities/llm-queries.yaml
   - aid: wolframalpha:full-results-api
     name: Wolfram|Alpha Full Results API
     description: >-
-      The Full Results API provides full programmatic access to all Wolfram|Alpha capabilities,
-      including disambiguation, drilldown, asynchronous delivery, and results in multiple formats
-      (XML, JSON). It supports customizable pod selection, location-aware queries, and display
-      formatting.
+      The Full Results API provides full programmatic access to all Wolfram|Alpha capabilities, including
+      disambiguation, drilldown, asynchronous delivery, and results in multiple formats (XML, JSON). It supports
+      customizable pod selection, location-aware queries, and display formatting.
     humanURL: https://products.wolframalpha.com/api/documentation
     baseURL: https://api.wolframalpha.com/v2/
     image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
@@ -117,14 +113,11 @@ apis:
       - type: Example
         url: examples/wolframalpha-subpod-example.json
         title: Subpod Example
-      - type: NaftikoCapability
-        url: capabilities/full-results-queries.yaml
   - aid: wolframalpha:short-answers-api
     name: Wolfram|Alpha Short Answers API
     description: >-
-      The Short Answers API returns a single concise plain-text result from Wolfram|Alpha, ideal for
-      chatbots, mobile apps, and constrained displays. Returns HTTP 501 when no brief answer is
-      available.
+      The Short Answers API returns a single concise plain-text result from Wolfram|Alpha, ideal for chatbots, mobile
+      apps, and constrained displays. Returns HTTP 501 when no brief answer is available.
     humanURL: https://products.wolframalpha.com/short-answers-api/documentation
     baseURL: https://api.wolframalpha.com/v1/
     image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
@@ -140,14 +133,11 @@ apis:
       - type: Example
         url: examples/wolframalpha-queryshortanswer-example.json
         title: Query Short Answer Example
-      - type: NaftikoCapability
-        url: capabilities/short-answers-queries.yaml
   - aid: wolframalpha:simple-api
     name: Wolfram|Alpha Simple API
     description: >-
-      The Simple API returns complete Wolfram|Alpha results as a rendered image, requiring minimal
-      coding. Suitable for embedding computational results visually in web applications without
-      handling complex XML/JSON responses.
+      The Simple API returns complete Wolfram|Alpha results as a rendered image, requiring minimal coding. Suitable for
+      embedding computational results visually in web applications without handling complex XML/JSON responses.
     humanURL: https://products.wolframalpha.com/simple-api/documentation
     baseURL: https://api.wolframalpha.com/v1/
     image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
@@ -163,14 +153,11 @@ apis:
       - type: Example
         url: examples/wolframalpha-querysimpleapi-example.json
         title: Query Simple API Example
-      - type: NaftikoCapability
-        url: capabilities/simple-queries.yaml
   - aid: wolframalpha:spoken-results-api
     name: Wolfram|Alpha Spoken Results API
     description: >-
-      The Spoken Results API returns answers optimized for audio delivery, suitable for voice
-      assistants, automotive systems, and accessibility features. Results are plain text formatted
-      to be read aloud naturally.
+      The Spoken Results API returns answers optimized for audio delivery, suitable for voice assistants, automotive
+      systems, and accessibility features. Results are plain text formatted to be read aloud naturally.
     humanURL: https://products.wolframalpha.com/spoken-results-api/documentation
     baseURL: https://api.wolframalpha.com/v1/
     image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
@@ -186,14 +173,12 @@ apis:
       - type: Example
         url: examples/wolframalpha-queryspokenresults-example.json
         title: Query Spoken Results Example
-      - type: NaftikoCapability
-        url: capabilities/spoken-results-queries.yaml
   - aid: wolframalpha:fast-query-recognizer-api
     name: Wolfram|Alpha Fast Query Recognizer API
     description: >-
-      The Fast Query Recognizer API classifies queries in under 10 milliseconds to determine whether
-      Wolfram|Alpha is likely to provide a useful response. Useful for routing queries efficiently
-      before invoking the full computational engine.
+      The Fast Query Recognizer API classifies queries in under 10 milliseconds to determine whether Wolfram|Alpha is
+      likely to provide a useful response. Useful for routing queries efficiently before invoking the full computational
+      engine.
     humanURL: https://products.wolframalpha.com/query-recognizer/documentation
     baseURL: https://www.wolframalpha.com/queryrecognizer/
     image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
@@ -214,30 +199,30 @@ apis:
         title: Query Recognizer Response Structure
       - type: Example
         url: examples/wolframalpha-recognizequery-example.json
-      - type: NaftikoCapability
-        url: capabilities/fast-query-recognizer.yaml
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/wolframalpha/overview
   - type: ArazzoWorkflows
     url: arazzo/
     workflows:
-    - url: arazzo/wolframalpha-answer-with-visual-workflow.yml
-      name: Wolfram|Alpha Answer with Visual
-      summary: Get a concise text answer and a rendered image of the full result for the same query.
-    - url: arazzo/wolframalpha-full-results-to-specific-pod-workflow.yml
-      name: Wolfram|Alpha Full Results to Specific Pod
-      summary: Run a full query, then re-query to retrieve a single named pod in detail.
-    - url: arazzo/wolframalpha-llm-conversational-query-workflow.yml
-      name: Wolfram|Alpha LLM Conversational Query
-      summary: Gate a conversational turn through the recognizer, then answer it with the LLM API.
-    - url: arazzo/wolframalpha-query-recognizer-routing-workflow.yml
-      name: Wolfram|Alpha Query Recognizer Routing
-      summary: Classify a query with the Fast Query Recognizer, then route accepted queries to Full Results.
-    - url: arazzo/wolframalpha-short-answer-with-detail-fallback-workflow.yml
-      name: Wolfram|Alpha Short Answer with Detail Fallback
-      summary: Get a concise short answer, falling back to full pod results when no short answer exists.
-    - url: arazzo/wolframalpha-voice-assistant-answer-workflow.yml
-      name: Wolfram|Alpha Voice Assistant Answer
-      summary: Get a spoken-word answer, falling back to a short text answer when none is available.
+      - url: arazzo/wolframalpha-answer-with-visual-workflow.yml
+        name: Wolfram|Alpha Answer with Visual
+        summary: Get a concise text answer and a rendered image of the full result for the same query.
+      - url: arazzo/wolframalpha-full-results-to-specific-pod-workflow.yml
+        name: Wolfram|Alpha Full Results to Specific Pod
+        summary: Run a full query, then re-query to retrieve a single named pod in detail.
+      - url: arazzo/wolframalpha-llm-conversational-query-workflow.yml
+        name: Wolfram|Alpha LLM Conversational Query
+        summary: Gate a conversational turn through the recognizer, then answer it with the LLM API.
+      - url: arazzo/wolframalpha-query-recognizer-routing-workflow.yml
+        name: Wolfram|Alpha Query Recognizer Routing
+        summary: Classify a query with the Fast Query Recognizer, then route accepted queries to Full Results.
+      - url: arazzo/wolframalpha-short-answer-with-detail-fallback-workflow.yml
+        name: Wolfram|Alpha Short Answer with Detail Fallback
+        summary: Get a concise short answer, falling back to full pod results when no short answer exists.
+      - url: arazzo/wolframalpha-voice-assistant-answer-workflow.yml
+        name: Wolfram|Alpha Voice Assistant Answer
+        summary: Get a spoken-word answer, falling back to a short text answer when none is available.
   - type: Website
     url: https://www.wolframalpha.com
   - type: DeveloperPortal
@@ -318,7 +303,9 @@ common:
   - type: Features
     data:
       - name: Computational Intelligence
-        description: Access Wolfram's curated knowledge base and computation engine for math, science, geography, finance, and more.
+        description: >-
+          Access Wolfram's curated knowledge base and computation engine for math, science, geography, finance, and
+          more.
       - name: Multiple Output Formats
         description: Choose from XML, JSON, plain text, image, or audio output depending on your application needs.
       - name: LLM-Optimized Responses
@@ -344,7 +331,9 @@ common:
       - name: Search Augmentation
         description: Pre-classify user queries with the Fast Query Recognizer to route to Wolfram only when appropriate.
       - name: Scientific Computing
-        description: Use the Full Results API to integrate symbolic computation, equation solving, and data analysis into scientific applications.
+        description: >-
+          Use the Full Results API to integrate symbolic computation, equation solving, and data analysis into
+          scientific applications.
   - type: Integrations
     data:
       - name: Wolfram Language / Mathematica

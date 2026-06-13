@@ -1,0 +1,501 @@
+{
+  "info": {
+    "_postman_id": "8dc471d7-12e6-473b-bed9-421233c2730c",
+    "name": "Wolfram|Alpha LLM API",
+    "description": "The Wolfram|Alpha LLM API delivers computational knowledge results optimized for large language model consumption. Built on the same engine as the full Wolfram|Alpha product, it returns structured text including query interpretation, computed results, and relevant data formatted specifically for AI and chat applications. Authentication uses an AppID query parameter or Bearer token header.\n\nContact Support:\n Name: Wolfram|Alpha Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:21:24.000Z",
+    "updatedAt": "2026-06-05T15:21:24.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8dc471d7-12e6-473b-bed9-421233c2730c"
+  },
+  "item": [
+    {
+      "name": "llm-api",
+      "item": [
+        {
+          "name": "Wolfram|Alpha Query the LLM API",
+          "id": "95f3b119-0589-4c41-85fe-fb3ff94936ad",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/llm-api?appid=<string>&input=<string>&maxchars=<integer>&assumption=<string>&assumption=<string>&ip=<string>&latlong=<string>&timezone=<string>&units=imperial&currency=<string>&languagecode=<string>&formattimeout=<integer>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "llm-api"
+              ],
+              "query": [
+                {
+                  "description": "(Required) The Wolfram|Alpha AppID used for authentication. Obtain from the Wolfram|Alpha Developer Portal.",
+                  "key": "appid",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) URL-encoded natural language query string.",
+                  "key": "input",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Maximum number of characters in the response. Default is 6800.",
+                  "key": "maxchars",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Assumption values to refine query interpretation.",
+                  "key": "assumption",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Assumption values to refine query interpretation.",
+                  "key": "assumption",
+                  "value": "<string>"
+                },
+                {
+                  "description": "IP address of the query origin for location-aware results.",
+                  "key": "ip",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Latitude and longitude for location-based queries (e.g., 40.71,-74.00).",
+                  "key": "latlong",
+                  "value": "<string>"
+                },
+                {
+                  "description": "IANA timezone name for the query context.",
+                  "key": "timezone",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Measurement system preference. Values are metric or imperial.",
+                  "key": "units",
+                  "value": "imperial"
+                },
+                {
+                  "description": "ISO 4217 currency code for financial queries.",
+                  "key": "currency",
+                  "value": "<string>"
+                },
+                {
+                  "description": "BCP 47 language code for query input and response.",
+                  "key": "languagecode",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Maximum processing time in seconds before timeout.",
+                  "key": "formattimeout",
+                  "value": "<integer>"
+                }
+              ]
+            },
+            "description": "Submit a natural language query to the Wolfram|Alpha LLM API. Returns structured text with query interpretation, computed results, relevant data, and a link to the full Wolfram|Alpha results page. Optimized for consumption by large language models and AI chat applications."
+          },
+          "response": [
+            {
+              "id": "79164ff6-578f-4d1b-9654-9df5ba68cf1c",
+              "name": "Successful response with computational results from Wolfram|Alpha.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/llm-api?appid=<string>&input=<string>&maxchars=<integer>&assumption=<string>&ip=<string>&latlong=<string>&timezone=<string>&units=imperial&currency=<string>&languagecode=<string>&formattimeout=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "llm-api"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The Wolfram|Alpha AppID used for authentication. Obtain from the Wolfram|Alpha Developer Portal.",
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) URL-encoded natural language query string.",
+                      "key": "input",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of characters in the response. Default is 6800.",
+                      "key": "maxchars",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Assumption values to refine query interpretation.",
+                      "key": "assumption",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "IP address of the query origin for location-aware results.",
+                      "key": "ip",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Latitude and longitude for location-based queries (e.g., 40.71,-74.00).",
+                      "key": "latlong",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "IANA timezone name for the query context.",
+                      "key": "timezone",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Measurement system preference. Values are metric or imperial.",
+                      "key": "units",
+                      "value": "imperial"
+                    },
+                    {
+                      "description": "ISO 4217 currency code for financial queries.",
+                      "key": "currency",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "BCP 47 language code for query input and response.",
+                      "key": "languagecode",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum processing time in seconds before timeout.",
+                      "key": "formattimeout",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"query\": \"<string>\",\n  \"inputInterpretation\": \"<string>\",\n  \"result\": \"<string>\",\n  \"images\": [\n    \"<uri>\",\n    \"<uri>\"\n  ],\n  \"link\": \"<uri>\"\n}",
+              "createdAt": "2026-06-05T15:21:24.000Z",
+              "updatedAt": "2026-06-05T15:21:24.000Z",
+              "uid": "35240-79164ff6-578f-4d1b-9654-9df5ba68cf1c"
+            },
+            {
+              "id": "3b3818c5-126c-441a-be9f-780aa5d5b336",
+              "name": "Bad request - input parameter is missing or invalid.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/llm-api?appid=<string>&input=<string>&maxchars=<integer>&assumption=<string>&ip=<string>&latlong=<string>&timezone=<string>&units=imperial&currency=<string>&languagecode=<string>&formattimeout=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "llm-api"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The Wolfram|Alpha AppID used for authentication. Obtain from the Wolfram|Alpha Developer Portal.",
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) URL-encoded natural language query string.",
+                      "key": "input",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of characters in the response. Default is 6800.",
+                      "key": "maxchars",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Assumption values to refine query interpretation.",
+                      "key": "assumption",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "IP address of the query origin for location-aware results.",
+                      "key": "ip",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Latitude and longitude for location-based queries (e.g., 40.71,-74.00).",
+                      "key": "latlong",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "IANA timezone name for the query context.",
+                      "key": "timezone",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Measurement system preference. Values are metric or imperial.",
+                      "key": "units",
+                      "value": "imperial"
+                    },
+                    {
+                      "description": "ISO 4217 currency code for financial queries.",
+                      "key": "currency",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "BCP 47 language code for query input and response.",
+                      "key": "languagecode",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum processing time in seconds before timeout.",
+                      "key": "formattimeout",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:21:24.000Z",
+              "updatedAt": "2026-06-05T15:21:24.000Z",
+              "uid": "35240-3b3818c5-126c-441a-be9f-780aa5d5b336"
+            },
+            {
+              "id": "f4518620-6935-4d10-bbdb-5719517ae5a2",
+              "name": "Invalid or missing AppID.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/llm-api?appid=<string>&input=<string>&maxchars=<integer>&assumption=<string>&ip=<string>&latlong=<string>&timezone=<string>&units=imperial&currency=<string>&languagecode=<string>&formattimeout=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "llm-api"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The Wolfram|Alpha AppID used for authentication. Obtain from the Wolfram|Alpha Developer Portal.",
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) URL-encoded natural language query string.",
+                      "key": "input",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of characters in the response. Default is 6800.",
+                      "key": "maxchars",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Assumption values to refine query interpretation.",
+                      "key": "assumption",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "IP address of the query origin for location-aware results.",
+                      "key": "ip",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Latitude and longitude for location-based queries (e.g., 40.71,-74.00).",
+                      "key": "latlong",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "IANA timezone name for the query context.",
+                      "key": "timezone",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Measurement system preference. Values are metric or imperial.",
+                      "key": "units",
+                      "value": "imperial"
+                    },
+                    {
+                      "description": "ISO 4217 currency code for financial queries.",
+                      "key": "currency",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "BCP 47 language code for query input and response.",
+                      "key": "languagecode",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum processing time in seconds before timeout.",
+                      "key": "formattimeout",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:21:24.000Z",
+              "updatedAt": "2026-06-05T15:21:24.000Z",
+              "uid": "35240-f4518620-6935-4d10-bbdb-5719517ae5a2"
+            },
+            {
+              "id": "bfa34b9d-2ef7-4e07-9efa-e9cc04a8c3b9",
+              "name": "Input cannot be interpreted by the Wolfram|Alpha engine.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/llm-api?appid=<string>&input=<string>&maxchars=<integer>&assumption=<string>&ip=<string>&latlong=<string>&timezone=<string>&units=imperial&currency=<string>&languagecode=<string>&formattimeout=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "llm-api"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The Wolfram|Alpha AppID used for authentication. Obtain from the Wolfram|Alpha Developer Portal.",
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) URL-encoded natural language query string.",
+                      "key": "input",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of characters in the response. Default is 6800.",
+                      "key": "maxchars",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Assumption values to refine query interpretation.",
+                      "key": "assumption",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "IP address of the query origin for location-aware results.",
+                      "key": "ip",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Latitude and longitude for location-based queries (e.g., 40.71,-74.00).",
+                      "key": "latlong",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "IANA timezone name for the query context.",
+                      "key": "timezone",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Measurement system preference. Values are metric or imperial.",
+                      "key": "units",
+                      "value": "imperial"
+                    },
+                    {
+                      "description": "ISO 4217 currency code for financial queries.",
+                      "key": "currency",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "BCP 47 language code for query input and response.",
+                      "key": "languagecode",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum processing time in seconds before timeout.",
+                      "key": "formattimeout",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:21:24.000Z",
+              "updatedAt": "2026-06-05T15:21:24.000Z",
+              "uid": "35240-bfa34b9d-2ef7-4e07-9efa-e9cc04a8c3b9"
+            }
+          ],
+          "createdAt": "2026-06-05T15:21:24.000Z",
+          "updatedAt": "2026-06-05T15:21:24.000Z",
+          "uid": "35240-95f3b119-0589-4c41-85fe-fb3ff94936ad"
+        }
+      ],
+      "id": "d5d88756-adf4-45c0-830d-e8f3f08f0c2c",
+      "createdAt": "2026-06-05T15:21:24.000Z",
+      "updatedAt": "2026-06-05T15:21:24.000Z",
+      "uid": "35240-d5d88756-adf4-45c0-830d-e8f3f08f0c2c"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://www.wolframalpha.com/api/v1"
+    }
+  ]
+}

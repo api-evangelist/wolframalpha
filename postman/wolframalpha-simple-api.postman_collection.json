@@ -1,0 +1,433 @@
+{
+  "info": {
+    "_postman_id": "a227c725-4565-4736-8884-00aeaf35eb91",
+    "name": "Wolfram|Alpha Simple API",
+    "description": "The Wolfram|Alpha Simple API generates complete Wolfram|Alpha results as a rendered static image, requiring minimal coding effort. It is suitable for quickly embedding computational results visually in web applications without handling complex structured data. The image background, foreground, font size, and width are all customizable.\n\nContact Support:\n Name: Wolfram|Alpha Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:21:27.000Z",
+    "updatedAt": "2026-06-05T15:21:27.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a227c725-4565-4736-8884-00aeaf35eb91"
+  },
+  "item": [
+    {
+      "name": "simple",
+      "item": [
+        {
+          "name": "Wolfram|Alpha Get Simple Image Result",
+          "id": "75529a59-cd31-4dec-aa6e-cb2af5a002bb",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "image/gif"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/simple?appid=<string>&i=<string>&layout=labelbar&background=<string>&foreground=white&fontsize=<integer>&width=<integer>&units=metric&timeout=<integer>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "simple"
+              ],
+              "query": [
+                {
+                  "description": "(Required) Wolfram|Alpha AppID for authentication.",
+                  "key": "appid",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) URL-encoded input query string.",
+                  "key": "i",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Content presentation style. Values are divider (default) or labelbar.",
+                  "key": "layout",
+                  "value": "labelbar"
+                },
+                {
+                  "description": "Image background color as HTML color name, hex value, or RGB value.",
+                  "key": "background",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Text color. Values are black (default) or white.",
+                  "key": "foreground",
+                  "value": "white"
+                },
+                {
+                  "description": "Font size in points for rendered text. Default is 14.",
+                  "key": "fontsize",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Image width in pixels. Default is 500.",
+                  "key": "width",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Measurement system preference. Values are metric or imperial.",
+                  "key": "units",
+                  "value": "metric"
+                },
+                {
+                  "description": "Maximum processing time in seconds. Default is 5.",
+                  "key": "timeout",
+                  "value": "<integer>"
+                }
+              ]
+            },
+            "description": "Submit a natural language query and receive the complete Wolfram|Alpha result rendered as a static image. Customizable background, foreground, font size, and width. Does not support disambiguation, drilldown, or asynchronous delivery."
+          },
+          "response": [
+            {
+              "id": "0ef1a9e9-ae72-4ec6-8511-e355c2fa4ba1",
+              "name": "Rendered image of Wolfram|Alpha results.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "image/gif"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/simple?appid=<API Key>&i=<string>&layout=labelbar&background=<string>&foreground=white&fontsize=<integer>&width=<integer>&units=metric&timeout=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "simple"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Wolfram|Alpha AppID for authentication.",
+                      "key": "appid",
+                      "value": "<API Key>"
+                    },
+                    {
+                      "description": "(Required) URL-encoded input query string.",
+                      "key": "i",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Content presentation style. Values are divider (default) or labelbar.",
+                      "key": "layout",
+                      "value": "labelbar"
+                    },
+                    {
+                      "description": "Image background color as HTML color name, hex value, or RGB value.",
+                      "key": "background",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Text color. Values are black (default) or white.",
+                      "key": "foreground",
+                      "value": "white"
+                    },
+                    {
+                      "description": "Font size in points for rendered text. Default is 14.",
+                      "key": "fontsize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Image width in pixels. Default is 500.",
+                      "key": "width",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Measurement system preference. Values are metric or imperial.",
+                      "key": "units",
+                      "value": "metric"
+                    },
+                    {
+                      "description": "Maximum processing time in seconds. Default is 5.",
+                      "key": "timeout",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "image/gif"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<binary>",
+              "createdAt": "2026-06-05T15:21:27.000Z",
+              "updatedAt": "2026-06-05T15:21:27.000Z",
+              "uid": "35240-0ef1a9e9-ae72-4ec6-8511-e355c2fa4ba1"
+            },
+            {
+              "id": "c72d507e-c06d-4e04-b614-f0befdefcba3",
+              "name": "Bad request - input parameter missing or invalid.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/simple?appid=<API Key>&i=<string>&layout=labelbar&background=<string>&foreground=white&fontsize=<integer>&width=<integer>&units=metric&timeout=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "simple"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Wolfram|Alpha AppID for authentication.",
+                      "key": "appid",
+                      "value": "<API Key>"
+                    },
+                    {
+                      "description": "(Required) URL-encoded input query string.",
+                      "key": "i",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Content presentation style. Values are divider (default) or labelbar.",
+                      "key": "layout",
+                      "value": "labelbar"
+                    },
+                    {
+                      "description": "Image background color as HTML color name, hex value, or RGB value.",
+                      "key": "background",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Text color. Values are black (default) or white.",
+                      "key": "foreground",
+                      "value": "white"
+                    },
+                    {
+                      "description": "Font size in points for rendered text. Default is 14.",
+                      "key": "fontsize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Image width in pixels. Default is 500.",
+                      "key": "width",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Measurement system preference. Values are metric or imperial.",
+                      "key": "units",
+                      "value": "metric"
+                    },
+                    {
+                      "description": "Maximum processing time in seconds. Default is 5.",
+                      "key": "timeout",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:21:27.000Z",
+              "updatedAt": "2026-06-05T15:21:27.000Z",
+              "uid": "35240-c72d507e-c06d-4e04-b614-f0befdefcba3"
+            },
+            {
+              "id": "7739420d-c0ae-48fe-b393-3a400802f9ca",
+              "name": "Invalid or missing AppID.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/simple?appid=<API Key>&i=<string>&layout=labelbar&background=<string>&foreground=white&fontsize=<integer>&width=<integer>&units=metric&timeout=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "simple"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Wolfram|Alpha AppID for authentication.",
+                      "key": "appid",
+                      "value": "<API Key>"
+                    },
+                    {
+                      "description": "(Required) URL-encoded input query string.",
+                      "key": "i",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Content presentation style. Values are divider (default) or labelbar.",
+                      "key": "layout",
+                      "value": "labelbar"
+                    },
+                    {
+                      "description": "Image background color as HTML color name, hex value, or RGB value.",
+                      "key": "background",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Text color. Values are black (default) or white.",
+                      "key": "foreground",
+                      "value": "white"
+                    },
+                    {
+                      "description": "Font size in points for rendered text. Default is 14.",
+                      "key": "fontsize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Image width in pixels. Default is 500.",
+                      "key": "width",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Measurement system preference. Values are metric or imperial.",
+                      "key": "units",
+                      "value": "metric"
+                    },
+                    {
+                      "description": "Maximum processing time in seconds. Default is 5.",
+                      "key": "timeout",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:21:27.000Z",
+              "updatedAt": "2026-06-05T15:21:27.000Z",
+              "uid": "35240-7739420d-c0ae-48fe-b393-3a400802f9ca"
+            },
+            {
+              "id": "97b900c1-8dab-4081-b041-5cfe00618ef6",
+              "name": "Input cannot be interpreted by Wolfram|Alpha.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/simple?appid=<API Key>&i=<string>&layout=labelbar&background=<string>&foreground=white&fontsize=<integer>&width=<integer>&units=metric&timeout=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "simple"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Wolfram|Alpha AppID for authentication.",
+                      "key": "appid",
+                      "value": "<API Key>"
+                    },
+                    {
+                      "description": "(Required) URL-encoded input query string.",
+                      "key": "i",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Content presentation style. Values are divider (default) or labelbar.",
+                      "key": "layout",
+                      "value": "labelbar"
+                    },
+                    {
+                      "description": "Image background color as HTML color name, hex value, or RGB value.",
+                      "key": "background",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Text color. Values are black (default) or white.",
+                      "key": "foreground",
+                      "value": "white"
+                    },
+                    {
+                      "description": "Font size in points for rendered text. Default is 14.",
+                      "key": "fontsize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Image width in pixels. Default is 500.",
+                      "key": "width",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Measurement system preference. Values are metric or imperial.",
+                      "key": "units",
+                      "value": "metric"
+                    },
+                    {
+                      "description": "Maximum processing time in seconds. Default is 5.",
+                      "key": "timeout",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:21:27.000Z",
+              "updatedAt": "2026-06-05T15:21:27.000Z",
+              "uid": "35240-97b900c1-8dab-4081-b041-5cfe00618ef6"
+            }
+          ],
+          "createdAt": "2026-06-05T15:21:27.000Z",
+          "updatedAt": "2026-06-05T15:21:27.000Z",
+          "uid": "35240-75529a59-cd31-4dec-aa6e-cb2af5a002bb"
+        }
+      ],
+      "id": "930cb9df-b362-46e4-9dda-20ddfe3d6ac7",
+      "createdAt": "2026-06-05T15:21:27.000Z",
+      "updatedAt": "2026-06-05T15:21:27.000Z",
+      "uid": "35240-930cb9df-b362-46e4-9dda-20ddfe3d6ac7"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "appid",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.wolframalpha.com/v1"
+    }
+  ]
+}

@@ -1,0 +1,425 @@
+{
+  "item": [
+    {
+      "id": "89f7103b-a75c-42d0-9a6b-00aac8d15e59",
+      "name": "Queries",
+      "description": {
+        "content": "Submit queries to receive a rendered image of Wolfram|Alpha results",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9ecd9e2f-fb5e-42cb-bd0f-08296bcf8587",
+          "name": "Wolfram|Alpha Get Simple Image Result",
+          "request": {
+            "name": "Wolfram|Alpha Get Simple Image Result",
+            "description": {
+              "content": "Submit a natural language query and receive the complete Wolfram|Alpha result rendered as a static image. Customizable background, foreground, font size, and width. Does not support disambiguation, drilldown, or asynchronous delivery.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "simple"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "appid",
+                  "value": "<string>",
+                  "description": "(Required) Wolfram|Alpha AppID for authentication."
+                },
+                {
+                  "disabled": false,
+                  "key": "i",
+                  "value": "<string>",
+                  "description": "(Required) URL-encoded input query string."
+                },
+                {
+                  "disabled": false,
+                  "key": "layout",
+                  "value": "<string>",
+                  "description": "Content presentation style. Values are divider (default) or labelbar."
+                },
+                {
+                  "disabled": false,
+                  "key": "background",
+                  "value": "<string>",
+                  "description": "Image background color as HTML color name, hex value, or RGB value."
+                },
+                {
+                  "disabled": false,
+                  "key": "foreground",
+                  "value": "<string>",
+                  "description": "Text color. Values are black (default) or white."
+                },
+                {
+                  "disabled": false,
+                  "key": "fontsize",
+                  "value": "<integer>",
+                  "description": "Font size in points for rendered text. Default is 14."
+                },
+                {
+                  "disabled": false,
+                  "key": "width",
+                  "value": "<integer>",
+                  "description": "Image width in pixels. Default is 500."
+                },
+                {
+                  "disabled": false,
+                  "key": "units",
+                  "value": "<string>",
+                  "description": "Measurement system preference. Values are metric or imperial."
+                },
+                {
+                  "disabled": false,
+                  "key": "timeout",
+                  "value": "<integer>",
+                  "description": "Maximum processing time in seconds. Default is 5."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "image/gif"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "185c8b9a-88c1-4a6b-99e8-1220b8076c4b",
+              "name": "Rendered image of Wolfram|Alpha results.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "simple"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "appid",
+                      "value": "DEMO-APP-ID"
+                    },
+                    {
+                      "key": "i",
+                      "value": "mass of the sun"
+                    },
+                    {
+                      "key": "layout",
+                      "value": "divider"
+                    },
+                    {
+                      "key": "background",
+                      "value": "white"
+                    },
+                    {
+                      "key": "foreground",
+                      "value": "black"
+                    },
+                    {
+                      "key": "fontsize",
+                      "value": "14"
+                    },
+                    {
+                      "key": "width",
+                      "value": "500"
+                    },
+                    {
+                      "key": "units",
+                      "value": "metric"
+                    },
+                    {
+                      "key": "timeout",
+                      "value": "5"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "image/gif"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "image/gif"
+                }
+              ],
+              "body": "string-value",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "49b9f374-7970-4a05-8834-c33088068b71",
+              "name": "Bad request - input parameter missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "simple"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "appid",
+                      "value": "DEMO-APP-ID"
+                    },
+                    {
+                      "key": "i",
+                      "value": "mass of the sun"
+                    },
+                    {
+                      "key": "layout",
+                      "value": "divider"
+                    },
+                    {
+                      "key": "background",
+                      "value": "white"
+                    },
+                    {
+                      "key": "foreground",
+                      "value": "black"
+                    },
+                    {
+                      "key": "fontsize",
+                      "value": "14"
+                    },
+                    {
+                      "key": "width",
+                      "value": "500"
+                    },
+                    {
+                      "key": "units",
+                      "value": "metric"
+                    },
+                    {
+                      "key": "timeout",
+                      "value": "5"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9b59e55a-8a10-489b-99ca-d61dcff7cd57",
+              "name": "Invalid or missing AppID.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "simple"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "appid",
+                      "value": "DEMO-APP-ID"
+                    },
+                    {
+                      "key": "i",
+                      "value": "mass of the sun"
+                    },
+                    {
+                      "key": "layout",
+                      "value": "divider"
+                    },
+                    {
+                      "key": "background",
+                      "value": "white"
+                    },
+                    {
+                      "key": "foreground",
+                      "value": "black"
+                    },
+                    {
+                      "key": "fontsize",
+                      "value": "14"
+                    },
+                    {
+                      "key": "width",
+                      "value": "500"
+                    },
+                    {
+                      "key": "units",
+                      "value": "metric"
+                    },
+                    {
+                      "key": "timeout",
+                      "value": "5"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "21628af3-2bb2-4a9f-928b-72ede9780c50",
+              "name": "Input cannot be interpreted by Wolfram|Alpha.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "simple"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "appid",
+                      "value": "DEMO-APP-ID"
+                    },
+                    {
+                      "key": "i",
+                      "value": "mass of the sun"
+                    },
+                    {
+                      "key": "layout",
+                      "value": "divider"
+                    },
+                    {
+                      "key": "background",
+                      "value": "white"
+                    },
+                    {
+                      "key": "foreground",
+                      "value": "black"
+                    },
+                    {
+                      "key": "fontsize",
+                      "value": "14"
+                    },
+                    {
+                      "key": "width",
+                      "value": "500"
+                    },
+                    {
+                      "key": "units",
+                      "value": "metric"
+                    },
+                    {
+                      "key": "timeout",
+                      "value": "5"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.wolframalpha.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "appid"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "5627fa2d-203f-4a17-a5ba-b77a97dc17ae",
+    "name": "Wolfram|Alpha Simple API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Wolfram|Alpha Simple API generates complete Wolfram|Alpha results as a rendered static image, requiring minimal coding effort. It is suitable for quickly embedding computational results visually in web applications without handling complex structured data. The image background, foreground, font size, and width are all customizable.\n\nContact Support:\n Name: Wolfram|Alpha Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

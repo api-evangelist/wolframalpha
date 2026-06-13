@@ -1,0 +1,489 @@
+{
+  "item": [
+    {
+      "id": "564413a4-3d0a-488b-acd1-58d192d7162d",
+      "name": "Queries",
+      "description": {
+        "content": "Submit natural language queries for computational results",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "36264d60-3e8c-4a46-8041-a4d0993bf25b",
+          "name": "Wolfram|Alpha Query the LLM API",
+          "request": {
+            "name": "Wolfram|Alpha Query the LLM API",
+            "description": {
+              "content": "Submit a natural language query to the Wolfram|Alpha LLM API. Returns structured text with query interpretation, computed results, relevant data, and a link to the full Wolfram|Alpha results page. Optimized for consumption by large language models and AI chat applications.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "llm-api"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "appid",
+                  "value": "<string>",
+                  "description": "(Required) The Wolfram|Alpha AppID used for authentication. Obtain from the Wolfram|Alpha Developer Portal."
+                },
+                {
+                  "disabled": false,
+                  "key": "input",
+                  "value": "<string>",
+                  "description": "(Required) URL-encoded natural language query string."
+                },
+                {
+                  "disabled": false,
+                  "key": "maxchars",
+                  "value": "<integer>",
+                  "description": "Maximum number of characters in the response. Default is 6800."
+                },
+                {
+                  "disabled": false,
+                  "key": "assumption",
+                  "value": "<string>",
+                  "description": "Assumption values to refine query interpretation."
+                },
+                {
+                  "disabled": false,
+                  "key": "assumption",
+                  "value": "<string>",
+                  "description": "Assumption values to refine query interpretation."
+                },
+                {
+                  "disabled": false,
+                  "key": "ip",
+                  "value": "<string>",
+                  "description": "IP address of the query origin for location-aware results."
+                },
+                {
+                  "disabled": false,
+                  "key": "latlong",
+                  "value": "<string>",
+                  "description": "Latitude and longitude for location-based queries (e.g., 40.71,-74.00)."
+                },
+                {
+                  "disabled": false,
+                  "key": "timezone",
+                  "value": "<string>",
+                  "description": "IANA timezone name for the query context."
+                },
+                {
+                  "disabled": false,
+                  "key": "units",
+                  "value": "<string>",
+                  "description": "Measurement system preference. Values are metric or imperial."
+                },
+                {
+                  "disabled": false,
+                  "key": "currency",
+                  "value": "<string>",
+                  "description": "ISO 4217 currency code for financial queries."
+                },
+                {
+                  "disabled": false,
+                  "key": "languagecode",
+                  "value": "<string>",
+                  "description": "BCP 47 language code for query input and response."
+                },
+                {
+                  "disabled": false,
+                  "key": "formattimeout",
+                  "value": "<integer>",
+                  "description": "Maximum processing time in seconds before timeout."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "28cedb4f-4f66-4bfc-9b2e-1c7a557e7078",
+              "name": "Successful response with computational results from Wolfram|Alpha.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "llm-api"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "appid",
+                      "value": "DEMO-APP-ID"
+                    },
+                    {
+                      "key": "input",
+                      "value": "What is the boiling point of water?"
+                    },
+                    {
+                      "key": "maxchars",
+                      "value": "5000"
+                    },
+                    {
+                      "key": "assumption",
+                      "value": "string-value"
+                    },
+                    {
+                      "key": "ip",
+                      "value": "192.0.2.1"
+                    },
+                    {
+                      "key": "latlong",
+                      "value": "40.71,-74.00"
+                    },
+                    {
+                      "key": "timezone",
+                      "value": "America/New_York"
+                    },
+                    {
+                      "key": "units",
+                      "value": "metric"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "USD"
+                    },
+                    {
+                      "key": "languagecode",
+                      "value": "en"
+                    },
+                    {
+                      "key": "formattimeout",
+                      "value": "5"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"query\": \"What is the boiling point of water?\",\n  \"inputInterpretation\": \"boiling point | water\",\n  \"result\": \"100 degrees Celsius (at standard atmospheric pressure)\",\n  \"images\": [],\n  \"link\": \"https://www.wolframalpha.com/input?i=boiling+point+water\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "31f3d48a-f963-40cb-8ee5-ef207ed9d8cf",
+              "name": "Bad request - input parameter is missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "llm-api"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "appid",
+                      "value": "DEMO-APP-ID"
+                    },
+                    {
+                      "key": "input",
+                      "value": "What is the boiling point of water?"
+                    },
+                    {
+                      "key": "maxchars",
+                      "value": "5000"
+                    },
+                    {
+                      "key": "assumption",
+                      "value": "string-value"
+                    },
+                    {
+                      "key": "ip",
+                      "value": "192.0.2.1"
+                    },
+                    {
+                      "key": "latlong",
+                      "value": "40.71,-74.00"
+                    },
+                    {
+                      "key": "timezone",
+                      "value": "America/New_York"
+                    },
+                    {
+                      "key": "units",
+                      "value": "metric"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "USD"
+                    },
+                    {
+                      "key": "languagecode",
+                      "value": "en"
+                    },
+                    {
+                      "key": "formattimeout",
+                      "value": "5"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "81a52412-4c09-4c18-a439-c11f0a6fd5b5",
+              "name": "Invalid or missing AppID.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "llm-api"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "appid",
+                      "value": "DEMO-APP-ID"
+                    },
+                    {
+                      "key": "input",
+                      "value": "What is the boiling point of water?"
+                    },
+                    {
+                      "key": "maxchars",
+                      "value": "5000"
+                    },
+                    {
+                      "key": "assumption",
+                      "value": "string-value"
+                    },
+                    {
+                      "key": "ip",
+                      "value": "192.0.2.1"
+                    },
+                    {
+                      "key": "latlong",
+                      "value": "40.71,-74.00"
+                    },
+                    {
+                      "key": "timezone",
+                      "value": "America/New_York"
+                    },
+                    {
+                      "key": "units",
+                      "value": "metric"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "USD"
+                    },
+                    {
+                      "key": "languagecode",
+                      "value": "en"
+                    },
+                    {
+                      "key": "formattimeout",
+                      "value": "5"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "59df8c6c-7bb5-455f-8e3f-c1c3c90f9ec4",
+              "name": "Input cannot be interpreted by the Wolfram|Alpha engine.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "llm-api"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "appid",
+                      "value": "DEMO-APP-ID"
+                    },
+                    {
+                      "key": "input",
+                      "value": "What is the boiling point of water?"
+                    },
+                    {
+                      "key": "maxchars",
+                      "value": "5000"
+                    },
+                    {
+                      "key": "assumption",
+                      "value": "string-value"
+                    },
+                    {
+                      "key": "ip",
+                      "value": "192.0.2.1"
+                    },
+                    {
+                      "key": "latlong",
+                      "value": "40.71,-74.00"
+                    },
+                    {
+                      "key": "timezone",
+                      "value": "America/New_York"
+                    },
+                    {
+                      "key": "units",
+                      "value": "metric"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "USD"
+                    },
+                    {
+                      "key": "languagecode",
+                      "value": "en"
+                    },
+                    {
+                      "key": "formattimeout",
+                      "value": "5"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://www.wolframalpha.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "7ca87096-4447-439a-8dc4-a8c942a94271",
+    "name": "Wolfram|Alpha LLM API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Wolfram|Alpha LLM API delivers computational knowledge results optimized for large language model consumption. Built on the same engine as the full Wolfram|Alpha product, it returns structured text including query interpretation, computed results, and relevant data formatted specifically for AI and chat applications. Authentication uses an AppID query parameter or Bearer token header.\n\nContact Support:\n Name: Wolfram|Alpha Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wolfram|Alpha LLM API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Queries",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Wolfram|Alpha Query the LLM API",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.wolframalpha.com/api/v1/llm-api",
+            "params": [
+              {
+                "name": "appid",
+                "value": "DEMO-APP-ID",
+                "type": "query",
+                "description": "The Wolfram|Alpha AppID used for authentication. Obtain from the Wolfram|Alpha Developer Portal."
+              },
+              {
+                "name": "input",
+                "value": "What is the boiling point of water?",
+                "type": "query",
+                "description": "URL-encoded natural language query string."
+              },
+              {
+                "name": "maxchars",
+                "value": "5000",
+                "type": "query",
+                "description": "Maximum number of characters in the response. Default is 6800."
+              },
+              {
+                "name": "assumption",
+                "value": "string-value",
+                "type": "query",
+                "description": "Assumption values to refine query interpretation."
+              },
+              {
+                "name": "ip",
+                "value": "192.0.2.1",
+                "type": "query",
+                "description": "IP address of the query origin for location-aware results."
+              },
+              {
+                "name": "latlong",
+                "value": "40.71,-74.00",
+                "type": "query",
+                "description": "Latitude and longitude for location-based queries (e.g., 40.71,-74.00)."
+              },
+              {
+                "name": "timezone",
+                "value": "America/New_York",
+                "type": "query",
+                "description": "IANA timezone name for the query context."
+              },
+              {
+                "name": "units",
+                "value": "metric",
+                "type": "query",
+                "description": "Measurement system preference. Values are metric or imperial."
+              },
+              {
+                "name": "currency",
+                "value": "USD",
+                "type": "query",
+                "description": "ISO 4217 currency code for financial queries."
+              },
+              {
+                "name": "languagecode",
+                "value": "en",
+                "type": "query",
+                "description": "BCP 47 language code for query input and response."
+              },
+              {
+                "name": "formattimeout",
+                "value": "5",
+                "type": "query",
+                "description": "Maximum processing time in seconds before timeout."
+              }
+            ]
+          },
+          "docs": "Submit a natural language query to the Wolfram|Alpha LLM API. Returns structured text with query interpretation, computed results, relevant data, and a link to the full Wolfram|Alpha results page. Optimized for consumption by large language models and AI chat applications."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,265 @@
+{
+  "item": [
+    {
+      "id": "44a27cff-82cb-49a7-bac2-23aaa7e8b7d5",
+      "name": "Classification",
+      "description": {
+        "content": "Classify and route natural language queries",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4b6db694-4820-457e-9ee8-37ffb5ac515a",
+          "name": "Wolfram|Alpha Recognize and Classify Query",
+          "request": {
+            "name": "Wolfram|Alpha Recognize and Classify Query",
+            "description": {
+              "content": "Submit a natural language query and receive a classification result indicating whether the query is appropriate for Wolfram|Alpha, the likely domain, and a result significance score. Completes in under 10 milliseconds.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "query.jsp"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "appid",
+                  "value": "<string>",
+                  "description": "(Required) Wolfram|Alpha AppID for authentication."
+                },
+                {
+                  "disabled": false,
+                  "key": "mode",
+                  "value": "<string>",
+                  "description": "(Required) Recognition mode. Default is for typed queries; Voice optimizes for spoken input."
+                },
+                {
+                  "disabled": false,
+                  "key": "i",
+                  "value": "<string>",
+                  "description": "(Required) URL-encoded input query string to classify."
+                },
+                {
+                  "disabled": false,
+                  "key": "output",
+                  "value": "<string>",
+                  "description": "Response format. Default is XML."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c0315ae3-4a4e-49ab-b0ac-3942aa7b280a",
+              "name": "Successful classification result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "query.jsp"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "appid",
+                      "value": "DEMO-APP-ID"
+                    },
+                    {
+                      "key": "mode",
+                      "value": "Default"
+                    },
+                    {
+                      "key": "i",
+                      "value": "What is the capital of France?"
+                    },
+                    {
+                      "key": "output",
+                      "value": "json"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"query\": {\n    \"accepted\": true,\n    \"timing\": 7.3,\n    \"domain\": \"Geography\",\n    \"resultsignificancescore\": 92,\n    \"summarybox\": {\n      \"path\": \"/summarybox?input=France\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0c1f4bba-b4c1-4328-aac9-cfdab1d2fdd8",
+              "name": "Bad request - missing or invalid input parameter.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "query.jsp"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "appid",
+                      "value": "DEMO-APP-ID"
+                    },
+                    {
+                      "key": "mode",
+                      "value": "Default"
+                    },
+                    {
+                      "key": "i",
+                      "value": "What is the capital of France?"
+                    },
+                    {
+                      "key": "output",
+                      "value": "json"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7ccf0e7a-c658-48cc-804d-41bf5d6a3c17",
+              "name": "Invalid or missing AppID.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "query.jsp"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "appid",
+                      "value": "DEMO-APP-ID"
+                    },
+                    {
+                      "key": "mode",
+                      "value": "Default"
+                    },
+                    {
+                      "key": "i",
+                      "value": "What is the capital of France?"
+                    },
+                    {
+                      "key": "output",
+                      "value": "json"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://www.wolframalpha.com/queryrecognizer",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "appid"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "35d637b7-76c9-47e2-938d-9517d446a60c",
+    "name": "Wolfram|Alpha Fast Query Recognizer API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Wolfram|Alpha Fast Query Recognizer API rapidly classifies a natural language query in under 10 milliseconds to determine whether Wolfram|Alpha is likely to return a useful response. Useful for routing layers that need to decide whether to invoke the heavier Full Results, Short Answers, or LLM APIs. Supports two recognition modes: Default for typed queries and Voice for spoken input.\n\nContact Support:\n Name: Wolfram|Alpha Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

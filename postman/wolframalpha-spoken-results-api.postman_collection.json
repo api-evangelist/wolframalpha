@@ -1,0 +1,308 @@
+{
+  "info": {
+    "_postman_id": "629c3be0-89bc-4306-acf4-094a6d4afa3d",
+    "name": "Wolfram|Alpha Spoken Results API",
+    "description": "The Wolfram|Alpha Spoken Results API returns answers optimized for audio delivery. Results are plain text formatted to be read aloud naturally, suitable for voice assistants, automotive systems, smart speakers, and accessibility features.\n\nContact Support:\n Name: Wolfram|Alpha Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:21:28.000Z",
+    "updatedAt": "2026-06-05T15:21:28.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-629c3be0-89bc-4306-acf4-094a6d4afa3d"
+  },
+  "item": [
+    {
+      "name": "spoken",
+      "item": [
+        {
+          "name": "Wolfram|Alpha Get Spoken Result",
+          "id": "56bc65d3-823a-4aa6-9006-c9057c60f7db",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/spoken?appid=<string>&i=<string>&units=metric&timeout=<integer>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "spoken"
+              ],
+              "query": [
+                {
+                  "description": "(Required) Wolfram|Alpha AppID for authentication.",
+                  "key": "appid",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) URL-encoded input query string.",
+                  "key": "i",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Measurement system preference. Values are metric or imperial.",
+                  "key": "units",
+                  "value": "metric"
+                },
+                {
+                  "description": "Maximum processing time in seconds. Default is 5.",
+                  "key": "timeout",
+                  "value": "<integer>"
+                }
+              ]
+            },
+            "description": "Submit a natural language query and receive a plain-text answer formatted for audio delivery. Results are phrased naturally for text-to-speech conversion, suitable for voice assistants, automotive applications, and accessibility features."
+          },
+          "response": [
+            {
+              "id": "ac830e2d-0948-4e74-93b4-22c1508e6d07",
+              "name": "Spoken-text formatted answer from Wolfram|Alpha.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/spoken?appid=<API Key>&i=<string>&units=metric&timeout=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "spoken"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Wolfram|Alpha AppID for authentication.",
+                      "key": "appid",
+                      "value": "<API Key>"
+                    },
+                    {
+                      "description": "(Required) URL-encoded input query string.",
+                      "key": "i",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Measurement system preference. Values are metric or imperial.",
+                      "key": "units",
+                      "value": "metric"
+                    },
+                    {
+                      "description": "Maximum processing time in seconds. Default is 5.",
+                      "key": "timeout",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<string>",
+              "createdAt": "2026-06-05T15:21:28.000Z",
+              "updatedAt": "2026-06-05T15:21:28.000Z",
+              "uid": "35240-ac830e2d-0948-4e74-93b4-22c1508e6d07"
+            },
+            {
+              "id": "baa2ea18-4b75-4982-b16d-df85ae919b27",
+              "name": "Bad request - input parameter missing or invalid.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/spoken?appid=<API Key>&i=<string>&units=metric&timeout=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "spoken"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Wolfram|Alpha AppID for authentication.",
+                      "key": "appid",
+                      "value": "<API Key>"
+                    },
+                    {
+                      "description": "(Required) URL-encoded input query string.",
+                      "key": "i",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Measurement system preference. Values are metric or imperial.",
+                      "key": "units",
+                      "value": "metric"
+                    },
+                    {
+                      "description": "Maximum processing time in seconds. Default is 5.",
+                      "key": "timeout",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:21:28.000Z",
+              "updatedAt": "2026-06-05T15:21:28.000Z",
+              "uid": "35240-baa2ea18-4b75-4982-b16d-df85ae919b27"
+            },
+            {
+              "id": "452c424e-b6a8-4ec5-8255-a80be116c15c",
+              "name": "Invalid or missing AppID.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/spoken?appid=<API Key>&i=<string>&units=metric&timeout=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "spoken"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Wolfram|Alpha AppID for authentication.",
+                      "key": "appid",
+                      "value": "<API Key>"
+                    },
+                    {
+                      "description": "(Required) URL-encoded input query string.",
+                      "key": "i",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Measurement system preference. Values are metric or imperial.",
+                      "key": "units",
+                      "value": "metric"
+                    },
+                    {
+                      "description": "Maximum processing time in seconds. Default is 5.",
+                      "key": "timeout",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:21:28.000Z",
+              "updatedAt": "2026-06-05T15:21:28.000Z",
+              "uid": "35240-452c424e-b6a8-4ec5-8255-a80be116c15c"
+            },
+            {
+              "id": "cd3c3c62-1f1d-4b2b-9d9d-1f37b4fa5085",
+              "name": "Input cannot be interpreted or no spoken result available.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/spoken?appid=<API Key>&i=<string>&units=metric&timeout=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "spoken"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Wolfram|Alpha AppID for authentication.",
+                      "key": "appid",
+                      "value": "<API Key>"
+                    },
+                    {
+                      "description": "(Required) URL-encoded input query string.",
+                      "key": "i",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Measurement system preference. Values are metric or imperial.",
+                      "key": "units",
+                      "value": "metric"
+                    },
+                    {
+                      "description": "Maximum processing time in seconds. Default is 5.",
+                      "key": "timeout",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:21:28.000Z",
+              "updatedAt": "2026-06-05T15:21:28.000Z",
+              "uid": "35240-cd3c3c62-1f1d-4b2b-9d9d-1f37b4fa5085"
+            }
+          ],
+          "createdAt": "2026-06-05T15:21:28.000Z",
+          "updatedAt": "2026-06-05T15:21:28.000Z",
+          "uid": "35240-56bc65d3-823a-4aa6-9006-c9057c60f7db"
+        }
+      ],
+      "id": "1a189ade-86b8-4ede-9a65-a84d3e2918d2",
+      "createdAt": "2026-06-05T15:21:28.000Z",
+      "updatedAt": "2026-06-05T15:21:28.000Z",
+      "uid": "35240-1a189ade-86b8-4ede-9a65-a84d3e2918d2"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "appid",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.wolframalpha.com/v1"
+    }
+  ]
+}

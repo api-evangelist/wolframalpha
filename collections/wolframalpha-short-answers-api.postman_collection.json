@@ -1,0 +1,315 @@
+{
+  "item": [
+    {
+      "id": "4ec0865f-96ce-41de-aaeb-18a4e3e3b285",
+      "name": "Queries",
+      "description": {
+        "content": "Submit queries for concise plain-text answers",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0753deae-cdc5-467d-a2c7-02c8e4b484d8",
+          "name": "Wolfram|Alpha Get Short Answer",
+          "request": {
+            "name": "Wolfram|Alpha Get Short Answer",
+            "description": {
+              "content": "Submit a natural language query and receive a single concise plain-text answer. Suitable for chatbots, voice assistants, and constrained display contexts. Returns HTTP 501 when the query has no short answer.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "result"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "appid",
+                  "value": "<string>",
+                  "description": "(Required) Wolfram|Alpha AppID for authentication."
+                },
+                {
+                  "disabled": false,
+                  "key": "i",
+                  "value": "<string>",
+                  "description": "(Required) URL-encoded input query string."
+                },
+                {
+                  "disabled": false,
+                  "key": "units",
+                  "value": "<string>",
+                  "description": "Measurement system preference. Values are metric or imperial."
+                },
+                {
+                  "disabled": false,
+                  "key": "timeout",
+                  "value": "<integer>",
+                  "description": "Maximum processing time in seconds. Default is 5."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fc959559-4658-4fe1-8208-8ab30a2dee1e",
+              "name": "Successful short text answer.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "result"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "appid",
+                      "value": "DEMO-APP-ID"
+                    },
+                    {
+                      "key": "i",
+                      "value": "How far is the Moon from Earth?"
+                    },
+                    {
+                      "key": "units",
+                      "value": "metric"
+                    },
+                    {
+                      "key": "timeout",
+                      "value": "5"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "384,400 kilometers",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7f820591-3907-4a88-bc25-b98672b78c22",
+              "name": "Bad request - input parameter missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "result"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "appid",
+                      "value": "DEMO-APP-ID"
+                    },
+                    {
+                      "key": "i",
+                      "value": "How far is the Moon from Earth?"
+                    },
+                    {
+                      "key": "units",
+                      "value": "metric"
+                    },
+                    {
+                      "key": "timeout",
+                      "value": "5"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c853c3d5-f83f-41f5-9a13-e6d2b7bd03f5",
+              "name": "Invalid or missing AppID.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "result"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "appid",
+                      "value": "DEMO-APP-ID"
+                    },
+                    {
+                      "key": "i",
+                      "value": "How far is the Moon from Earth?"
+                    },
+                    {
+                      "key": "units",
+                      "value": "metric"
+                    },
+                    {
+                      "key": "timeout",
+                      "value": "5"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d7882612-7d8e-4703-85ad-95930b71e1b2",
+              "name": "Input cannot be interpreted or no short answer available.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "result"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "appid",
+                      "value": "DEMO-APP-ID"
+                    },
+                    {
+                      "key": "i",
+                      "value": "How far is the Moon from Earth?"
+                    },
+                    {
+                      "key": "units",
+                      "value": "metric"
+                    },
+                    {
+                      "key": "timeout",
+                      "value": "5"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.wolframalpha.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "appid"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "7502defe-84fd-4246-a29f-f4c78b3f62f3",
+    "name": "Wolfram|Alpha Short Answers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Wolfram|Alpha Short Answers API returns a single concise plain-text answer from Wolfram|Alpha. Designed for chatbots, mobile apps, smartwatches, and any context requiring brief factual responses. Returns HTTP 501 when no sufficiently short answer is available.\n\nContact Support:\n Name: Wolfram|Alpha Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

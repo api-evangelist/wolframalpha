@@ -1,0 +1,93 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wolfram|Alpha Simple API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "appid",
+      "value": "{{appid}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Queries",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Wolfram|Alpha Get Simple Image Result",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wolframalpha.com/v1/simple",
+            "params": [
+              {
+                "name": "appid",
+                "value": "DEMO-APP-ID",
+                "type": "query",
+                "description": "Wolfram|Alpha AppID for authentication."
+              },
+              {
+                "name": "i",
+                "value": "mass of the sun",
+                "type": "query",
+                "description": "URL-encoded input query string."
+              },
+              {
+                "name": "layout",
+                "value": "divider",
+                "type": "query",
+                "description": "Content presentation style. Values are divider (default) or labelbar."
+              },
+              {
+                "name": "background",
+                "value": "white",
+                "type": "query",
+                "description": "Image background color as HTML color name, hex value, or RGB value."
+              },
+              {
+                "name": "foreground",
+                "value": "black",
+                "type": "query",
+                "description": "Text color. Values are black (default) or white."
+              },
+              {
+                "name": "fontsize",
+                "value": "14",
+                "type": "query",
+                "description": "Font size in points for rendered text. Default is 14."
+              },
+              {
+                "name": "width",
+                "value": "500",
+                "type": "query",
+                "description": "Image width in pixels. Default is 500."
+              },
+              {
+                "name": "units",
+                "value": "metric",
+                "type": "query",
+                "description": "Measurement system preference. Values are metric or imperial."
+              },
+              {
+                "name": "timeout",
+                "value": "5",
+                "type": "query",
+                "description": "Maximum processing time in seconds. Default is 5."
+              }
+            ]
+          },
+          "docs": "Submit a natural language query and receive the complete Wolfram|Alpha result rendered as a static image. Customizable background, foreground, font size, and width. Does not support disambiguation, drilldown, or asynchronous delivery."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

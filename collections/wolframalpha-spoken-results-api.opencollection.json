@@ -1,0 +1,63 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wolfram|Alpha Spoken Results API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "appid",
+      "value": "{{appid}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Queries",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Wolfram|Alpha Get Spoken Result",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wolframalpha.com/v1/spoken",
+            "params": [
+              {
+                "name": "appid",
+                "value": "DEMO-APP-ID",
+                "type": "query",
+                "description": "Wolfram|Alpha AppID for authentication."
+              },
+              {
+                "name": "i",
+                "value": "How tall is Mount Everest?",
+                "type": "query",
+                "description": "URL-encoded input query string."
+              },
+              {
+                "name": "units",
+                "value": "imperial",
+                "type": "query",
+                "description": "Measurement system preference. Values are metric or imperial."
+              },
+              {
+                "name": "timeout",
+                "value": "5",
+                "type": "query",
+                "description": "Maximum processing time in seconds. Default is 5."
+              }
+            ]
+          },
+          "docs": "Submit a natural language query and receive a plain-text answer formatted for audio delivery. Results are phrased naturally for text-to-speech conversion, suitable for voice assistants, automotive applications, and accessibility features."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

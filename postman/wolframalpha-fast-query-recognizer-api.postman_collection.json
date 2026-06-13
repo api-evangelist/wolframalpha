@@ -1,0 +1,259 @@
+{
+  "info": {
+    "_postman_id": "8734f493-3445-4f2a-95c7-4394c25550f8",
+    "name": "Wolfram|Alpha Fast Query Recognizer API",
+    "description": "The Wolfram|Alpha Fast Query Recognizer API rapidly classifies a natural language query in under 10 milliseconds to determine whether Wolfram|Alpha is likely to return a useful response. Useful for routing layers that need to decide whether to invoke the heavier Full Results, Short Answers, or LLM APIs. Supports two recognition modes: Default for typed queries and Voice for spoken input.\n\nContact Support:\n Name: Wolfram|Alpha Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:21:29.000Z",
+    "updatedAt": "2026-06-05T15:21:29.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8734f493-3445-4f2a-95c7-4394c25550f8"
+  },
+  "item": [
+    {
+      "name": "query.jsp",
+      "item": [
+        {
+          "name": "Wolfram|Alpha Recognize and Classify Query",
+          "id": "c6447035-5eba-4c44-aaab-a1b9bf312144",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/query.jsp?appid=<string>&mode=Default&i=<string>&output=xml",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "query.jsp"
+              ],
+              "query": [
+                {
+                  "description": "(Required) Wolfram|Alpha AppID for authentication.",
+                  "key": "appid",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) Recognition mode. Default is for typed queries; Voice optimizes for spoken input.",
+                  "key": "mode",
+                  "value": "Default"
+                },
+                {
+                  "description": "(Required) URL-encoded input query string to classify.",
+                  "key": "i",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Response format. Default is XML.",
+                  "key": "output",
+                  "value": "xml"
+                }
+              ]
+            },
+            "description": "Submit a natural language query and receive a classification result indicating whether the query is appropriate for Wolfram|Alpha, the likely domain, and a result significance score. Completes in under 10 milliseconds."
+          },
+          "response": [
+            {
+              "id": "63be5a98-bc3b-43a2-a24e-b1f15ab18b02",
+              "name": "Successful classification result.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/query.jsp?appid=<API Key>&mode=Default&i=<string>&output=xml",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "query.jsp"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Wolfram|Alpha AppID for authentication.",
+                      "key": "appid",
+                      "value": "<API Key>"
+                    },
+                    {
+                      "description": "(Required) Recognition mode. Default is for typed queries; Voice optimizes for spoken input.",
+                      "key": "mode",
+                      "value": "Default"
+                    },
+                    {
+                      "description": "(Required) URL-encoded input query string to classify.",
+                      "key": "i",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Response format. Default is XML.",
+                      "key": "output",
+                      "value": "xml"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"query\": {\n    \"accepted\": \"<boolean>\",\n    \"timing\": \"<number>\",\n    \"domain\": \"<string>\",\n    \"resultsignificancescore\": \"<integer>\",\n    \"summarybox\": {\n      \"path\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:21:30.000Z",
+              "updatedAt": "2026-06-05T15:21:30.000Z",
+              "uid": "35240-63be5a98-bc3b-43a2-a24e-b1f15ab18b02"
+            },
+            {
+              "id": "b52a0393-4c6f-471c-8587-d7dab14282ca",
+              "name": "Bad request - missing or invalid input parameter.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/query.jsp?appid=<API Key>&mode=Default&i=<string>&output=xml",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "query.jsp"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Wolfram|Alpha AppID for authentication.",
+                      "key": "appid",
+                      "value": "<API Key>"
+                    },
+                    {
+                      "description": "(Required) Recognition mode. Default is for typed queries; Voice optimizes for spoken input.",
+                      "key": "mode",
+                      "value": "Default"
+                    },
+                    {
+                      "description": "(Required) URL-encoded input query string to classify.",
+                      "key": "i",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Response format. Default is XML.",
+                      "key": "output",
+                      "value": "xml"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:21:30.000Z",
+              "updatedAt": "2026-06-05T15:21:30.000Z",
+              "uid": "35240-b52a0393-4c6f-471c-8587-d7dab14282ca"
+            },
+            {
+              "id": "51a08252-ce3e-4ecb-af05-e3eb4bf7b49a",
+              "name": "Invalid or missing AppID.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/query.jsp?appid=<API Key>&mode=Default&i=<string>&output=xml",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "query.jsp"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Wolfram|Alpha AppID for authentication.",
+                      "key": "appid",
+                      "value": "<API Key>"
+                    },
+                    {
+                      "description": "(Required) Recognition mode. Default is for typed queries; Voice optimizes for spoken input.",
+                      "key": "mode",
+                      "value": "Default"
+                    },
+                    {
+                      "description": "(Required) URL-encoded input query string to classify.",
+                      "key": "i",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Response format. Default is XML.",
+                      "key": "output",
+                      "value": "xml"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:21:30.000Z",
+              "updatedAt": "2026-06-05T15:21:30.000Z",
+              "uid": "35240-51a08252-ce3e-4ecb-af05-e3eb4bf7b49a"
+            }
+          ],
+          "createdAt": "2026-06-05T15:21:30.000Z",
+          "updatedAt": "2026-06-05T15:21:30.000Z",
+          "uid": "35240-c6447035-5eba-4c44-aaab-a1b9bf312144"
+        }
+      ],
+      "id": "90934f4c-67cc-48a0-9b4a-0ea34327edfc",
+      "createdAt": "2026-06-05T15:21:30.000Z",
+      "updatedAt": "2026-06-05T15:21:30.000Z",
+      "uid": "35240-90934f4c-67cc-48a0-9b4a-0ea34327edfc"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "appid",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://www.wolframalpha.com/queryrecognizer"
+    }
+  ]
+}

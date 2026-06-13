@@ -1,0 +1,63 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wolfram|Alpha Short Answers API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "appid",
+      "value": "{{appid}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Queries",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Wolfram|Alpha Get Short Answer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.wolframalpha.com/v1/result",
+            "params": [
+              {
+                "name": "appid",
+                "value": "DEMO-APP-ID",
+                "type": "query",
+                "description": "Wolfram|Alpha AppID for authentication."
+              },
+              {
+                "name": "i",
+                "value": "How far is the Moon from Earth?",
+                "type": "query",
+                "description": "URL-encoded input query string."
+              },
+              {
+                "name": "units",
+                "value": "metric",
+                "type": "query",
+                "description": "Measurement system preference. Values are metric or imperial."
+              },
+              {
+                "name": "timeout",
+                "value": "5",
+                "type": "query",
+                "description": "Maximum processing time in seconds. Default is 5."
+              }
+            ]
+          },
+          "docs": "Submit a natural language query and receive a single concise plain-text answer. Suitable for chatbots, voice assistants, and constrained display contexts. Returns HTTP 501 when the query has no short answer."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
