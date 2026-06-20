@@ -18,7 +18,7 @@ tags:
   - Search
 created: '2026-05-28'
 modified: '2026-06-13'
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 specificationVersion: '0.20'
 position: Consumer
 access: 3rd-Party
@@ -36,7 +36,7 @@ apis:
       Bearer token.
     humanURL: https://products.wolframalpha.com/llm-api/documentation
     baseURL: https://www.wolframalpha.com/api/v1/
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     tags:
       - AI
       - Computational Knowledge
@@ -68,7 +68,7 @@ apis:
       customizable pod selection, location-aware queries, and display formatting.
     humanURL: https://products.wolframalpha.com/api/documentation
     baseURL: https://api.wolframalpha.com/v2/
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     tags:
       - Computation
       - Full Results
@@ -120,7 +120,7 @@ apis:
       apps, and constrained displays. Returns HTTP 501 when no brief answer is available.
     humanURL: https://products.wolframalpha.com/short-answers-api/documentation
     baseURL: https://api.wolframalpha.com/v1/
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     tags:
       - Natural Language Processing
       - Short Answers
@@ -140,7 +140,7 @@ apis:
       embedding computational results visually in web applications without handling complex XML/JSON responses.
     humanURL: https://products.wolframalpha.com/simple-api/documentation
     baseURL: https://api.wolframalpha.com/v1/
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     tags:
       - Images
       - Natural Language Processing
@@ -160,7 +160,7 @@ apis:
       systems, and accessibility features. Results are plain text formatted to be read aloud naturally.
     humanURL: https://products.wolframalpha.com/spoken-results-api/documentation
     baseURL: https://api.wolframalpha.com/v1/
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     tags:
       - Audio
       - Natural Language Processing
@@ -181,7 +181,7 @@ apis:
       engine.
     humanURL: https://products.wolframalpha.com/query-recognizer/documentation
     baseURL: https://www.wolframalpha.com/queryrecognizer/
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     tags:
       - Classification
       - Natural Language Processing
