@@ -54,10 +54,10 @@ apis:
         title: LLM API Response Structure
       - type: JSONLD
         url: json-ld/wolframalpha-llm-api-context.jsonld
-      - type: Example
+      - type: Examples
         url: examples/wolframalpha-queryllmapi-example.json
         title: Query LLM API Example
-      - type: Example
+      - type: Examples
         url: examples/wolframalpha-llm-api-response-example.json
         title: LLM API Response Example
   - aid: wolframalpha:full-results-api
@@ -101,16 +101,16 @@ apis:
       - type: JSONLD
         url: json-ld/wolframalpha-full-results-context.jsonld
         title: Full Results Pod Context
-      - type: Example
+      - type: Examples
         url: examples/wolframalpha-queryfullresults-example.json
         title: Query Full Results Example
-      - type: Example
+      - type: Examples
         url: examples/wolframalpha-full-results-response-example.json
         title: Full Results Response Example
-      - type: Example
+      - type: Examples
         url: examples/wolframalpha-pod-example.json
         title: Pod Example
-      - type: Example
+      - type: Examples
         url: examples/wolframalpha-subpod-example.json
         title: Subpod Example
   - aid: wolframalpha:short-answers-api
@@ -130,7 +130,7 @@ apis:
         url: https://products.wolframalpha.com/short-answers-api/documentation
       - type: OpenAPI
         url: openapi/wolframalpha-short-answers-api-openapi.yml
-      - type: Example
+      - type: Examples
         url: examples/wolframalpha-queryshortanswer-example.json
         title: Query Short Answer Example
   - aid: wolframalpha:simple-api
@@ -150,7 +150,7 @@ apis:
         url: https://products.wolframalpha.com/simple-api/documentation
       - type: OpenAPI
         url: openapi/wolframalpha-simple-api-openapi.yml
-      - type: Example
+      - type: Examples
         url: examples/wolframalpha-querysimpleapi-example.json
         title: Query Simple API Example
   - aid: wolframalpha:spoken-results-api
@@ -170,7 +170,7 @@ apis:
         url: https://products.wolframalpha.com/spoken-results-api/documentation
       - type: OpenAPI
         url: openapi/wolframalpha-spoken-results-api-openapi.yml
-      - type: Example
+      - type: Examples
         url: examples/wolframalpha-queryspokenresults-example.json
         title: Query Spoken Results Example
   - aid: wolframalpha:fast-query-recognizer-api
@@ -197,39 +197,36 @@ apis:
       - type: JSONStructure
         url: json-structure/wolframalpha-query-recognizer-response-structure.json
         title: Query Recognizer Response Structure
-      - type: Example
+      - type: Examples
         url: examples/wolframalpha-recognizequery-example.json
 common:
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/wolframalpha/overview
-  - type: ArazzoWorkflows
-    url: arazzo/
-    workflows:
-      - url: arazzo/wolframalpha-answer-with-visual-workflow.yml
-        name: Wolfram|Alpha Answer with Visual
-        summary: Get a concise text answer and a rendered image of the full result for the same query.
-      - url: arazzo/wolframalpha-full-results-to-specific-pod-workflow.yml
-        name: Wolfram|Alpha Full Results to Specific Pod
-        summary: Run a full query, then re-query to retrieve a single named pod in detail.
-      - url: arazzo/wolframalpha-llm-conversational-query-workflow.yml
-        name: Wolfram|Alpha LLM Conversational Query
-        summary: Gate a conversational turn through the recognizer, then answer it with the LLM API.
-      - url: arazzo/wolframalpha-query-recognizer-routing-workflow.yml
-        name: Wolfram|Alpha Query Recognizer Routing
-        summary: Classify a query with the Fast Query Recognizer, then route accepted queries to Full Results.
-      - url: arazzo/wolframalpha-short-answer-with-detail-fallback-workflow.yml
-        name: Wolfram|Alpha Short Answer with Detail Fallback
-        summary: Get a concise short answer, falling back to full pod results when no short answer exists.
-      - url: arazzo/wolframalpha-voice-assistant-answer-workflow.yml
-        name: Wolfram|Alpha Voice Assistant Answer
-        summary: Get a spoken-word answer, falling back to a short text answer when none is available.
+  - type: Arazzo
+    url: arazzo/wolframalpha-answer-with-visual-workflow.yml
+    name: Wolfram|Alpha Answer with Visual
+  - type: Arazzo
+    url: arazzo/wolframalpha-full-results-to-specific-pod-workflow.yml
+    name: Wolfram|Alpha Full Results to Specific Pod
+  - type: Arazzo
+    url: arazzo/wolframalpha-llm-conversational-query-workflow.yml
+    name: Wolfram|Alpha LLM Conversational Query
+  - type: Arazzo
+    url: arazzo/wolframalpha-query-recognizer-routing-workflow.yml
+    name: Wolfram|Alpha Query Recognizer Routing
+  - type: Arazzo
+    url: arazzo/wolframalpha-short-answer-with-detail-fallback-workflow.yml
+    name: Wolfram|Alpha Short Answer with Detail Fallback
+  - type: Arazzo
+    url: arazzo/wolframalpha-voice-assistant-answer-workflow.yml
+    name: Wolfram|Alpha Voice Assistant Answer
   - type: Website
     url: https://www.wolframalpha.com
   - type: DeveloperPortal
     url: https://developer.wolframalpha.com/
   - type: Portal
     url: https://products.wolframalpha.com/api/
-  - type: SignUp
+  - type: Signup
     url: https://developer.wolframalpha.com/
   - type: Authentication
     url: https://products.wolframalpha.com/api/documentation
@@ -249,22 +246,22 @@ common:
     url: https://github.com/public-apis/public-apis
   - type: LinkedIn
     url: https://www.linkedin.com/company/wolfram-alpha-llc
-  - type: SDK
+  - type: SDKs
     title: Python Client for Wolfram Language
     url: https://github.com/WolframResearch/WolframClientForPython
-  - type: SDK
+  - type: SDKs
     title: Wolfram Client (Python on PyPI)
     url: https://pypi.org/project/wolframclient/
-  - type: SDK
+  - type: SDKs
     title: Wolfram Web Engine for Python
     url: https://github.com/WolframResearch/WolframWebEngineForPython
-  - type: SDK
+  - type: SDKs
     title: Rust Bindings (wolfram-library-link)
     url: https://github.com/WolframResearch/wolfram-library-link-rs
-  - type: SDK
+  - type: SDKs
     title: Rust WSTP Bindings (wstp-rs)
     url: https://github.com/WolframResearch/wstp-rs
-  - type: SDK
+  - type: SDKs
     title: Wolfram Expression (Rust)
     url: https://github.com/WolframResearch/wolfram-expr-rs
   - type: IDESupport
