@@ -200,6 +200,12 @@ apis:
       - type: Examples
         url: examples/wolframalpha-recognizequery-example.json
 common:
+  - type: DomainSecurity
+    url: security/wolframalpha-domain-security.yml
+  - type: Authentication
+    url: authentication/wolframalpha-authentication.yml
+  - url: https://blog.wolfram.com/feed/
+    type: Blog
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/wolframalpha/overview
   - type: Arazzo
