@@ -200,6 +200,8 @@ apis:
       - type: Examples
         url: examples/wolframalpha-recognizequery-example.json
 common:
+  - type: AgenticAccess
+    url: agentic-access/wolframalpha-agentic-access.yml
   - type: DomainSecurity
     url: security/wolframalpha-domain-security.yml
   - type: Authentication
