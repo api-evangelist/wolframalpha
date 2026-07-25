@@ -1,13 +1,7 @@
 openapi: 3.1.0
 info:
-  title: Wolfram|Alpha Fast Query Recognizer API
-  description: >-
-    The Wolfram|Alpha Fast Query Recognizer API rapidly classifies a natural
-    language query in under 10 milliseconds to determine whether Wolfram|Alpha
-    is likely to return a useful response. Useful for routing layers that need
-    to decide whether to invoke the heavier Full Results, Short Answers, or LLM
-    APIs. Supports two recognition modes: Default for typed queries and Voice
-    for spoken input.
+  title: Wolfram|Alpha Fast Query Recognizer Classification API
+  description: 'The Wolfram|Alpha Fast Query Recognizer API rapidly classifies a natural language query in under 10 milliseconds to determine whether Wolfram|Alpha is likely to return a useful response. Useful for routing layers that need to decide whether to invoke the heavier Full Results, Short Answers, or LLM APIs. Supports two recognition modes: Default for typed queries and Voice for spoken input.'
   version: '1.0'
   contact:
     name: Wolfram|Alpha Developer Support
@@ -27,11 +21,7 @@ paths:
     get:
       operationId: recognizeQuery
       summary: Wolfram|Alpha Recognize and Classify Query
-      description: >-
-        Submit a natural language query and receive a classification result
-        indicating whether the query is appropriate for Wolfram|Alpha, the
-        likely domain, and a result significance score. Completes in under
-        10 milliseconds.
+      description: Submit a natural language query and receive a classification result indicating whether the query is appropriate for Wolfram|Alpha, the likely domain, and a result significance score. Completes in under 10 milliseconds.
       tags:
       - Classification
       parameters:
@@ -49,7 +39,9 @@ paths:
         description: Recognition mode. Default is for typed queries; Voice optimizes for spoken input.
         schema:
           type: string
-          enum: [Default, Voice]
+          enum:
+          - Default
+          - Voice
           example: Default
         example: Default
       - name: i
@@ -66,7 +58,9 @@ paths:
         description: Response format. Default is XML.
         schema:
           type: string
-          enum: [xml, json]
+          enum:
+          - xml
+          - json
           example: json
         example: json
       responses:
@@ -104,12 +98,6 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  securitySchemes:
-    AppID:
-      type: apiKey
-      in: query
-      name: appid
-      description: Wolfram|Alpha AppID passed as query parameter.
   schemas:
     QueryRecognizerResponse:
       type: object
@@ -146,3 +134,9 @@ components:
                   type: string
                   description: Relative path to retrieve a summary box.
                   example: /summarybox?input=France
+  securitySchemes:
+    AppID:
+      type: apiKey
+      in: query
+      name: appid
+      description: Wolfram|Alpha AppID passed as query parameter.
