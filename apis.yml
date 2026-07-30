@@ -16,9 +16,22 @@ tags:
   - Natural Language Processing
   - Public APIs
   - Search
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 created: '2026-05-28'
 modified: '2026-06-13'
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/wolframalpha.png
 specificationVersion: '0.20'
 position: Consumer
 access: 3rd-Party
@@ -27,178 +40,142 @@ x-category: Machine Learning
 x-tier: 3
 x-tier-reason: bulk-registered-from-public-apis
 apis:
-  - aid: wolframalpha:llm-api
-    name: Wolfram|Alpha LLM API
-    description: >-
-      The LLM API delivers computational knowledge results optimized for consumption by large language models and AI
-      chat applications. Built on the same engine as the full API, it returns structured text with query interpretation,
-      computed results, and relevant data formatted for LLM processing. Authentication uses an AppID query parameter or
-      Bearer token.
-    humanURL: https://products.wolframalpha.com/llm-api/documentation
-    baseURL: https://www.wolframalpha.com/api/v1/
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    tags:
-      - AI
-      - Computational Knowledge
-      - LLM
-    properties:
-      - type: Documentation
-        url: https://products.wolframalpha.com/llm-api/documentation
-      - type: OpenAPI
-        url: openapi/wolframalpha-llm-api-openapi.yml
-      - type: JSONSchema
-        url: json-schema/wolframalpha-llm-api-response-schema.json
-        title: LLM API Response Schema
-      - type: JSONStructure
-        url: json-structure/wolframalpha-llm-api-response-structure.json
-        title: LLM API Response Structure
-      - type: JSONLD
-        url: json-ld/wolframalpha-llm-api-context.jsonld
-      - type: Examples
-        url: examples/wolframalpha-queryllmapi-example.json
-        title: Query LLM API Example
-      - type: Examples
-        url: examples/wolframalpha-llm-api-response-example.json
-        title: LLM API Response Example
-  - aid: wolframalpha:full-results-api
-    name: Wolfram|Alpha Full Results API
-    description: >-
-      The Full Results API provides full programmatic access to all Wolfram|Alpha capabilities, including
-      disambiguation, drilldown, asynchronous delivery, and results in multiple formats (XML, JSON). It supports
-      customizable pod selection, location-aware queries, and display formatting.
-    humanURL: https://products.wolframalpha.com/api/documentation
-    baseURL: https://api.wolframalpha.com/v2/
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    tags:
-      - Computation
-      - Full Results
-      - Natural Language Processing
-    properties:
-      - type: Documentation
-        url: https://products.wolframalpha.com/api/documentation
-      - type: OpenAPI
-        url: openapi/wolframalpha-full-results-api-openapi.yml
-      - type: JSONSchema
-        url: json-schema/wolframalpha-full-results-response-schema.json
-        title: Full Results Response Schema
-      - type: JSONSchema
-        url: json-schema/wolframalpha-pod-schema.json
-        title: Pod Schema
-      - type: JSONSchema
-        url: json-schema/wolframalpha-subpod-schema.json
-        title: Subpod Schema
-      - type: JSONStructure
-        url: json-structure/wolframalpha-full-results-response-structure.json
-        title: Full Results Response Structure
-      - type: JSONStructure
-        url: json-structure/wolframalpha-pod-structure.json
-        title: Pod Structure
-      - type: JSONStructure
-        url: json-structure/wolframalpha-subpod-structure.json
-        title: Subpod Structure
-      - type: JSONLD
-        url: json-ld/wolframalpha-full-results-api-context.jsonld
-      - type: JSONLD
-        url: json-ld/wolframalpha-full-results-context.jsonld
-        title: Full Results Pod Context
-      - type: Examples
-        url: examples/wolframalpha-queryfullresults-example.json
-        title: Query Full Results Example
-      - type: Examples
-        url: examples/wolframalpha-full-results-response-example.json
-        title: Full Results Response Example
-      - type: Examples
-        url: examples/wolframalpha-pod-example.json
-        title: Pod Example
-      - type: Examples
-        url: examples/wolframalpha-subpod-example.json
-        title: Subpod Example
-  - aid: wolframalpha:short-answers-api
-    name: Wolfram|Alpha Short Answers API
-    description: >-
-      The Short Answers API returns a single concise plain-text result from Wolfram|Alpha, ideal for chatbots, mobile
-      apps, and constrained displays. Returns HTTP 501 when no brief answer is available.
-    humanURL: https://products.wolframalpha.com/short-answers-api/documentation
-    baseURL: https://api.wolframalpha.com/v1/
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    tags:
-      - Natural Language Processing
-      - Short Answers
-      - Text
-    properties:
-      - type: Documentation
-        url: https://products.wolframalpha.com/short-answers-api/documentation
-      - type: OpenAPI
-        url: openapi/wolframalpha-short-answers-api-openapi.yml
-      - type: Examples
-        url: examples/wolframalpha-queryshortanswer-example.json
-        title: Query Short Answer Example
-  - aid: wolframalpha:simple-api
-    name: Wolfram|Alpha Simple API
-    description: >-
-      The Simple API returns complete Wolfram|Alpha results as a rendered image, requiring minimal coding. Suitable for
-      embedding computational results visually in web applications without handling complex XML/JSON responses.
-    humanURL: https://products.wolframalpha.com/simple-api/documentation
-    baseURL: https://api.wolframalpha.com/v1/
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    tags:
-      - Images
-      - Natural Language Processing
-      - Visual Results
-    properties:
-      - type: Documentation
-        url: https://products.wolframalpha.com/simple-api/documentation
-      - type: OpenAPI
-        url: openapi/wolframalpha-simple-api-openapi.yml
-      - type: Examples
-        url: examples/wolframalpha-querysimpleapi-example.json
-        title: Query Simple API Example
-  - aid: wolframalpha:spoken-results-api
-    name: Wolfram|Alpha Spoken Results API
-    description: >-
-      The Spoken Results API returns answers optimized for audio delivery, suitable for voice assistants, automotive
-      systems, and accessibility features. Results are plain text formatted to be read aloud naturally.
-    humanURL: https://products.wolframalpha.com/spoken-results-api/documentation
-    baseURL: https://api.wolframalpha.com/v1/
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    tags:
-      - Audio
-      - Natural Language Processing
-      - Voice
-    properties:
-      - type: Documentation
-        url: https://products.wolframalpha.com/spoken-results-api/documentation
-      - type: OpenAPI
-        url: openapi/wolframalpha-spoken-results-api-openapi.yml
-      - type: Examples
-        url: examples/wolframalpha-queryspokenresults-example.json
-        title: Query Spoken Results Example
-  - aid: wolframalpha:fast-query-recognizer-api
-    name: Wolfram|Alpha Fast Query Recognizer API
-    description: >-
-      The Fast Query Recognizer API classifies queries in under 10 milliseconds to determine whether Wolfram|Alpha is
-      likely to provide a useful response. Useful for routing queries efficiently before invoking the full computational
-      engine.
-    humanURL: https://products.wolframalpha.com/query-recognizer/documentation
-    baseURL: https://www.wolframalpha.com/queryrecognizer/
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    tags:
-      - Classification
-      - Natural Language Processing
-      - Routing
-    properties:
-      - type: Documentation
-        url: https://products.wolframalpha.com/query-recognizer/documentation
-      - type: OpenAPI
-        url: openapi/wolframalpha-fast-query-recognizer-api-openapi.yml
-      - type: JSONSchema
-        url: json-schema/wolframalpha-query-recognizer-response-schema.json
-        title: Query Recognizer Response Schema
-      - type: JSONStructure
-        url: json-structure/wolframalpha-query-recognizer-response-structure.json
-        title: Query Recognizer Response Structure
-      - type: Examples
-        url: examples/wolframalpha-recognizequery-example.json
+- aid: wolframalpha:wolframalpha-classification-api
+  name: Wolfram|Alpha Classification API
+  description: Classify and route natural language queries
+  humanURL: https://products.wolframalpha.com/llm-api/documentation
+  baseURL: https://www.wolframalpha.com/api/v1/
+  tags:
+  - Classification
+  properties:
+  - type: OpenAPI
+    url: openapi/wolframalpha-classification-api-openapi.yml
+  - type: Documentation
+    url: https://products.wolframalpha.com/llm-api/documentation
+  - type: JSONSchema
+    url: json-schema/wolframalpha-llm-api-response-schema.json
+  - type: JSONStructure
+    url: json-structure/wolframalpha-llm-api-response-structure.json
+  - type: JSONLD
+    url: json-ld/wolframalpha-llm-api-context.jsonld
+  - type: Examples
+    url: examples/wolframalpha-queryllmapi-example.json
+  - type: Examples
+    url: examples/wolframalpha-llm-api-response-example.json
+  - type: Documentation
+    url: https://products.wolframalpha.com/api/documentation
+  - type: JSONSchema
+    url: json-schema/wolframalpha-full-results-response-schema.json
+  - type: JSONSchema
+    url: json-schema/wolframalpha-pod-schema.json
+  - type: JSONSchema
+    url: json-schema/wolframalpha-subpod-schema.json
+  - type: JSONStructure
+    url: json-structure/wolframalpha-full-results-response-structure.json
+  - type: JSONStructure
+    url: json-structure/wolframalpha-pod-structure.json
+  - type: JSONStructure
+    url: json-structure/wolframalpha-subpod-structure.json
+  - type: JSONLD
+    url: json-ld/wolframalpha-full-results-api-context.jsonld
+  - type: JSONLD
+    url: json-ld/wolframalpha-full-results-context.jsonld
+  - type: Examples
+    url: examples/wolframalpha-queryfullresults-example.json
+  - type: Examples
+    url: examples/wolframalpha-full-results-response-example.json
+  - type: Examples
+    url: examples/wolframalpha-pod-example.json
+  - type: Examples
+    url: examples/wolframalpha-subpod-example.json
+  - type: Documentation
+    url: https://products.wolframalpha.com/short-answers-api/documentation
+  - type: Examples
+    url: examples/wolframalpha-queryshortanswer-example.json
+  - type: Documentation
+    url: https://products.wolframalpha.com/simple-api/documentation
+  - type: Examples
+    url: examples/wolframalpha-querysimpleapi-example.json
+  - type: Documentation
+    url: https://products.wolframalpha.com/spoken-results-api/documentation
+  - type: Examples
+    url: examples/wolframalpha-queryspokenresults-example.json
+  - type: Documentation
+    url: https://products.wolframalpha.com/query-recognizer/documentation
+  - type: JSONSchema
+    url: json-schema/wolframalpha-query-recognizer-response-schema.json
+  - type: JSONStructure
+    url: json-structure/wolframalpha-query-recognizer-response-structure.json
+  - type: Examples
+    url: examples/wolframalpha-recognizequery-example.json
+- aid: wolframalpha:wolframalpha-queries-api
+  name: Wolfram|Alpha Queries API
+  description: Submit natural language queries for full computational results
+  humanURL: https://products.wolframalpha.com/llm-api/documentation
+  baseURL: https://www.wolframalpha.com/api/v1/
+  tags:
+  - Queries
+  properties:
+  - type: OpenAPI
+    url: openapi/wolframalpha-queries-api-openapi.yml
+  - type: Documentation
+    url: https://products.wolframalpha.com/llm-api/documentation
+  - type: JSONSchema
+    url: json-schema/wolframalpha-llm-api-response-schema.json
+  - type: JSONStructure
+    url: json-structure/wolframalpha-llm-api-response-structure.json
+  - type: JSONLD
+    url: json-ld/wolframalpha-llm-api-context.jsonld
+  - type: Examples
+    url: examples/wolframalpha-queryllmapi-example.json
+  - type: Examples
+    url: examples/wolframalpha-llm-api-response-example.json
+  - type: Documentation
+    url: https://products.wolframalpha.com/api/documentation
+  - type: JSONSchema
+    url: json-schema/wolframalpha-full-results-response-schema.json
+  - type: JSONSchema
+    url: json-schema/wolframalpha-pod-schema.json
+  - type: JSONSchema
+    url: json-schema/wolframalpha-subpod-schema.json
+  - type: JSONStructure
+    url: json-structure/wolframalpha-full-results-response-structure.json
+  - type: JSONStructure
+    url: json-structure/wolframalpha-pod-structure.json
+  - type: JSONStructure
+    url: json-structure/wolframalpha-subpod-structure.json
+  - type: JSONLD
+    url: json-ld/wolframalpha-full-results-api-context.jsonld
+  - type: JSONLD
+    url: json-ld/wolframalpha-full-results-context.jsonld
+  - type: Examples
+    url: examples/wolframalpha-queryfullresults-example.json
+  - type: Examples
+    url: examples/wolframalpha-full-results-response-example.json
+  - type: Examples
+    url: examples/wolframalpha-pod-example.json
+  - type: Examples
+    url: examples/wolframalpha-subpod-example.json
+  - type: Documentation
+    url: https://products.wolframalpha.com/short-answers-api/documentation
+  - type: Examples
+    url: examples/wolframalpha-queryshortanswer-example.json
+  - type: Documentation
+    url: https://products.wolframalpha.com/simple-api/documentation
+  - type: Examples
+    url: examples/wolframalpha-querysimpleapi-example.json
+  - type: Documentation
+    url: https://products.wolframalpha.com/spoken-results-api/documentation
+  - type: Examples
+    url: examples/wolframalpha-queryspokenresults-example.json
+  - type: Documentation
+    url: https://products.wolframalpha.com/query-recognizer/documentation
+  - type: JSONSchema
+    url: json-schema/wolframalpha-query-recognizer-response-schema.json
+  - type: JSONStructure
+    url: json-structure/wolframalpha-query-recognizer-response-structure.json
+  - type: Examples
+    url: examples/wolframalpha-recognizequery-example.json
 common:
   - type: AgenticAccess
     url: agentic-access/wolframalpha-agentic-access.yml
