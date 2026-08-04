@@ -1,0 +1,16 @@
+{
+  "provider": "wolframalpha",
+  "sources": [
+    "wolframalpha-classification-api-openapi.yml",
+    "wolframalpha-queries-api-openapi.yml"
+  ],
+  "outputs": [
+    "wolframalpha-classification-api-openapi.yml",
+    "wolframalpha-queries-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

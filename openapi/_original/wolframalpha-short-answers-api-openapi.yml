@@ -1,0 +1,97 @@
+openapi: 3.1.0
+info:
+  title: Wolfram|Alpha Short Answers API
+  description: >-
+    The Wolfram|Alpha Short Answers API returns a single concise plain-text
+    answer from Wolfram|Alpha. Designed for chatbots, mobile apps, smartwatches,
+    and any context requiring brief factual responses. Returns HTTP 501 when no
+    sufficiently short answer is available.
+  version: '1.0'
+  contact:
+    name: Wolfram|Alpha Developer Support
+    url: https://developer.wolframalpha.com/
+  termsOfService: https://products.wolframalpha.com/api/documentation
+  x-generated-from: documentation
+servers:
+- url: https://api.wolframalpha.com/v1
+  description: Wolfram|Alpha v1 API Server
+security:
+- AppID: []
+tags:
+- name: Queries
+  description: Submit queries for concise plain-text answers
+paths:
+  /result:
+    get:
+      operationId: queryShortAnswer
+      summary: Wolfram|Alpha Get Short Answer
+      description: >-
+        Submit a natural language query and receive a single concise plain-text
+        answer. Suitable for chatbots, voice assistants, and constrained display
+        contexts. Returns HTTP 501 when the query has no short answer.
+      tags:
+      - Queries
+      parameters:
+      - name: appid
+        in: query
+        required: true
+        description: Wolfram|Alpha AppID for authentication.
+        schema:
+          type: string
+          example: DEMO-APP-ID
+        example: DEMO-APP-ID
+      - name: i
+        in: query
+        required: true
+        description: URL-encoded input query string.
+        schema:
+          type: string
+          example: How far is the Moon from Earth?
+        example: How far is the Moon from Earth?
+      - name: units
+        in: query
+        required: false
+        description: Measurement system preference. Values are metric or imperial.
+        schema:
+          type: string
+          enum: [metric, imperial]
+          example: metric
+        example: metric
+      - name: timeout
+        in: query
+        required: false
+        description: Maximum processing time in seconds. Default is 5.
+        schema:
+          type: integer
+          example: 5
+        example: 5
+      responses:
+        '200':
+          description: Successful short text answer.
+          content:
+            text/plain:
+              schema:
+                type: string
+                description: Single plain-text answer from Wolfram|Alpha.
+                example: 384,400 kilometers
+              examples:
+                QueryShortAnswer200Example:
+                  summary: Default queryShortAnswer 200 response
+                  x-microcks-default: true
+                  value: 384,400 kilometers
+        '400':
+          description: Bad request - input parameter missing or invalid.
+        '403':
+          description: Invalid or missing AppID.
+        '501':
+          description: Input cannot be interpreted or no short answer available.
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  securitySchemes:
+    AppID:
+      type: apiKey
+      in: query
+      name: appid
+      description: Wolfram|Alpha AppID passed as query parameter.
