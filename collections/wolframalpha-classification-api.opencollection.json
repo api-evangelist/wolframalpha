@@ -1,0 +1,63 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wolfram|Alpha Fast Query Recognizer Classification API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "appid",
+      "value": "{{appid}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Classification",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Wolfram|Alpha Recognize and Classify Query",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.wolframalpha.com/queryrecognizer/query.jsp",
+            "params": [
+              {
+                "name": "appid",
+                "value": "DEMO-APP-ID",
+                "type": "query",
+                "description": "Wolfram|Alpha AppID for authentication."
+              },
+              {
+                "name": "mode",
+                "value": "Default",
+                "type": "query",
+                "description": "Recognition mode. Default is for typed queries; Voice optimizes for spoken input."
+              },
+              {
+                "name": "i",
+                "value": "What is the capital of France?",
+                "type": "query",
+                "description": "URL-encoded input query string to classify."
+              },
+              {
+                "name": "output",
+                "value": "json",
+                "type": "query",
+                "description": "Response format. Default is XML."
+              }
+            ]
+          },
+          "docs": "Submit a natural language query and receive a classification result indicating whether the query is appropriate for Wolfram|Alpha, the likely domain, and a result significance score. Completes in under 10 milliseconds."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
