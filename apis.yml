@@ -9,6 +9,13 @@ description: >-
 type: Index
 url: https://products.wolframalpha.com/api/
 tags:
+  - Artificial Intelligence
+  - Computational Knowledge
+  - Machine-Learning
+  - Natural Language Processing
+  - Public APIs
+  - Search
+tags_raw:
   - AI
   - Artificial Intelligence
   - Computational Knowledge
@@ -114,6 +121,8 @@ apis:
   humanURL: https://products.wolframalpha.com/llm-api/documentation
   baseURL: https://www.wolframalpha.com/api/v1/
   tags:
+  - Query
+  tags_raw:
   - Queries
   properties:
   - type: OpenAPI
