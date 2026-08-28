@@ -15,11 +15,11 @@ info:
     and executed without opening the underlying OpenAPI descriptions.
   version: 1.0.0
 sourceDescriptions:
-- name: fastQueryRecognizerApi
-  url: ../openapi/wolframalpha-fast-query-recognizer-api-openapi.yml
+- name: classificationApi
+  url: ../openapi/wolframalpha-classification-api-openapi.yml
   type: openapi
-- name: llmApi
-  url: ../openapi/wolframalpha-llm-api-openapi.yml
+- name: queriesApi
+  url: ../openapi/wolframalpha-queries-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: llm-conversational-query

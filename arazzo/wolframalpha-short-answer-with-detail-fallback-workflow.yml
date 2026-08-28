@@ -14,11 +14,8 @@ info:
     underlying OpenAPI descriptions.
   version: 1.0.0
 sourceDescriptions:
-- name: shortAnswersApi
-  url: ../openapi/wolframalpha-short-answers-api-openapi.yml
-  type: openapi
-- name: fullResultsApi
-  url: ../openapi/wolframalpha-full-results-api-openapi.yml
+- name: queriesApi
+  url: ../openapi/wolframalpha-queries-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: short-answer-with-detail-fallback

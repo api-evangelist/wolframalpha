@@ -14,11 +14,8 @@ info:
     executed without opening the underlying OpenAPI descriptions.
   version: 1.0.0
 sourceDescriptions:
-- name: shortAnswersApi
-  url: ../openapi/wolframalpha-short-answers-api-openapi.yml
-  type: openapi
-- name: simpleApi
-  url: ../openapi/wolframalpha-simple-api-openapi.yml
+- name: queriesApi
+  url: ../openapi/wolframalpha-queries-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: answer-with-visual

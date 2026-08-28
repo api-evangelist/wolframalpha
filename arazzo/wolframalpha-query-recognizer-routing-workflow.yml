@@ -14,11 +14,11 @@ info:
     opening the underlying OpenAPI descriptions.
   version: 1.0.0
 sourceDescriptions:
-- name: fastQueryRecognizerApi
-  url: ../openapi/wolframalpha-fast-query-recognizer-api-openapi.yml
+- name: classificationApi
+  url: ../openapi/wolframalpha-classification-api-openapi.yml
   type: openapi
-- name: fullResultsApi
-  url: ../openapi/wolframalpha-full-results-api-openapi.yml
+- name: queriesApi
+  url: ../openapi/wolframalpha-queries-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: query-recognizer-routing

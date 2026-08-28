@@ -13,8 +13,8 @@ info:
     executed without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: fullResultsApi
-  url: ../openapi/wolframalpha-full-results-api-openapi.yml
+- name: queriesApi
+  url: ../openapi/wolframalpha-queries-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: full-results-to-specific-pod

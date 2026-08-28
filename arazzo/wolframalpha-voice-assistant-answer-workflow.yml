@@ -13,11 +13,8 @@ info:
     read and executed without opening the underlying OpenAPI descriptions.
   version: 1.0.0
 sourceDescriptions:
-- name: spokenResultsApi
-  url: ../openapi/wolframalpha-spoken-results-api-openapi.yml
-  type: openapi
-- name: shortAnswersApi
-  url: ../openapi/wolframalpha-short-answers-api-openapi.yml
+- name: queriesApi
+  url: ../openapi/wolframalpha-queries-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: voice-assistant-answer
