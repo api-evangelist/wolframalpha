@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Wolfram|Alpha Fast Query Recognizer Classification API
   description: 'The Wolfram|Alpha Fast Query Recognizer API rapidly classifies a natural language query in under 10 milliseconds to determine whether Wolfram|Alpha is likely to return a useful response. Useful for routing layers that need to decide whether to invoke the heavier Full Results, Short Answers, or LLM APIs. Supports two recognition modes: Default for typed queries and Voice for spoken input.'

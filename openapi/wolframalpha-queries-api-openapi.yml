@@ -1,18 +1,20 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Wolfram|Alpha Fast Query Recognizer Classification Queries API
-  description: 'The Wolfram|Alpha Fast Query Recognizer API rapidly classifies a natural language query in under 10 milliseconds to determine whether Wolfram|Alpha is likely to return a useful response. Useful for routing layers that need to decide whether to invoke the heavier Full Results, Short Answers, or LLM APIs. Supports two recognition modes: Default for typed queries and Voice for spoken input.'
-  version: '1.0'
+  title: Wolframalpha Queries API
   contact:
     name: Wolfram|Alpha Developer Support
     url: https://developer.wolframalpha.com/
   termsOfService: https://products.wolframalpha.com/api/documentation
   x-generated-from: documentation
+  version: '1.0'
+  description: 'Operations tagged Queries across 5 of this provider''s published API definitions: wolframalpha-full-results-api-openapi.yml, wolframalpha-llm-api-openapi.yml, wolframalpha-short-answers-api-openapi.yml, wolframalpha-simple-api-openapi.yml, wolframalpha-spoken-results-api-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
-- url: https://www.wolframalpha.com/queryrecognizer
-  description: Wolfram|Alpha Fast Query Recognizer Server
-security:
-- AppID: []
+- url: https://api.wolframalpha.com/v2
+  description: Wolfram|Alpha Full Results API v2
+- url: https://www.wolframalpha.com/api/v1
+  description: Wolfram|Alpha LLM API Server
+- url: https://api.wolframalpha.com/v1
+  description: Wolfram|Alpha v1 API Server
 tags:
 - name: Queries
   description: Submit natural language queries for full computational results
@@ -228,6 +230,11 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      security:
+      - AppID: []
+    servers:
+    - url: https://api.wolframalpha.com/v2
+      description: Wolfram|Alpha Full Results API v2
   /llm-api:
     get:
       operationId: queryLlmApi
@@ -363,6 +370,12 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      security:
+      - BearerAuth: []
+      - AppID: []
+    servers:
+    - url: https://www.wolframalpha.com/api/v1
+      description: Wolfram|Alpha LLM API Server
   /result:
     get:
       operationId: queryShortAnswer
@@ -429,6 +442,11 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      security:
+      - AppID: []
+    servers:
+    - url: https://api.wolframalpha.com/v1
+      description: Wolfram|Alpha v1 API Server
   /simple:
     get:
       operationId: querySimpleApi
@@ -540,6 +558,11 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      security:
+      - AppID: []
+    servers:
+    - url: https://api.wolframalpha.com/v1
+      description: Wolfram|Alpha v1 API Server
   /spoken:
     get:
       operationId: querySpokenResults
@@ -606,38 +629,13 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+      security:
+      - AppID: []
+    servers:
+    - url: https://api.wolframalpha.com/v1
+      description: Wolfram|Alpha v1 API Server
 components:
   schemas:
-    LlmApiResponse:
-      type: object
-      title: LlmApiResponse
-      description: Response from the Wolfram|Alpha LLM API containing computed results.
-      properties:
-        query:
-          type: string
-          description: The original query that was submitted.
-          example: What is the boiling point of water?
-        inputInterpretation:
-          type: string
-          description: Wolfram|Alpha's interpretation of the input query.
-          example: boiling point | water
-        result:
-          type: string
-          description: The primary computed result for the query.
-          example: 100 degrees Celsius (at standard atmospheric pressure)
-        images:
-          type: array
-          items:
-            type: string
-            format: uri
-          description: List of image URLs related to the query results.
-          example:
-          - https://example.com/path
-        link:
-          type: string
-          format: uri
-          description: URL to the full Wolfram|Alpha results page for this query.
-          example: https://www.wolframalpha.com/input?i=boiling+point+water
     FullResultsResponse:
       type: object
       title: FullResultsResponse
@@ -680,35 +678,6 @@ components:
             timing: 0.812
             pods:
             - string-value
-    Subpod:
-      type: object
-      title: Subpod
-      description: A sub-result within a Wolfram|Alpha pod.
-      properties:
-        plaintext:
-          type: string
-          description: Plain text representation of the result.
-          example: 1/3
-        img:
-          type: object
-          description: Image representation of the result.
-          properties:
-            src:
-              type: string
-              format: uri
-              description: URL of the result image.
-            alt:
-              type: string
-              description: Alt text for the result image.
-            width:
-              type: integer
-            height:
-              type: integer
-          example:
-            src: https://example.com/path
-            alt: string-value
-            width: 1
-            height: 1
     Pod:
       type: object
       title: Pod
@@ -741,9 +710,79 @@ components:
             $ref: '#/components/schemas/Subpod'
           example:
           - string-value
+    Subpod:
+      type: object
+      title: Subpod
+      description: A sub-result within a Wolfram|Alpha pod.
+      properties:
+        plaintext:
+          type: string
+          description: Plain text representation of the result.
+          example: 1/3
+        img:
+          type: object
+          description: Image representation of the result.
+          properties:
+            src:
+              type: string
+              format: uri
+              description: URL of the result image.
+            alt:
+              type: string
+              description: Alt text for the result image.
+            width:
+              type: integer
+            height:
+              type: integer
+          example:
+            src: https://example.com/path
+            alt: string-value
+            width: 1
+            height: 1
+    LlmApiResponse:
+      type: object
+      title: LlmApiResponse
+      description: Response from the Wolfram|Alpha LLM API containing computed results.
+      properties:
+        query:
+          type: string
+          description: The original query that was submitted.
+          example: What is the boiling point of water?
+        inputInterpretation:
+          type: string
+          description: Wolfram|Alpha's interpretation of the input query.
+          example: boiling point | water
+        result:
+          type: string
+          description: The primary computed result for the query.
+          example: 100 degrees Celsius (at standard atmospheric pressure)
+        images:
+          type: array
+          items:
+            type: string
+            format: uri
+          description: List of image URLs related to the query results.
+          example:
+          - https://example.com/path
+        link:
+          type: string
+          format: uri
+          description: URL to the full Wolfram|Alpha results page for this query.
+          example: https://www.wolframalpha.com/input?i=boiling+point+water
   securitySchemes:
     AppID:
       type: apiKey
       in: query
       name: appid
       description: Wolfram|Alpha AppID passed as query parameter.
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: AppID
+      description: Pass AppID as Bearer token in Authorization header.
+x-refined-from:
+- wolframalpha-full-results-api-openapi.yml
+- wolframalpha-llm-api-openapi.yml
+- wolframalpha-short-answers-api-openapi.yml
+- wolframalpha-simple-api-openapi.yml
+- wolframalpha-spoken-results-api-openapi.yml
