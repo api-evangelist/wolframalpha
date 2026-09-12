@@ -6,12 +6,10 @@
       "feed_url": "https://blog.wolfram.com/feed/",
       "title": "",
       "saved": 0,
-      "method": "feed",
-      "nature": "vendor-blog",
-      "nature_basis": "blog_subdomain"
+      "method": "feed"
     }
   ],
-  "fetched": "2026-08-30T22:33:40Z",
+  "fetched": "2026-09-06T19:17:18Z",
   "post_count": 17,
   "feed_nature": "vendor-blog",
   "feed_nature_basis": "blog_subdomain",
