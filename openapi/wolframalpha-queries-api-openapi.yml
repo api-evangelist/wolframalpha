@@ -636,6 +636,67 @@ paths:
       description: Wolfram|Alpha v1 API Server
 components:
   schemas:
+    Subpod:
+      type: object
+      title: Subpod
+      description: A sub-result within a Wolfram|Alpha pod.
+      properties:
+        plaintext:
+          type: string
+          description: Plain text representation of the result.
+          example: 1/3
+        img:
+          type: object
+          description: Image representation of the result.
+          properties:
+            src:
+              type: string
+              format: uri
+              description: URL of the result image.
+            alt:
+              type: string
+              description: Alt text for the result image.
+            width:
+              type: integer
+            height:
+              type: integer
+          example:
+            src: https://example.com/path
+            alt: string-value
+            width: 1
+            height: 1
+    Pod:
+      type: object
+      title: Pod
+      description: A single result section (pod) from Wolfram|Alpha.
+      properties:
+        title:
+          type: string
+          description: Human-readable title for this pod.
+          example: Result
+        scanner:
+          type: string
+          description: Internal scanner that generated this pod.
+          example: Integral
+        id:
+          type: string
+          description: Pod identifier for filtering.
+          example: Result
+        position:
+          type: integer
+          description: Ordering position in the result set.
+          example: 200
+        primary:
+          type: boolean
+          description: Whether this is the primary result pod.
+          example: true
+        subpods:
+          type: array
+          description: Sub-results within this pod.
+          items:
+            $ref: '#/components/schemas/Subpod'
+          example:
+          - string-value
     FullResultsResponse:
       type: object
       title: FullResultsResponse
@@ -678,67 +739,6 @@ components:
             timing: 0.812
             pods:
             - string-value
-    Pod:
-      type: object
-      title: Pod
-      description: A single result section (pod) from Wolfram|Alpha.
-      properties:
-        title:
-          type: string
-          description: Human-readable title for this pod.
-          example: Result
-        scanner:
-          type: string
-          description: Internal scanner that generated this pod.
-          example: Integral
-        id:
-          type: string
-          description: Pod identifier for filtering.
-          example: Result
-        position:
-          type: integer
-          description: Ordering position in the result set.
-          example: 200
-        primary:
-          type: boolean
-          description: Whether this is the primary result pod.
-          example: true
-        subpods:
-          type: array
-          description: Sub-results within this pod.
-          items:
-            $ref: '#/components/schemas/Subpod'
-          example:
-          - string-value
-    Subpod:
-      type: object
-      title: Subpod
-      description: A sub-result within a Wolfram|Alpha pod.
-      properties:
-        plaintext:
-          type: string
-          description: Plain text representation of the result.
-          example: 1/3
-        img:
-          type: object
-          description: Image representation of the result.
-          properties:
-            src:
-              type: string
-              format: uri
-              description: URL of the result image.
-            alt:
-              type: string
-              description: Alt text for the result image.
-            width:
-              type: integer
-            height:
-              type: integer
-          example:
-            src: https://example.com/path
-            alt: string-value
-            width: 1
-            height: 1
     LlmApiResponse:
       type: object
       title: LlmApiResponse

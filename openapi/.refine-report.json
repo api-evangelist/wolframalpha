@@ -1,12 +1,12 @@
 {
   "provider": "wolframalpha",
   "sources": [
-    "_original/wolframalpha-fast-query-recognizer-api-openapi.yml",
-    "_original/wolframalpha-full-results-api-openapi.yml",
-    "_original/wolframalpha-llm-api-openapi.yml",
-    "_original/wolframalpha-short-answers-api-openapi.yml",
-    "_original/wolframalpha-simple-api-openapi.yml",
-    "_original/wolframalpha-spoken-results-api-openapi.yml"
+    "_ae-authored/wolframalpha-fast-query-recognizer-api-openapi.yml",
+    "_ae-authored/wolframalpha-full-results-api-openapi.yml",
+    "_ae-authored/wolframalpha-llm-api-openapi.yml",
+    "_ae-authored/wolframalpha-short-answers-api-openapi.yml",
+    "_ae-authored/wolframalpha-simple-api-openapi.yml",
+    "_ae-authored/wolframalpha-spoken-results-api-openapi.yml"
   ],
   "outputs": [
     "wolframalpha-classification-api-openapi.yml",
@@ -16,14 +16,15 @@
   "errors": [],
   "warnings": [],
   "notes": [
-    "sourced from openapi/_original/ (6 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "sourced from openapi/_original/ (0 archived document(s)); previously refined output at the top level was skipped rather than re-split",
     "wolframalpha-fast-query-recognizer-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "wolframalpha-full-results-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "wolframalpha-llm-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "wolframalpha-short-answers-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "wolframalpha-simple-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "wolframalpha-spoken-results-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "tag 'Queries' spans 5 source specs (wolframalpha-full-results-api-openapi.yml, wolframalpha-llm-api-openapi.yml, wolframalpha-short-answers-api-openapi.yml, wolframalpha-simple-api-openapi.yml, wolframalpha-spoken-results-api-openapi.yml): per-path servers applied"
+    "tag 'Queries' spans 5 source specs (wolframalpha-full-results-api-openapi.yml, wolframalpha-llm-api-openapi.yml, wolframalpha-short-answers-api-openapi.yml, wolframalpha-simple-api-openapi.yml, wolframalpha-spoken-results-api-openapi.yml): per-path servers applied",
+    "apis.yml register: already-registered"
   ],
   "skipped": [
     "wolframalpha-classification-api-openapi.yml: previously refined output, superseded by openapi/_original/",
