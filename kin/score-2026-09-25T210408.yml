@@ -1,25 +1,23 @@
-# Kin Score artifact — wolframalpha — 2026-08-25T143147
+# Kin Score artifact — wolframalpha — 2026-09-25T210408
 # The API Evangelist rating (https://github.com/api-evangelist/kin-score). Generated; do not edit.
 ---
 kin_score:
   slug: wolframalpha
-  schema_version: 0.14.0
-  scored_at: '2026-08-25'
-  run_ts: 2026-08-25T143147
-  composite: 38.3
-  band: thin
+  schema_version: 0.23.0
+  scored_at: '2026-09-25'
+  run_ts: 2026-09-25T210408
+  composite: 40.1
+  band: developing
   facets:
-    discoverability: 75.9
-    contract_quality: 28.7
-    governance: 28.8
+    discoverability: 73.2
+    contract_quality: 30.8
+    contract_governance: 27.3
     operational_transparency: 7.9
-    developer_ergonomics: 45.2
-    commercial_clarity: 50.0
-    contract_governance: 28.8
+    developer_ergonomics: 51.2
     access_clarity: 50.0
   agent_readiness:
-    score: 28.7
-    band: agent-ready
+    score: 26.6
+    band: agent-aware
     dimensions:
       spec_presence: true
       agentic_access: derived
@@ -29,7 +27,7 @@ kin_score:
       idempotency: na
       error_semantics: false
       openapi_examples: verified
-      rate_limit_signal: documented
+      rate_limit_signal: derived
       event_surface_described: false
       agent_skills: false
       well_known_catalog: false
@@ -40,10 +38,16 @@ kin_score:
       protected_resource_metadata: false
       dynamic_client_registration: false
       agentic_commerce: false
+  regulatory:
+    applies: true
+    regime: Horizontal (data, software, accessibility, platform)
+    regime_id: horizontal
+    score: 19.1
+    matched_via: fallback
   provenance:
     agentic_access: derived
     contracts:
-      total: 2
-      derived: 2
+      total: 8
+      derived: 8
       coverage: 100.0
       callable: 100.0
