@@ -1,4 +1,4 @@
-# Wolfram|Alpha (wolframalpha)
+# Wolfram|Alpha
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,213 +66,198 @@
 
 Wolfram|Alpha is a computational knowledge engine that provides answers to natural language queries using a vast curated knowledge base and computational algorithms. The Wolfram|Alpha API suite gives developers programmatic access to computational intelligence for web, mobile, voice, and AI agent applications. APIs range from the full-featured Full Results API to specialized LLM, Short Answers, Simple, Spoken Results, Conversational, Fast Query Recognizer, Summary Boxes, and Instant Calculators APIs.
 
-**APIs.json:** [https://products.wolframalpha.com/api/](https://products.wolframalpha.com/api/)
+**Areas:** Artificial Intelligence · Computational Knowledge · Machine Learning · Natural Language Processing · Public APIs · Search
 
-## Scope
+## Wolfram|Alpha on APIs.io
 
-- **Type:** Index
-- **Position:** Consumer
-- **Access:** 3rd-Party
+Everything profiled for Wolfram|Alpha is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/wolframalpha/](https://apis.io/providers/wolframalpha/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (2)
 
-- AI
-- Artificial Intelligence
-- Computational Knowledge
-- Machine Learning
-- Natural Language Processing
-- Public APIs
-- Search
+- [Wolfram|Alpha Classification API](https://apis.io/apis/wolframalpha/wolframalpha-classification-api/) — Classify and route natural language queries
+- [Wolfram|Alpha Queries API](https://apis.io/apis/wolframalpha/wolframalpha-queries-api/) — Submit natural language queries for full computational results
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-05-28
-- **Modified:** 2026-05-30
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Arazzo workflows (6)
 
-### Wolfram|Alpha LLM API
+Multi-step workflows that chain operations into a business task.
 
-The LLM API delivers computational knowledge results optimized for consumption by large language models and AI chat applications. Built on the same engine as the full API, it returns structured text with query interpretation, computed results, and relevant data formatted for LLM processing. Authentication uses an AppID query parameter or Bearer token.
+- [Wolfram|Alpha Answer with Visual](https://apis.io/arazzos/wolframalpha/wolframalpha-answer-with-visual-workflow/)
+- [Wolfram|Alpha Full Results to Specific Pod](https://apis.io/arazzos/wolframalpha/wolframalpha-full-results-to-specific-pod-workflow/)
+- [Wolfram|Alpha LLM Conversational Query](https://apis.io/arazzos/wolframalpha/wolframalpha-llm-conversational-query-workflow/)
+- [Wolfram|Alpha Query Recognizer Routing](https://apis.io/arazzos/wolframalpha/wolframalpha-query-recognizer-routing-workflow/)
+- [Wolfram|Alpha Short Answer with Detail Fallback](https://apis.io/arazzos/wolframalpha/wolframalpha-short-answer-with-detail-fallback-workflow/)
+- [Wolfram|Alpha Voice Assistant Answer](https://apis.io/arazzos/wolframalpha/wolframalpha-voice-assistant-answer-workflow/)
 
-- **Human URL:** [https://products.wolframalpha.com/llm-api/documentation](https://products.wolframalpha.com/llm-api/documentation)
-- **Base URL:** `https://www.wolframalpha.com/api/v1/`
+#### Agentic access (1)
 
-#### Tags
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- AI
-- Computational Knowledge
-- LLM
+- [Wolframalpha Agentic Access](https://apis.io/agentic-access/wolframalpha/wolframalpha-agentic-access/)
 
-#### Properties
+#### JSON Schema (5)
 
-- [Documentation](https://products.wolframalpha.com/llm-api/documentation)
-- [OpenAPI](openapi/wolframalpha-llm-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/wolframalpha-llm-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/wolframalpha-llm-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/wolframalpha-llm-api-response-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/wolframalpha-llm-api-response-structure.json)
-- [JSON-LD](json-ld/wolframalpha-llm-api-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [Example](examples/wolframalpha-queryllmapi-example.json)
-- [Example](examples/wolframalpha-llm-api-response-example.json)
+The data models the API reads and writes.
 
-### Wolfram|Alpha Full Results API
+- [FullResultsResponse](https://apis.io/schemas/wolframalpha/wolframalpha-full-results-response/)
+- [LlmApiResponse](https://apis.io/schemas/wolframalpha/wolframalpha-llm-api-response/)
+- [Pod](https://apis.io/schemas/wolframalpha/wolframalpha-pod/)
+- [QueryRecognizerResponse](https://apis.io/schemas/wolframalpha/wolframalpha-query-recognizer-response/)
+- [Subpod](https://apis.io/schemas/wolframalpha/wolframalpha-subpod/)
 
-The Full Results API provides full programmatic access to all Wolfram|Alpha capabilities, including disambiguation, drilldown, asynchronous delivery, and results in multiple formats (XML, JSON). It supports customizable pod selection, location-aware queries, and display formatting.
+#### JSON Structure (5)
 
-- **Human URL:** [https://products.wolframalpha.com/api/documentation](https://products.wolframalpha.com/api/documentation)
-- **Base URL:** `https://api.wolframalpha.com/v2/`
+Data models expressed in JSON Structure.
 
-#### Tags
+- [Wolframalpha Full Results Response Structure](https://apis.io/json-structure/wolframalpha/wolframalpha-full-results-response-structure/)
+- [Wolframalpha Llm Api Response Structure](https://apis.io/json-structure/wolframalpha/wolframalpha-llm-api-response-structure/)
+- [Wolframalpha Pod Structure](https://apis.io/json-structure/wolframalpha/wolframalpha-pod-structure/)
+- [Wolframalpha Query Recognizer Response Structure](https://apis.io/json-structure/wolframalpha/wolframalpha-query-recognizer-response-structure/)
+- [Wolframalpha Subpod Structure](https://apis.io/json-structure/wolframalpha/wolframalpha-subpod-structure/)
 
-- Computation
-- Full Results
-- Natural Language Processing
+#### JSON-LD (4)
 
-#### Properties
+Linked-data contexts for the provider's vocabulary.
 
-- [Documentation](https://products.wolframalpha.com/api/documentation)
-- [OpenAPI](openapi/wolframalpha-full-results-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/wolframalpha-full-results-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/wolframalpha-full-results-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/wolframalpha-full-results-response-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/wolframalpha-pod-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/wolframalpha-subpod-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/wolframalpha-full-results-response-structure.json)
-- [JSON Structure](json-structure/wolframalpha-pod-structure.json)
-- [JSON Structure](json-structure/wolframalpha-subpod-structure.json)
-- [JSON-LD](json-ld/wolframalpha-full-results-api-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [JSON-LD](json-ld/wolframalpha-full-results-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [Example](examples/wolframalpha-queryfullresults-example.json)
-- [Example](examples/wolframalpha-full-results-response-example.json)
-- [Example](examples/wolframalpha-pod-example.json)
-- [Example](examples/wolframalpha-subpod-example.json)
+- [Wolframalpha Context](https://apis.io/jsonld/wolframalpha/wolframalpha-context/)
+- [Wolframalpha Full Results Api Context](https://apis.io/jsonld/wolframalpha/wolframalpha-full-results-api-context/)
+- [Wolframalpha Full Results Context](https://apis.io/jsonld/wolframalpha/wolframalpha-full-results-context/)
+- [Wolframalpha Llm Api Context](https://apis.io/jsonld/wolframalpha/wolframalpha-llm-api-context/)
 
-### Wolfram|Alpha Short Answers API
+#### Vocabulary (1)
 
-The Short Answers API returns a single concise plain-text result from Wolfram|Alpha, ideal for chatbots, mobile apps, and constrained displays. Returns HTTP 501 when no brief answer is available.
+The provider's domain terms, defined.
 
-- **Human URL:** [https://products.wolframalpha.com/short-answers-api/documentation](https://products.wolframalpha.com/short-answers-api/documentation)
-- **Base URL:** `https://api.wolframalpha.com/v1/`
+- [Wolfram|Alpha Domain Vocabulary](https://apis.io/vocabularies/wolframalpha/wolframalpha-vocabulary/)
 
-#### Tags
+#### Examples (10)
 
-- Natural Language Processing
-- Short Answers
-- Text
+Example requests and responses.
 
-#### Properties
+- [Wolframalpha Full Results Response Example](https://apis.io/examples/wolframalpha/wolframalpha-full-results-response-example/)
+- [Wolframalpha Llm Api Response Example](https://apis.io/examples/wolframalpha/wolframalpha-llm-api-response-example/)
+- [Wolframalpha Pod Example](https://apis.io/examples/wolframalpha/wolframalpha-pod-example/)
+- [Wolframalpha Queryfullresults Example](https://apis.io/examples/wolframalpha/wolframalpha-queryfullresults-example/)
+- [Wolframalpha Queryllmapi Example](https://apis.io/examples/wolframalpha/wolframalpha-queryllmapi-example/)
+- [Wolframalpha Queryshortanswer Example](https://apis.io/examples/wolframalpha/wolframalpha-queryshortanswer-example/)
+- [Wolframalpha Querysimpleapi Example](https://apis.io/examples/wolframalpha/wolframalpha-querysimpleapi-example/)
+- [Wolframalpha Queryspokenresults Example](https://apis.io/examples/wolframalpha/wolframalpha-queryspokenresults-example/)
+- [Wolframalpha Recognizequery Example](https://apis.io/examples/wolframalpha/wolframalpha-recognizequery-example/)
+- [Wolframalpha Subpod Example](https://apis.io/examples/wolframalpha/wolframalpha-subpod-example/)
 
-- [Documentation](https://products.wolframalpha.com/short-answers-api/documentation)
-- [OpenAPI](openapi/wolframalpha-short-answers-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/wolframalpha-short-answers-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/wolframalpha-short-answers-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Example](examples/wolframalpha-queryshortanswer-example.json)
+#### Collections (14)
 
-### Wolfram|Alpha Simple API
+Postman and Open Collection request collections.
 
-The Simple API returns complete Wolfram|Alpha results as a rendered image, requiring minimal coding. Suitable for embedding computational results visually in web applications without handling complex XML/JSON responses.
+- [Wolfram|Alpha Fast Query Recognizer Classification API](https://apis.io/collections/wolframalpha/open-wolframalpha-classification-api/)
+- [Wolfram|Alpha Fast Query Recognizer API](https://apis.io/collections/wolframalpha/open-wolframalpha-fast-query-recognizer-api/)
+- [Wolfram|Alpha Full Results API](https://apis.io/collections/wolframalpha/open-wolframalpha-full-results-api/)
+- [Wolfram|Alpha LLM API](https://apis.io/collections/wolframalpha/open-wolframalpha-llm-api/)
+- [Wolfram|Alpha Fast Query Recognizer Classification Queries API](https://apis.io/collections/wolframalpha/open-wolframalpha-queries-api/)
+- [Wolfram|Alpha Short Answers API](https://apis.io/collections/wolframalpha/open-wolframalpha-short-answers-api/)
+- [Wolfram|Alpha Simple API](https://apis.io/collections/wolframalpha/open-wolframalpha-simple-api/)
+- [Wolfram|Alpha Spoken Results API](https://apis.io/collections/wolframalpha/open-wolframalpha-spoken-results-api/)
+- [Wolfram|Alpha Fast Query Recognizer API](https://apis.io/collections/wolframalpha/postman-wolframalpha-fast-query-recognizer-api/)
+- [Wolfram|Alpha Full Results API](https://apis.io/collections/wolframalpha/postman-wolframalpha-full-results-api/)
+- [Wolfram|Alpha LLM API](https://apis.io/collections/wolframalpha/postman-wolframalpha-llm-api/)
+- [Wolfram|Alpha Short Answers API](https://apis.io/collections/wolframalpha/postman-wolframalpha-short-answers-api/)
+- [Wolfram|Alpha Simple API](https://apis.io/collections/wolframalpha/postman-wolframalpha-simple-api/)
+- [Wolfram|Alpha Spoken Results API](https://apis.io/collections/wolframalpha/postman-wolframalpha-spoken-results-api/)
 
-- **Human URL:** [https://products.wolframalpha.com/simple-api/documentation](https://products.wolframalpha.com/simple-api/documentation)
-- **Base URL:** `https://api.wolframalpha.com/v1/`
+#### Governance rules (2)
 
-#### Tags
+Spectral rulesets for the provider's contracts.
 
-- Images
-- Natural Language Processing
-- Visual Results
+- [Wolfram|Alpha — jsonschema rules](https://apis.io/rules/wolframalpha/wolframalpha-jsonschema-spectral-rules/)
+- [Wolfram|Alpha API Rules](https://apis.io/rules/wolframalpha/wolframalpha-rules/)
 
-#### Properties
+#### Security (2)
 
-- [Documentation](https://products.wolframalpha.com/simple-api/documentation)
-- [OpenAPI](openapi/wolframalpha-simple-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/wolframalpha-simple-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/wolframalpha-simple-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Example](examples/wolframalpha-querysimpleapi-example.json)
+Authentication, trust centre, and vulnerability disclosure.
 
-### Wolfram|Alpha Spoken Results API
+- [Wolframalpha Authentication](https://apis.io/security/wolframalpha/wolframalpha-authentication/)
+- [Wolframalpha Domain Security](https://apis.io/security/wolframalpha/wolframalpha-domain-security/)
 
-The Spoken Results API returns answers optimized for audio delivery, suitable for voice assistants, automotive systems, and accessibility features. Results are plain text formatted to be read aloud naturally.
+#### Plans and pricing (1)
 
-- **Human URL:** [https://products.wolframalpha.com/spoken-results-api/documentation](https://products.wolframalpha.com/spoken-results-api/documentation)
-- **Base URL:** `https://api.wolframalpha.com/v1/`
+Published plans, tiers and prices.
 
-#### Tags
+- [Wolframalpha Plans Pricing](https://apis.io/plans/wolframalpha/wolframalpha-plans-pricing/)
 
-- Audio
-- Natural Language Processing
-- Voice
+#### Rate limits (1)
 
-#### Properties
+Published request limits.
 
-- [Documentation](https://products.wolframalpha.com/spoken-results-api/documentation)
-- [OpenAPI](openapi/wolframalpha-spoken-results-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/wolframalpha-spoken-results-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/wolframalpha-spoken-results-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Example](examples/wolframalpha-queryspokenresults-example.json)
+- [Wolframalpha Rate Limits](https://apis.io/rate-limits/wolframalpha/wolframalpha-rate-limits/)
 
-### Wolfram|Alpha Fast Query Recognizer API
+#### FinOps (1)
 
-The Fast Query Recognizer API classifies queries in under 10 milliseconds to determine whether Wolfram|Alpha is likely to provide a useful response. Useful for routing queries efficiently before invoking the full computational engine.
+What the API costs to run, by operation.
 
-- **Human URL:** [https://products.wolframalpha.com/query-recognizer/documentation](https://products.wolframalpha.com/query-recognizer/documentation)
-- **Base URL:** `https://www.wolframalpha.com/queryrecognizer/`
+- [Wolframalpha Finops](https://apis.io/finops/wolframalpha/wolframalpha-finops/)
 
-#### Tags
+## Where to find this API
 
-- Classification
-- Natural Language Processing
-- Routing
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-#### Properties
-
-- [Documentation](https://products.wolframalpha.com/query-recognizer/documentation)
-- [OpenAPI](openapi/wolframalpha-fast-query-recognizer-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/wolframalpha-fast-query-recognizer-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/wolframalpha-fast-query-recognizer-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/wolframalpha-query-recognizer-response-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/wolframalpha-query-recognizer-response-structure.json)
-- [Example](examples/wolframalpha-recognizequery-example.json)
-
-## Common Properties
-
-- [Arazzo Workflows](arazzo/) — [Arazzo Specification](https://spec.openapis.org/arazzo/latest.html)
 - [Website](https://www.wolframalpha.com)
-- [Developer Portal](https://developer.wolframalpha.com/)
-- [Portal](https://products.wolframalpha.com/api/)
-- [Sign Up](https://developer.wolframalpha.com/)
-- [Authentication](https://products.wolframalpha.com/api/documentation)
 - [Pricing](https://products.wolframalpha.com/api/)
-- [Plans](plans/wolframalpha-plans-pricing.yml)
-- [Rate Limits](rate-limits/wolframalpha-rate-limits.yml)
-- [Fin Ops](finops/wolframalpha-finops.yml)
-- [Terms of Service](https://products.wolframalpha.com/api/documentation)
-- [GitHub Organization](https://github.com/WolframResearch)
-- [Public APIs Listing](https://github.com/public-apis/public-apis)
-- [LinkedIn](https://www.linkedin.com/company/wolfram-alpha-llc)
-- [SDK](https://github.com/WolframResearch/WolframClientForPython)
-- [SDK](https://pypi.org/project/wolframclient/)
-- [SDK](https://github.com/WolframResearch/WolframWebEngineForPython)
-- [SDK](https://github.com/WolframResearch/wolfram-library-link-rs)
-- [SDK](https://github.com/WolframResearch/wstp-rs)
-- [SDK](https://github.com/WolframResearch/wolfram-expr-rs)
-- [I D E Support](https://github.com/WolframResearch/vscode-wolfram)
-- [I D E Support](https://github.com/WolframResearch/Sublime-WolframLanguage)
-- [Tools](https://github.com/WolframResearch/AgentTools)
-- [Tools](https://github.com/WolframResearch/AgentTools/blob/main/docs/docker.md)
-- [Tools](https://github.com/WolframResearch/skills)
-- [Tools](https://github.com/WolframResearch/Chatbook)
-- [Tools](https://github.com/WolframResearch/AWSLambda-WolframLanguage)
-- [Tools](https://github.com/WolframResearch/WolframLanguageForJupyter)
-- [Tools](https://github.com/WolframResearch/LSPServer)
-- [Spectral Rules](rules/wolframalpha-rules.yml)
-- [Vocabulary](vocabulary/wolframalpha-vocabulary.yml)
-- [JSON-LD](json-ld/wolframalpha-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [Features](undefined)
-- [Use Cases](undefined)
-- [Integrations](undefined)
+- [Blog](https://blog.wolfram.com/feed/)
+- [Terms of service](https://products.wolframalpha.com/api/documentation)
+- [GitHub](https://github.com/WolframResearch)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 38.6** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 30.8 |
+| Contract governance | 27.3 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 51.2 |
+| Access clarity | 42.1 |
+
+**Agent readiness 26.6** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | na |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | na |
+| Error Semantics | — |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 19.1** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/wolframalpha/](https://apis.io/providers/wolframalpha/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Wolfram|Alpha: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/wolframalpha/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
